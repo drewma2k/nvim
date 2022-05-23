@@ -20,21 +20,25 @@ map("n", "<leader>ps", "<cmd>PackerSync<cr>", { desc = "Packer Sync" })
 map("n", "<leader>pS", "<cmd>PackerStatus<cr>", { desc = "Packer Status" })
 map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "Packer Update" })
 
--- Alpha
-  map("n", "<leader>d", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
+-- Tree
+map("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" })
+map("n", "<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus Explorer" })
 
-  map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+-- Alpha
+map("n", "<leader>d", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
+
+map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
 -- Comment
-  map("n", "<leader>/", function()
-    require("Comment.api").toggle_current_linewise()
-  end, { desc = "Comment line" })
-  map(
-    "v",
-    "<leader>/",
-    "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>",
-    { desc = "Toggle comment line" }
-  )
+map("n", "<leader>/", function()
+  require("Comment.api").toggle_current_linewise()
+end, { desc = "Comment line" })
+map(
+  "v",
+  "<leader>/",
+  "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>",
+  { desc = "Toggle comment line" }
+)
 
 -- -- GitSigns
 -- if is_available "gitsigns.nvim" then
@@ -70,75 +74,75 @@ map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "Packer Update" })
 
 
 -- LSP Installer
-  vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
-  vim.keymap.set("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
+vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
+vim.keymap.set("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
 
 -- SymbolsOutline
-  -- map("n", "<leader>lS", "<cmd>AerialToggle<cr>", { desc = "Symbols outline" })
+-- map("n", "<leader>lS", "<cmd>AerialToggle<cr>", { desc = "Symbols outline" })
 
 -- Telescope
-  map("n", "<leader>fw", function()
-    require("telescope.builtin").live_grep()
-  end, { desc = "Search words" })
-  map("n", "<leader>gt", function()
-    require("telescope.builtin").git_status()
-  end, { desc = "Git status" })
-  map("n", "<leader>gb", function()
-    require("telescope.builtin").git_branches()
-  end, { desc = "Git branchs" })
-  map("n", "<leader>gc", function()
-    require("telescope.builtin").git_commits()
-  end, { desc = "Git commits" })
-  map("n", "<leader>ff", function()
-    require("telescope.builtin").find_files()
-  end, { desc = "Search files" })
-  map("n", "<leader>fb", function()
-    require("telescope.builtin").buffers()
-  end, { desc = "Search buffers" })
-  map("n", "<leader>fh", function()
-    require("telescope.builtin").help_tags()
-  end, { desc = "Search help" })
-  map("n", "<leader>fm", function()
-    require("telescope.builtin").marks()
-  end, { desc = "Search marks" })
-  map("n", "<leader>fo", function()
-    require("telescope.builtin").oldfiles()
-  end, { desc = "Search history" })
-  map("n", "<leader>sb", function()
-    require("telescope.builtin").git_branches()
-  end, { desc = "Git branchs" })
-  map("n", "<leader>sh", function()
-    require("telescope.builtin").help_tags()
-  end, { desc = "Search help" })
-  map("n", "<leader>sm", function()
-    require("telescope.builtin").man_pages()
-  end, { desc = "Search man" })
-  map("n", "<leader>sn", function()
-    require("telescope").extensions.notify.notify()
-  end, { desc = "Search notifications" })
-  map("n", "<leader>sr", function()
-    require("telescope.builtin").registers()
-  end, { desc = "Search registers" })
-  map("n", "<leader>sk", function()
-    require("telescope.builtin").keymaps()
-  end, { desc = "Search keymaps" })
-  map("n", "<leader>sc", function()
-    require("telescope.builtin").commands()
-  end, { desc = "Search commands" })
-  map("n", "<leader>ls", function()
-    local aerial_avail, _ = pcall(require, "aerial")
-    if aerial_avail then
-      require("telescope").extensions.aerial.aerial()
-    else
-      require("telescope.builtin").lsp_document_symbols()
-    end
-  end, { desc = "Search symbols" })
-  map("n", "<leader>lR", function()
-    require("telescope.builtin").lsp_references()
-  end, { desc = "Search references" })
-  map("n", "<leader>lD", function()
-    require("telescope.builtin").diagnostics()
-  end, { desc = "Search diagnostics" })
+map("n", "<leader>fw", function()
+  require("telescope.builtin").live_grep()
+end, { desc = "Search words" })
+map("n", "<leader>gt", function()
+  require("telescope.builtin").git_status()
+end, { desc = "Git status" })
+map("n", "<leader>gb", function()
+  require("telescope.builtin").git_branches()
+end, { desc = "Git branchs" })
+map("n", "<leader>gc", function()
+  require("telescope.builtin").git_commits()
+end, { desc = "Git commits" })
+map("n", "<leader>ff", function()
+  require("telescope.builtin").find_files()
+end, { desc = "Search files" })
+map("n", "<leader>fb", function()
+  require("telescope.builtin").buffers()
+end, { desc = "Search buffers" })
+map("n", "<leader>fh", function()
+  require("telescope.builtin").help_tags()
+end, { desc = "Search help" })
+map("n", "<leader>fm", function()
+  require("telescope.builtin").marks()
+end, { desc = "Search marks" })
+map("n", "<leader>fo", function()
+  require("telescope.builtin").oldfiles()
+end, { desc = "Search history" })
+map("n", "<leader>sb", function()
+  require("telescope.builtin").git_branches()
+end, { desc = "Git branchs" })
+map("n", "<leader>sh", function()
+  require("telescope.builtin").help_tags()
+end, { desc = "Search help" })
+map("n", "<leader>sm", function()
+  require("telescope.builtin").man_pages()
+end, { desc = "Search man" })
+map("n", "<leader>sn", function()
+  require("telescope").extensions.notify.notify()
+end, { desc = "Search notifications" })
+map("n", "<leader>sr", function()
+  require("telescope.builtin").registers()
+end, { desc = "Search registers" })
+map("n", "<leader>sk", function()
+  require("telescope.builtin").keymaps()
+end, { desc = "Search keymaps" })
+map("n", "<leader>sc", function()
+  require("telescope.builtin").commands()
+end, { desc = "Search commands" })
+map("n", "<leader>ls", function()
+  local aerial_avail, _ = pcall(require, "aerial")
+  if aerial_avail then
+    require("telescope").extensions.aerial.aerial()
+  else
+    require("telescope.builtin").lsp_document_symbols()
+  end
+end, { desc = "Search symbols" })
+map("n", "<leader>lR", function()
+  require("telescope.builtin").lsp_references()
+end, { desc = "Search references" })
+map("n", "<leader>lD", function()
+  require("telescope.builtin").diagnostics()
+end, { desc = "Search diagnostics" })
 
 -- Terminal
 -- if is_available "nvim-toggleterm.lua" then
