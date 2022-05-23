@@ -33,10 +33,10 @@ vim.o.completeopt = 'menuone,noselect'
 
 
 -- run commands
-vim.cmd[[highlight clear SignColumn]]
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder ctermbg=none]]
 vim.cmd [[autocmd! ColorScheme * highlight NormalFloat ctermbg=none]]
 vim.cmd [[colorscheme default]]
 vim.cmd [[highlight link FloatBorder NormalFloat]]
 vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
 vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
+vim.cmd[[highlight clear SignColumn]]
