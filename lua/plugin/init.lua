@@ -15,12 +15,13 @@ require('packer').startup(function(use)
   use 'nvim-lua/popup.nvim'
   use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
 
-  use {
-    'crispgm/nvim-tabline',
-    config = function()
-      require('tabline').setup({})
-    end,
-  }
+  -- use {
+  --   'crispgm/nvim-tabline',
+  --   config = function()
+  --     require('tabline').setup({})
+  --   end,
+  -- }
+  use 'mkitt/tabline.vim'
   use {
     "folke/which-key.nvim",
     config = function()
