@@ -1,8 +1,6 @@
 vim.g.mapleader = " "
 local map = vim.keymap.set
 
-map("", "<Space>", "<Nop>") -- disable space because leader
-
 -- Normal --
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
@@ -21,8 +19,8 @@ map("n", "<leader>pS", "<cmd>PackerStatus<cr>", { desc = "Packer Status" })
 map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "Packer Update" })
 
 -- Tree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
-map("n", "<leader>o", "<cmd>NvimTreeFocus<cr>", { desc = "Focus Explorer" })
+map("n", "<leader>e", "<cmd>CHADopen<cr>", { desc = "Toggle Explorer" })
+map("n", "<leader>o", "<cmd>CHADopen<cr>", { desc = "Focus Explorer" })
 
 -- Alpha
 map("n", "<leader>d", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })

@@ -1,13 +1,3 @@
---fix borders popup
---vim.cmd [[autocmd! ColorScheme * highlight NormalFloat ctermbg=darkgrey]]
---vim.cmd [[autocmd! ColorScheme * highlight FloatBorder ctermfg=white ctermbg=darkgrey]]
--- vim.cmd [[autocmd! ColorScheme * highlight FloatBorder ctermbg=none]]
--- vim.cmd [[autocmd! ColorScheme * highlight NormalFloat ctermbg=none]]
--- vim.cmd [[colorscheme default]]
--- vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
--- vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
-
-
 local border = {
   { "╭", "NormalFloat" },
   { "─", "NormalFloat" },
