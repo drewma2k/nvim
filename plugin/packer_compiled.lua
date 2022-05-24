@@ -86,6 +86,11 @@ _G.packer_plugins = {
     path = "/Users/drew/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  chadtree = {
+    loaded = true,
+    path = "/Users/drew/.local/share/nvim/site/pack/packer/start/chadtree",
+    url = "https://github.com/ms-jpq/chadtree"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/drew/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -171,6 +176,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/drew/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/Users/drew/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,

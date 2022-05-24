@@ -1,7 +1,7 @@
 -- init.lua
 
 -- empty setup using defaults: add your own options
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
 }
 
 -- OR
@@ -9,9 +9,9 @@ require'nvim-tree'.setup {
 -- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 -- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`).
-require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
-  disable_netrw = false,
+  disable_netrw = true,
   hijack_cursor = false,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
@@ -127,3 +127,32 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     },
   },
 } -- END_DEFAULT_OPTS
+
+local opts = {
+  git_hl = 1,
+  root_folder_modifier = ":t",
+  icons = {
+    default = "",
+    symlink = "",
+    git = {
+      unstaged = "",
+      staged = "S",
+      unmerged = "",
+      renamed = "➜",
+      deleted = "",
+      untracked = "U",
+      ignored = "◌",
+    },
+    folder = {
+      default = "",
+      open = "",
+      empty = "",
+      empty_open = "",
+      symlink = "",
+    },
+  }
+}
+
+for opt, val in pairs(opts) do
+  vim.g["nvim_tree_" .. opt] = val
+end
