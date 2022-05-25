@@ -45,5 +45,6 @@ old/*
 # colorschemes
 colors/*
 
-# unneeded autoload
+# custom
 autoload/everforest.vim
+plugin/packer_compiled.lua
