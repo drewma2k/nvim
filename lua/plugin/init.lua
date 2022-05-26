@@ -10,15 +10,19 @@ require('packer').startup(function(use)
   -- plugin manager
   use 'wbthomason/packer.nvim'
 
+  -- colorschemes
+  use 'drewma2k/nvim-base16'
+
+
   -- tree
-  use { 'ms-jpq/chadtree', { branch = 'chad', run = 'python3 -m chadtree deps' } }
-  -- use {
-  --   'kyazdani42/nvim-tree.lua',
-  --   requires = {
-  --     'kyazdani42/nvim-web-devicons', -- optional, for file icon
-  --   },
-  --   tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  -- }
+  --use { 'ms-jpq/chadtree', { branch = 'chad', run = 'python3 -m chadtree deps' } }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
 
   -- fix tabbing
   use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
@@ -151,4 +155,4 @@ require('config.plugin.lualine')
 require('config.plugin.lspconfig')
 require('config.plugin.treesitter')
 require('config.plugin.cmp')
---require('config.plugin.nvim-tree')
+require('config.plugin.nvim-tree')
