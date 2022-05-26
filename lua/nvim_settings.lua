@@ -25,8 +25,11 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 --Set colorscheme
---vim.o.termguicolors = true
---vim.cmd [[colorscheme onedark]]
+vim.cmd [[highlight clear SignColumn]]
+vim.cmd [[highlight VertSplit cterm=none]]
+vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
+vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
+vim.cmd [[colorscheme base16-eighties]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -37,13 +40,8 @@ vim.o.laststatus = 2
 -- dont show messages like -- INSERT --
 vim.opt.showmode = false
 
+-- autoindent
+vim.opt.autoindent = true
 
--- run commands
-vim.cmd [[autocmd! ColorScheme * highlight FloatBorder ctermbg=none]]
-vim.cmd [[autocmd! ColorScheme * highlight NormalFloat ctermbg=none]]
-vim.cmd [[colorscheme default]]
-vim.cmd [[highlight link FloatBorder NormalFloat]]
-vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
-vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
-vim.cmd[[highlight clear SignColumn]]
-vim.cmd[[highlight VertSplit cterm=none]]
+-- disable mouse
+vim.opt.mouse = ''
