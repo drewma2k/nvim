@@ -6,22 +6,27 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-  -- My plugins here
-  -- use {
-  --   "phha/zenburn.nvim",
-  --   config = function() require("zenburn").setup() end
-  -- }
+
+  -- plugin manager
+  use 'wbthomason/packer.nvim'
+
+  -- tree
   use { 'ms-jpq/chadtree', { branch = 'chad', run = 'python3 -m chadtree deps' } }
-  use 'nvim-lua/popup.nvim'
+  -- use {
+  --   'kyazdani42/nvim-tree.lua',
+  --   requires = {
+  --     'kyazdani42/nvim-web-devicons', -- optional, for file icon
+  --   },
+  --   tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  -- }
+
+  -- fix tabbing
   use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
 
-  -- use {
-  --   'crispgm/nvim-tabline',
-  --   config = function()
-  --     require('tabline').setup({})
-  --   end,
-  -- }
+  -- tabline
   use 'mkitt/tabline.vim'
+
+  -- keymap popup
   use {
     "folke/which-key.nvim",
     config = function()
@@ -40,47 +45,62 @@ require('packer').startup(function(use)
       }
     end
   }
+
+  -- comment shortcut
   use {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
   }
+
+  -- statusline
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  use 'wbthomason/packer.nvim'
+
+  -- lsp install popup
   use {
     "williamboman/nvim-lsp-installer",
     "neovim/nvim-lspconfig",
   }
+
+  -- better syntax highlighting
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+  -- completion engine
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
+
+  -- lua library
   use 'nvim-lua/plenary.nvim'
+
+  -- dashboard
   use {
     'goolord/alpha-nvim',
     config = function()
       require 'config.plugin.alpha'
     end
   }
+
+  -- popup search menu
   use {
     'nvim-telescope/telescope.nvim',
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
 
+  -- snippets
+  use 'L3MON4D3/LuaSnip'
+
+
+  -- better indenting
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   use 'Darazaki/indent-o-matic'
@@ -91,7 +111,6 @@ require('packer').startup(function(use)
 end)
 
 -- plugin setups that don't deserve their own file
-
 
 --indent-o-matic
 require('indent-o-matic').setup {
@@ -128,96 +147,8 @@ require('nvim-autopairs').setup {
   }
 }
 
---vim.cmd[[colorscheme everforest]]
--- LUALINE
--- customize auto theme
-local custom_auto_theme = require('lualine.themes.auto')
-
-for mode, components in pairs(custom_auto_theme) do
-  for component, _ in pairs(components) do
-    if component ~= 'a' then
-      custom_auto_theme[mode][component] = 'StatusLine'
-      -- custom_auto_theme[mode][component].fg = ''
-      -- custom_auto_theme[mode][component].bg = bg
-      -- custom_auto_theme[mode][component].gui = 'bold,reverse'
-    end
-  end
-  custom_auto_theme[mode].z = custom_auto_theme[mode].b
-end
-local mode = {
-  function()
-    return ""
-  end,
-  padding = { left = 0, right = 0 },
-  cond = nil,
-}
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = custom_auto_theme,
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = { 'CHADTree' },
-    always_divide_middle = true,
-    globalstatus = false,
-  },
-  sections = {
-    lualine_a = {
-      mode,
-    },
-    lualine_b = {
-      {
-        'filename',
-        path = 0,
-
-      },
-      'branch',
-      {
-        'diagnostics',
-        colored = false,
-        diagnostics_color = {
-          -- Same values as the general color option can be used here.
-          error = { bg = "lightgrey", fg = 'red', gui = 'bold' }, --'DiagnosticError', -- Changes diagnostics' error color.
-          warn  = { bg = "lightgrey", fg = 'darkorange', gui = 'bold' }, --'DiagnosticWarn',  -- Changes diagnostics' warn color.
-          info  = { bg = "lightgrey", fg = 'blue', gui = 'bold' }, --'DiagnosticInfo',  -- Changes diagnostics' info color.
-          hint  = { bg = "", fg = '', gui = 'bold,reverse' }, --'DiagnosticHint',  -- Changes diagnostics' hint color.
-        }
-      },
-    },
-    lualine_c = {
-    },
-    lualine_x = {
-      {
-        'fileformat',
-        symbols = {
-          unix = "",
-          dos = "",
-          mac = "",
-        },
-      },
-      {
-        'filetype',
-        colored = false,
-        color = 'StatusLine'
-      }
-    },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' },
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-
-      },
-    },
-    lualine_x = { 'location' },
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  extensions = { 'nvim-tree' }
-}
+require('config.plugin.lualine')
+require('config.plugin.lspconfig')
+require('config.plugin.treesitter')
+require('config.plugin.cmp')
+--require('config.plugin.nvim-tree')
