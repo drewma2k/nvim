@@ -45,3 +45,7 @@ vim.opt.autoindent = true
 
 -- disable mouse
 vim.opt.mouse = ''
+
+-- match uppercase in search
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
