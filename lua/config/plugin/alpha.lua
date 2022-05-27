@@ -3,7 +3,9 @@ local dashboard = require("alpha.themes.dashboard")
 
 
 -- header fortune | cowsay
-local handle = io.popen("/opt/homebrew/bin/fortune | /opt/homebrew/bin/cowsay")
+local prefix = os.getenv("HOMEBREW_PREFIX")
+local cmd = string.format('%s/bin/fortune | %s/bin/cowsay', prefix, prefix)
+local handle = io.popen(cmd)
 local line
 local strings = {}
 
