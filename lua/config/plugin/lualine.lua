@@ -26,7 +26,7 @@ require('lualine').setup {
     theme = custom_auto_theme,
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
-    disabled_filetypes = { 'CHADTree' },
+    disabled_filetypes = { 'NvimTree' },
     always_divide_middle = true,
     globalstatus = false,
   },
