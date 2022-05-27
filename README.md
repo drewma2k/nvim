@@ -1,4 +1,7 @@
 # Nvim configuration
+[dashboard](screenshots/dashboard.png)
+[screenshot1](screenshots/screenshot1.png)
+[screenshot2](screenshots/screenshot2.png)
 
 ## Features:
   - Minimal UI; icons are kept to a tasteful minimum (this is a cli tool after all)
