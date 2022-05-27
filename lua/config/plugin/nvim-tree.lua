@@ -49,7 +49,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     },
     icons = {
       webdev_colors = true,
-      git_placement = "before",
+      git_placement = "after",
     },
   },
   hijack_directories = {
@@ -63,7 +63,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
   },
   ignore_ft_on_setup = {},
   system_open = {
-    cmd = "",
+    cmd = "open",
     args = {},
   },
   diagnostics = {
@@ -94,7 +94,7 @@ require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       restrict_above_cwd = false,
     },
     open_file = {
-      quit_on_open = false,
+      quit_on_open = true,
       resize_window = true,
       window_picker = {
         enable = true,

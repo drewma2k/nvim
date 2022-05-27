@@ -103,6 +103,23 @@ require('packer').startup(function(use)
   -- snippets
   use 'L3MON4D3/LuaSnip'
 
+  -- org mode
+  -- use {
+  --   "nvim-neorg/neorg",
+  --   config = function()
+  --     require('neorg').setup {
+  --       load = {
+  --         ["core.defaults"] = {},
+  --         ["core.gtd.base"] = {
+  --           config = {
+  --             workspace = "test"
+  --           }
+  --         }
+  --       }
+  --     }
+  --   end,
+  --   requires = "nvim-lua/plenary.nvim"
+  -- }
 
   -- better indenting
   -- Automatically set up your configuration after cloning packer.nvim
@@ -111,6 +128,8 @@ require('packer').startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
+
+  -- auto close (, [, etc
   use 'windwp/nvim-autopairs'
 end)
 
