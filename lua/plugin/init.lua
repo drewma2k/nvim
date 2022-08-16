@@ -12,7 +12,17 @@ require('packer').startup(function(use)
 
   -- colorschemes
   use 'drewma2k/nvim-base16'
-
+  
+  -- focus mode
+  use({
+	"Pocco81/true-zen.nvim",
+	config = function()
+		 require("true-zen").setup {
+			-- your config goes here
+			-- or just leave it empty :)
+		 }
+	end,
+  })
 
   -- tree
   --use { 'ms-jpq/chadtree', { branch = 'chad', run = 'python3 -m chadtree deps' } }
@@ -25,7 +35,7 @@ require('packer').startup(function(use)
   }
 
   -- fix tabbing
-  use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
+  -- use({ "yioneko/nvim-yati", requires = "nvim-treesitter/nvim-treesitter" })
 
   -- tabline
   use 'mkitt/tabline.vim'
@@ -82,6 +92,9 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
+  -- for python snippets
+  use 'cstrap/python-snippets'
+
 
   -- lua library
   use 'nvim-lua/plenary.nvim'
@@ -124,10 +137,10 @@ require('packer').startup(function(use)
   -- better indenting
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  use 'Darazaki/indent-o-matic'
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+  -- use 'Darazaki/indent-o-matic'
+  -- if packer_bootstrap then
+  --   require('packer').sync()
+  -- end
 
   -- auto close (, [, etc
   use 'windwp/nvim-autopairs'
@@ -136,15 +149,15 @@ end)
 -- plugin setups that don't deserve their own file
 
 --indent-o-matic
-require('indent-o-matic').setup {
-  -- The values indicated here are the defaults
-
-  -- Number of lines without indentation before giving up (use -1 for infinite)
-  max_lines = 2048,
-
-  -- Space indentations that should be detected
-  standard_widths = { 2, 4, 8 },
-}
+-- require('indent-o-matic').setup {
+--   -- The values indicated here are the defaults
+--
+--   -- Number of lines without indentation before giving up (use -1 for infinite)
+--   max_lines = 2048,
+--
+--   -- Space indentations that should be detected
+--   standard_widths = { 2, 4, 8 },
+-- }
 
 -- nvim-autopairs
 require('nvim-autopairs').setup {
