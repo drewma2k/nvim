@@ -32,7 +32,7 @@ vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
 vim.cmd [[colorscheme base16-eighties]]
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
 
 -- show statusbar on all windows
 vim.o.laststatus = 2
@@ -49,3 +49,17 @@ vim.opt.mouse = ''
 -- match uppercase in search
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
+
+vim.cmd [[
+  augroup Bogie
+    autocmd!
+    autocmd BufNewFile,BufRead Bogiefile setfiletype yaml
+  augroup end
+]]
+
+-- tab settings
+vim.o.tabstop=4
+vim.o.shiftwidth=4
+
+-- mark column 80, max length of lines
+vim.o.colorcolumn = '80'
