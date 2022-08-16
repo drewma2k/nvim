@@ -8,5 +8,6 @@ require('nvim_settings')
 
 -- work settings
 vim.opt.shell = '/bin/bash'
+vim.opt.cursorline = true
 
 -- vim: ts=2 sts=2 sw=2 et
