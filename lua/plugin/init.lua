@@ -7,12 +7,45 @@ end
 
 require('packer').startup(function(use)
 
+  -- colorscheme
+  --use 'morhetz/gruvbox'
+
+  -- sqls helper
+  use 'nanotee/sqls.nvim'
+
+
   -- plugin manager
   use 'wbthomason/packer.nvim'
 
+  use 'lewis6991/impatient.nvim'
+
+  -- lua library
+  use 'nvim-lua/plenary.nvim'
+
+
+  -- LSP client hooks
+ --  use {
+	--   "jose-elias-alvarez/null-ls.nvim",
+	--   require("null-ls").setup({
+	-- 	sources = {
+	-- 		require("null-ls").builtins.formatting.stylua,
+	-- 		require("null-ls").builtins.diagnostics.eslint,
+	-- 		-- require("null-ls").builtins.completion.spell,
+	-- 		require("null-ls").builtins.diagnostics.golangci_lint.with({
+	-- 			diagnostic_config = {
+	-- 				virtual_text = true
+	-- 			}
+	-- 		})
+	-- 	},
+	-- })
+ --  }
+
+  -- go ide
+  use 'fatih/vim-go'
+
   -- colorschemes
   use 'drewma2k/nvim-base16'
-  
+
   -- focus mode
   use({
 	"Pocco81/true-zen.nvim",
@@ -89,15 +122,14 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
+  -- use 'hrsh7th/cmp-vsnip'
+  -- use 'hrsh7th/vim-vsnip'
 
   -- for python snippets
   use 'cstrap/python-snippets'
 
-
-  -- lua library
-  use 'nvim-lua/plenary.nvim'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   -- dashboard
   use {
@@ -114,7 +146,7 @@ require('packer').startup(function(use)
   }
 
   -- snippets
-  use 'L3MON4D3/LuaSnip'
+  use 'honza/vim-snippets'
 
   -- org mode
   -- use {
@@ -188,3 +220,4 @@ require('config.plugin.lspconfig')
 require('config.plugin.treesitter')
 require('config.plugin.cmp')
 require('config.plugin.nvim-tree')
+require('luasnip.loaders.from_snipmate').lazy_load()

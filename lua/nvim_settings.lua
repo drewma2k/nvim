@@ -63,3 +63,11 @@ vim.o.shiftwidth=4
 
 -- mark column 80, max length of lines
 vim.o.colorcolumn = '80'
+
+-- search recursively for files
+-- vim.opt.path = vim.opt.path + '**'
+
+vim.opt.tags = './.tags'
+
+-- vim-go settings
+vim.g.go_metalinter_command = "golangci-lint"

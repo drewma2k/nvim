@@ -3,24 +3,24 @@ local dashboard = require("alpha.themes.dashboard")
 
 
 -- header fortune | cowsay
-local prefix = os.getenv("HOMEBREW_PREFIX")
-local cmd = string.format('%s/bin/fortune | %s/bin/cowsay', prefix, prefix)
-local handle = io.popen(cmd)
-local line
-local strings = {}
-
-if handle then
-  line = handle:read("*l")
-end
-
-while line ~= nil do
-  table.insert(strings, line)
-  if handle then
-    line = handle:read("*l")
-  end
-end
-
-dashboard.section.header.val = strings
+-- local prefix = os.getenv("HOMEBREW_PREFIX")
+-- local cmd = string.format('%s/bin/fortune | %s/bin/cowsay', prefix, prefix)
+-- local handle = io.popen(cmd)
+-- local line
+-- local strings = {}
+--
+-- if handle then
+--   line = handle:read("*l")
+-- end
+--
+-- while line ~= nil do
+--   table.insert(strings, line)
+--   if handle then
+--     line = handle:read("*l")
+--   end
+-- end
+--
+-- dashboard.section.header.val = strings
 
 
 -- menu
