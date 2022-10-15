@@ -28,13 +28,11 @@ map("n", "<leader>d", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
 map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
 -- Comment
-map("n", "<leader>/", function()
-  require("Comment.api").toggle_current_linewise()
-end, { desc = "Comment line" })
+map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
 map(
   "v",
   "<leader>/",
-  "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>",
+  "<Plug>(comment_toggle_linewise_visual)",
   { desc = "Toggle comment line" }
 )
 
