@@ -34,6 +34,7 @@ require('packer').startup(function(use)
   -- sqls helper
   use 'nanotee/sqls.nvim'
 
+  use "onsails/lspkind.nvim"
 
   -- plugin manager
   use 'wbthomason/packer.nvim'

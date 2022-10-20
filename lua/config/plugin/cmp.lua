@@ -6,6 +6,7 @@
 -- Setup nvim-cmp.
 local cmp = require 'cmp'
 local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -17,6 +18,26 @@ local feedkey = function(key, mode)
 end
 
 cmp.setup({
+	formatting = {
+		format = lspkind.cmp_format({
+			mode = 'symbol_text', -- show only symbol annotations
+			menu = ({
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				nvim_lua = "[Lua]",
+				latex_symbols = "[Latex]",
+			}),
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+			-- The function below will be called before any actual modifications from lspkind
+			-- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+			before = function(entry, vim_item)
+				return vim_item
+			end
+		})
+	},
 	preselect = cmp.PreselectMode.None,
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
@@ -41,7 +62,7 @@ cmp.setup({
 			if cmp.visible() then
 				cmp.select_next_item()
 			elseif luasnip.jumpable(1) then
-				luasnip.jump()
+				luasnip.jump(1)
 			elseif has_words_before() then
 				cmp.complete()
 			else
@@ -86,6 +107,7 @@ cmp.setup({
 		{ name = 'luasnip' }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		-- { name = 'snippy' }, -- For snippy users.
+		{ name = 'path'}
 	}, {
 		{ name = 'buffer' },
 	})
