@@ -7,6 +7,27 @@ end
 
 require('packer').startup(function(use)
 
+  -- keymap popup
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        plugins = {
+          spelling = { enabled = true },
+          presets = { operators = false },
+        },
+        window = {
+          border = "rounded",
+          padding = { 2, 2, 2, 2 },
+        },
+      }
+    end
+  }
+
+
   -- colorscheme
   --use 'morhetz/gruvbox'
 
@@ -72,26 +93,6 @@ require('packer').startup(function(use)
 
   -- tabline
   use 'mkitt/tabline.vim'
-
-  -- keymap popup
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-        plugins = {
-          spelling = { enabled = true },
-          presets = { operators = false },
-        },
-        window = {
-          border = "rounded",
-          padding = { 2, 2, 2, 2 },
-        },
-      }
-    end
-  }
 
   -- comment shortcut
   use {

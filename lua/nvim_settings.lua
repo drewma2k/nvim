@@ -50,12 +50,16 @@ vim.opt.mouse = ''
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 
+-- custom filetypes
 vim.cmd [[
   augroup Bogie
     autocmd!
     autocmd BufNewFile,BufRead Bogiefile setfiletype yaml
   augroup end
 ]]
+
+-- set all files with no filetype to text
+-- vim.cmd [[autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif]]
 
 -- tab settings
 vim.o.tabstop=4
