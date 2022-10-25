@@ -23,7 +23,7 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
 map("n", "<leader>o", "<cmd>NvimTreeFocus<cr>", { desc = "Focus Explorer" })
 
 -- Alpha
-map("n", "<leader>d", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
+map("n", "<leader>a", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
 
 map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
