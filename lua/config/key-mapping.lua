@@ -10,6 +10,7 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
 map("n", "<C-q>", "<cmd>q!<cr>", { desc = "Force quit" })
 map("n", "Q", "<Nop>")
+map("n", "<leader>n", "<cmd>set norelativenumber!<cr>", { desc = "Toggle Relative Number " })
 
 -- Packer
 map("n", "<leader>pc", "<cmd>PackerCompile<cr>", { desc = "Packer Compile" })
@@ -30,10 +31,10 @@ map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 -- Comment
 map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
 map(
-  "v",
-  "<leader>/",
-  "<Plug>(comment_toggle_linewise_visual)",
-  { desc = "Toggle comment line" }
+	"v",
+	"<leader>/",
+	"<Plug>(comment_toggle_linewise_visual)",
+	{ desc = "Toggle comment line" }
 )
 
 -- -- GitSigns
@@ -78,66 +79,66 @@ vim.keymap.set("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP insta
 
 -- Telescope
 map("n", "<leader>fw", function()
-  require("telescope.builtin").live_grep()
+	require("telescope.builtin").live_grep()
 end, { desc = "Search words" })
 map("n", "<leader>gt", function()
-  require("telescope.builtin").git_status()
+	require("telescope.builtin").git_status()
 end, { desc = "Git status" })
 map("n", "<leader>gb", function()
-  require("telescope.builtin").git_branches()
+	require("telescope.builtin").git_branches()
 end, { desc = "Git branchs" })
 map("n", "<leader>gc", function()
-  require("telescope.builtin").git_commits()
+	require("telescope.builtin").git_commits()
 end, { desc = "Git commits" })
 map("n", "<leader>ff", function()
-  require("telescope.builtin").find_files()
+	require("telescope.builtin").find_files()
 end, { desc = "Search files" })
 map("n", "<leader>fb", function()
-  require("telescope.builtin").buffers()
+	require("telescope.builtin").buffers()
 end, { desc = "Search buffers" })
 map("n", "<leader>fh", function()
-  require("telescope.builtin").help_tags()
+	require("telescope.builtin").help_tags()
 end, { desc = "Search help" })
 map("n", "<leader>fm", function()
-  require("telescope.builtin").marks()
+	require("telescope.builtin").marks()
 end, { desc = "Search marks" })
 map("n", "<leader>fo", function()
-  require("telescope.builtin").oldfiles()
+	require("telescope.builtin").oldfiles()
 end, { desc = "Search history" })
 map("n", "<leader>sb", function()
-  require("telescope.builtin").git_branches()
+	require("telescope.builtin").git_branches()
 end, { desc = "Git branchs" })
 map("n", "<leader>sh", function()
-  require("telescope.builtin").help_tags()
+	require("telescope.builtin").help_tags()
 end, { desc = "Search help" })
 map("n", "<leader>sm", function()
-  require("telescope.builtin").man_pages()
+	require("telescope.builtin").man_pages()
 end, { desc = "Search man" })
 map("n", "<leader>sn", function()
-  require("telescope").extensions.notify.notify()
+	require("telescope").extensions.notify.notify()
 end, { desc = "Search notifications" })
 map("n", "<leader>sr", function()
-  require("telescope.builtin").registers()
+	require("telescope.builtin").registers()
 end, { desc = "Search registers" })
 map("n", "<leader>sk", function()
-  require("telescope.builtin").keymaps()
+	require("telescope.builtin").keymaps()
 end, { desc = "Search keymaps" })
 map("n", "<leader>sc", function()
-  require("telescope.builtin").commands()
+	require("telescope.builtin").commands()
 end, { desc = "Search commands" })
 map("n", "<leader>ls", function()
-  local aerial_avail, _ = pcall(require, "aerial")
-  if aerial_avail then
-    require("telescope").extensions.aerial.aerial()
-  else
-    require("telescope.builtin").lsp_document_symbols()
-  end
+	local aerial_avail, _ = pcall(require, "aerial")
+	if aerial_avail then
+		require("telescope").extensions.aerial.aerial()
+	else
+		require("telescope.builtin").lsp_document_symbols()
+	end
 end, { desc = "Search symbols" })
 map("n", "<leader>lR", function()
-  require("telescope.builtin").lsp_references()
+	require("telescope.builtin").lsp_references()
 end, { desc = "Search references" })
 map("n", "<leader>lD", function()
-  require("telescope.builtin").diagnostics()
+	require("telescope.builtin").diagnostics()
 end, { desc = "Search diagnostics" })
 
 -- Terminal
