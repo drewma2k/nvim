@@ -16,8 +16,8 @@
 --   opts.border = opts.border or border
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
---
---
+
+
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, opts)

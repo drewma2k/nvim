@@ -25,10 +25,6 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 --Set colorscheme
--- vim.cmd [[highlight clear SignColumn]]
--- vim.cmd [[highlight VertSplit cterm=none]]
--- vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
--- vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
 vim.cmd [[colorscheme base16-eighties]]
 
 -- Set completeopt to have a better completion experience
@@ -58,9 +54,6 @@ vim.cmd [[
   augroup end
 ]]
 
--- set all files with no filetype to text
--- vim.cmd [[autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif]]
-
 -- tab settings
 vim.o.tabstop=4
 vim.o.shiftwidth=4
@@ -68,10 +61,11 @@ vim.o.shiftwidth=4
 -- mark column 80, max length of lines
 vim.o.colorcolumn = '80'
 
--- search recursively for files
--- vim.opt.path = vim.opt.path + '**'
-
+-- ctags files
 vim.opt.tags = './.tags'
 
 -- vim-go settings
 vim.g.go_metalinter_command = "golangci-lint"
+
+vim.opt.shell = '/bin/zsh'
+vim.opt.cursorline = true
