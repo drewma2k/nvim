@@ -18,6 +18,9 @@ local feedkey = function(key, mode)
 end
 
 cmp.setup({
+	performance = {
+		debounce = 500
+	},
 	formatting = {
 		format = lspkind.cmp_format({
 			mode = 'symbol_text', -- show only symbol annotations
