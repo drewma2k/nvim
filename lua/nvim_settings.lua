@@ -25,10 +25,10 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 --Set colorscheme
-vim.cmd [[highlight clear SignColumn]]
-vim.cmd [[highlight VertSplit cterm=none]]
-vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
-vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
+-- vim.cmd [[highlight clear SignColumn]]
+-- vim.cmd [[highlight VertSplit cterm=none]]
+-- vim.cmd [[highlight Pmenu ctermbg=darkgrey ctermfg=white cterm=none]]
+-- vim.cmd [[highlight PmenuSel ctermbg=white ctermfg=DarkGrey]]
 vim.cmd [[colorscheme base16-eighties]]
 
 -- Set completeopt to have a better completion experience
