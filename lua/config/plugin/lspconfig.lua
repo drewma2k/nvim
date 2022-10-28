@@ -1,12 +1,12 @@
 -- local border = {
---   { "╭", "NormalFloat" },
---   { "─", "NormalFloat" },
---   { "╮", "NormalFloat" },
---   { "│", "NormalFloat" },
---   { "╯", "NormalFloat" },
---   { "─", "NormalFloat" },
---   { "╰", "NormalFloat" },
---   { "│", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
+--   { " ", "NormalFloat" },
 -- }
 --
 --
@@ -16,10 +16,10 @@
 --   opts.border = opts.border or border
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
-
-
+--
+--
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -43,14 +43,15 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, bufopts)
-	vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
+	vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format { async = true } end, {})
+	-- vim.lsp.buf.format { async = true }
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		callback = function()
 			local opts = {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = 'none',
+				border = 'none', -- none, single, double, rounded, solid, shadow
 				source = 'always',
 				prefix = ' ',
 				scope = 'cursor',
