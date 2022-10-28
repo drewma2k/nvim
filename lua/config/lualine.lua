@@ -6,13 +6,11 @@ for mode, components in pairs(custom_auto_theme) do
   for component, _ in pairs(components) do
     if component ~= 'a' then
       custom_auto_theme[mode][component] = 'StatusLine'
-      -- custom_auto_theme[mode][component].fg = ''
-      -- custom_auto_theme[mode][component].bg = bg
-      -- custom_auto_theme[mode][component].gui = 'bold,reverse'
     end
   end
   custom_auto_theme[mode].z = custom_auto_theme[mode].b
 end
+
 local mode = {
   function()
     return ""
@@ -20,13 +18,14 @@ local mode = {
   padding = { left = 0, right = 0 },
   cond = nil,
 }
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = custom_auto_theme,
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },
-    disabled_filetypes = { 'NvimTree' },
+    disabled_filetypes = { 'NvimTree', 'alpha' },
     always_divide_middle = true,
     globalstatus = false,
   },
