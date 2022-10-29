@@ -103,6 +103,10 @@ require('packer').startup(function(use)
 
 	-- auto close (, [, etc
 	use 'windwp/nvim-autopairs'
+
+	-- git wrapper
+	use 'tpope/vim-fugitive'
+
 end)
 
 
