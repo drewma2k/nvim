@@ -4,7 +4,6 @@
 -- if fn.empty(fn.glob(install_path)) > 0 then
 -- 	packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 -- end
-
 require('packer').startup(function(use)
 
 	-- plugin manager
@@ -117,5 +116,4 @@ require('config.treesitter')
 require('config.cmp')
 require('config.nvim-tree')
 require('config.autopairs')
-require('config.lspsaga')
 require('luasnip.loaders.from_snipmate').lazy_load()
