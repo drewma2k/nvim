@@ -69,3 +69,7 @@ vim.g.go_metalinter_command = "golangci-lint"
 
 vim.opt.shell = '/bin/zsh'
 vim.opt.cursorline = true
+
+-- disable some features of vim-go that are covered by native lsp
+vim.g.go_gopls_enabled = 0
+vim.g.go_code_completion_enabled = 0

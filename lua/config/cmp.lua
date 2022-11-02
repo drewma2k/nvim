@@ -9,7 +9,9 @@ end
 
 cmp.setup({
 	performance = {
-		debounce = 500
+		debounce = 500,
+		throttle = 80,
+		fetching_timeout = 80
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -75,7 +77,8 @@ cmp.setup({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
-		{ name = 'path'}
+		{ name = 'path'},
+		{ name = 'nvim_lsp_signature_help'}
 	}, {
 		{ name = 'buffer' },
 	})
