@@ -4,9 +4,7 @@ local custom_auto_theme = require('lualine.themes.auto')
 
 for mode, components in pairs(custom_auto_theme) do
 	for component, _ in pairs(components) do
-		if component ~= 'a' then
-			custom_auto_theme[mode][component] = 'StatusLine'
-		end
+		custom_auto_theme[mode][component] = 'StatusLine'
 	end
 	custom_auto_theme[mode].z = custom_auto_theme[mode].b
 end
