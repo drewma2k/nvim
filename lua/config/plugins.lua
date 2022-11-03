@@ -108,6 +108,19 @@ require('packer').startup(function(use)
 	-- git wrapper
 	use 'tpope/vim-fugitive'
 
+	use {
+		"smjonas/live-command.nvim",
+		-- live-command supports semantic versioning via tags
+		-- tag = "1.*",
+		config = function()
+			require("live-command").setup {
+				commands = {
+					Norm = { cmd = "norm" },
+				},
+			}
+		end,
+	}
+
 end)
 
 
