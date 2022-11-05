@@ -103,9 +103,16 @@ local options = {
 }
 
 -- Setup Language servers
-require('mason').setup()
+require('mason').setup({
+	PATH = 'append'
+})
 require('mason-lspconfig').setup({
 	automatic_installation = true,
 })
-opts = vim.tbl_deep_extend("force", options, override_servers.sumneko_lua)
-require('lspconfig')['sumneko_lua'].setup(opts)
+
+require("mason-lspconfig").setup_handlers {
+	function (server_name)
+		opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
+		require("lspconfig")[server_name].setup(opts)
+	end
+}
