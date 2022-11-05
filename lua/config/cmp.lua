@@ -51,34 +51,48 @@ cmp.setup({
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
 		['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.jumpable(1) then
+		["C-n"] = cmp.mapping.select_next_item(),
+		["C-p"] = cmp.mapping.select_prev_item(),
+		["C-h"] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(1) then
 				luasnip.jump(1)
-			elseif has_words_before() then
-				cmp.complete()
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
-
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
+		end, { 'i', 's' }),
+		["C-l"] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
 			end
-		end, { "i", "s" }),
+		end, { 'i', 's' }),
+		['<Tab>'] = cmp.mapping(function(fallback)
+			local col = vim.fn.col('.') - 1
+
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+				fallback()
+			else
+				cmp.complete()
+			end
+		end, { 'i', 's' }),
+
+		['<S-Tab>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end, { 'i', 's' }),
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
 		-- { name = 'ultisnips' }, -- For ultisnips users.
-		{ name = 'path'},
-		{ name = 'nvim_lsp_signature_help'}
+		{ name = 'path' },
+		{ name = 'nvim_lsp_signature_help' }
 	}, {
 		{ name = 'buffer' },
 	})
