@@ -103,12 +103,24 @@ local options = {
 }
 
 -- Setup Language servers
-local lsp_installer = require('nvim-lsp-installer')
-local servers = lsp_installer.get_installed_servers()
-
--- setup each installed server
-for _, lsp in pairs(servers) do
-	-- override with custom config
-	local opts = vim.tbl_deep_extend("force", options, override_servers[lsp.name] or {})
-	require('lspconfig')[lsp.name].setup(opts)
-end
+require('mason').setup()
+require('mason-lspconfig').setup({
+	automatic_installation = true,
+})
+require("mason-lspconfig").setup_handlers {
+	function(server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup(options)
+	end,
+	["sumneko_lua"] = function()
+		local opts = vim.tbl_deep_extend("force", options, override_servers['sumneko_lua'] or {})
+		require('lspconfig')['sumneko_lua'].setup(opts)
+	end,
+	["gopls"] = function()
+		local opts = vim.tbl_deep_extend("force", options, override_servers['gopls'] or {})
+		require('lspconfig')['gopls'].setup({ override_servers.gopls })
+	end,
+	["sqls"] = function()
+		local opts = vim.tbl_deep_extend("force", options, override_servers['sqls'] or {})
+		require('lspconfig')['sqls'].setup({ override_servers.sqls })
+	end,
+}
