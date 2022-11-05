@@ -17,6 +17,10 @@
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
 
+-- disable virtual text
+vim.diagnostic.config({
+	virtual_text = false,
+})
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
