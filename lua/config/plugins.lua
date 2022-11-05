@@ -65,11 +65,8 @@ require('packer').startup(function(use)
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 	}
 
-	-- lsp install popup
-	use {
-		"williamboman/nvim-lsp-installer",
-		"neovim/nvim-lspconfig",
-	}
+	-- official lsp configurations
+	use 'neovim/nvim-lspconfig'
 
 	-- better syntax highlighting
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -120,6 +117,9 @@ require('packer').startup(function(use)
 			}
 		end,
 	}
+
+	use 'williamboman/mason.nvim'
+	use 'williamboman/mason-lspconfig'
 
 end)
 
