@@ -107,20 +107,5 @@ require('mason').setup()
 require('mason-lspconfig').setup({
 	automatic_installation = true,
 })
-require("mason-lspconfig").setup_handlers {
-	function(server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup(options)
-	end,
-	["sumneko_lua"] = function()
-		local opts = vim.tbl_deep_extend("force", options, override_servers['sumneko_lua'] or {})
-		require('lspconfig')['sumneko_lua'].setup(opts)
-	end,
-	["gopls"] = function()
-		local opts = vim.tbl_deep_extend("force", options, override_servers['gopls'] or {})
-		require('lspconfig')['gopls'].setup({ override_servers.gopls })
-	end,
-	["sqls"] = function()
-		local opts = vim.tbl_deep_extend("force", options, override_servers['sqls'] or {})
-		require('lspconfig')['sqls'].setup({ override_servers.sqls })
-	end,
-}
+opts = vim.tbl_deep_extend("force", options, override_servers.sumneko_lua)
+require('lspconfig')['sumneko_lua'].setup(opts)
