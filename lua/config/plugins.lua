@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+	local fn = vim.fn
+	local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+		vim.cmd [[packadd packer.nvim]]
+		return true
+	end
+	return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -38,14 +38,6 @@ return require('packer').startup(function(use)
 	use 'drewma2k/nvim-base16'
 	-- use 'RRethy/nvim-base16'
 
-	-- focus mode
-	use({
-		"Pocco81/true-zen.nvim",
-		config = function()
-			require("true-zen").setup({})
-		end,
-	})
-
 	-- tree
 	use {
 		'kyazdani42/nvim-tree.lua',
@@ -59,12 +51,7 @@ return require('packer').startup(function(use)
 	use 'mkitt/tabline.vim'
 
 	-- comment shortcut
-	use {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
+	use 'numToStr/Comment.nvim'
 
 	-- statusline
 	use {
@@ -76,7 +63,12 @@ return require('packer').startup(function(use)
 	use 'neovim/nvim-lspconfig'
 
 	-- better syntax highlighting
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end,
+	}
 
 	-- completion engine
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -90,12 +82,7 @@ return require('packer').startup(function(use)
 	use 'saadparwaiz1/cmp_luasnip'
 
 	-- dashboard
-	use {
-		'goolord/alpha-nvim',
-		config = function()
-			require 'alpha'
-		end
-	}
+	use 'goolord/alpha-nvim'
 
 	-- popup search menu
 	use {
@@ -112,18 +99,7 @@ return require('packer').startup(function(use)
 	-- git wrapper
 	use 'tpope/vim-fugitive'
 
-	use {
-		"smjonas/live-command.nvim",
-		-- live-command supports semantic versioning via tags
-		-- tag = "1.*",
-		config = function()
-			require("live-command").setup {
-				commands = {
-					Norm = { cmd = "norm" },
-				},
-			}
-		end,
-	}
+	use "smjonas/live-command.nvim"
 
 	use 'williamboman/mason.nvim'
 	use 'williamboman/mason-lspconfig'
