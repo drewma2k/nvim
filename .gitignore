@@ -42,9 +42,6 @@ luac.out
 # old configs
 old/*
 
-# colorschemes
-colors/*
-
 # custom
 autoload/everforest.vim
 plugin/packer_compiled.lua
