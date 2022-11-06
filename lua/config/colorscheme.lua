@@ -12,4 +12,4 @@ vim.cmd[[hi TelescopeNormal ctermbg=black]]
 vim.cmd[[hi WhichKeyFloat ctermbg=black]]
 
 --Set colorscheme
--- vim.cmd [[colorscheme base16-eighties]]
+vim.cmd [[colorscheme base16-eighties]]
