@@ -1,3 +1,28 @@
+local ok, cmp = pcall(require, 'cmp_nvim_lsp')
+if not ok then
+	return
+end
+
+local ok, sqls = pcall(require, 'sqls')
+if not ok then
+	return
+end
+
+local ok, mason = pcall(require, 'mason')
+if not ok then
+	return
+end
+
+local ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
+if not ok then
+	return
+end
+
+local ok, lspconfig = pcall(require, 'lspconfig')
+if not ok then
+	return
+end
+
 -- local border = {
 --   { " ", "NormalFloat" },
 --   { " ", "NormalFloat" },
@@ -71,7 +96,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend(
 	'force',
 	capabilities,
-	require('cmp_nvim_lsp').default_capabilities()
+	cmp.default_capabilities()
 )
 -- override individual language server options with a file that
 -- returns the options table
@@ -91,7 +116,7 @@ local override_servers = {
 	},
 	sqls = {
 		on_attach = function(client, bufnr)
-			require('sqls').on_attach(client, bufnr)
+			sqls.on_attach(client, bufnr)
 		end
 	}
 }
@@ -103,16 +128,16 @@ local options = {
 }
 
 -- Setup Language servers
-require('mason').setup({
+mason.setup({
 	PATH = 'append'
 })
-require('mason-lspconfig').setup({
+mason_lspconfig.setup({
 	automatic_installation = true,
 })
 
-require("mason-lspconfig").setup_handlers {
+mason_lspconfig.setup_handlers {
 	function (server_name)
 		opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
-		require("lspconfig")[server_name].setup(opts)
+		lspconfig[server_name].setup(opts)
 	end
 }

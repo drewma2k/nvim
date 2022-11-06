@@ -1,7 +1,14 @@
 -- LUALINE
--- customize auto theme
-local custom_auto_theme = require('lualine.themes.auto')
+local ok, lualine = pcall(require, 'lualine')
+if not ok then
+	return
+end
+local ok, custom_auto_theme = pcall(require, 'lualine.themes.auto')
+if not ok then
+	return
+end
 
+-- customize auto theme
 for mode, components in pairs(custom_auto_theme) do
 	for component, _ in pairs(components) do
 		custom_auto_theme[mode][component] = 'StatusLine'
@@ -17,7 +24,7 @@ local mode = {
 	cond = nil,
 }
 
-require('lualine').setup {
+lualine.setup {
 	options = {
 		icons_enabled = true,
 		theme = custom_auto_theme,

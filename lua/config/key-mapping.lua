@@ -78,76 +78,80 @@ vim.keymap.set("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP insta
 -- map("n", "<leader>lS", "<cmd>AerialToggle<cr>", { desc = "Symbols outline" })
 
 -- Telescope
+local ok, telescope = pcall(require, 'telescope.builtin')
+if not ok then
+	return
+end
 map("n", "<leader>fw", function()
-	require("telescope.builtin").live_grep()
+	telescope.live_grep()
 end, { desc = "Search words" })
 
 map("n", "<leader>gt", function()
-	require("telescope.builtin").git_status()
+	telescope.git_status()
 end, { desc = "Git status" })
 
 map("n", "<leader>gb", function()
-	require("telescope.builtin").git_branches()
+	telescope.git_branches()
 end, { desc = "Git branchs" })
 
 map("n", "<leader>gc", function()
-	require("telescope.builtin").git_commits()
+	telescope.git_commits()
 end, { desc = "Git commits" })
 
 map("n", "<leader>ff", function()
-	require("telescope.builtin").find_files()
+	telescope.find_files()
 end, { desc = "Search files" })
 
 map("n", "<leader>fb", function()
-	require("telescope.builtin").buffers()
+	telescope.buffers()
 end, { desc = "Search buffers" })
 
 map("n", "<leader>fh", function()
-	require("telescope.builtin").help_tags()
+	telescope.help_tags()
 end, { desc = "Search help" })
 
 map("n", "<leader>fm", function()
-	require("telescope.builtin").marks()
+	telescope.marks()
 end, { desc = "Search marks" })
 
 map("n", "<leader>fo", function()
-	require("telescope.builtin").oldfiles()
+	telescope.oldfiles()
 end, { desc = "Search history" })
 
 map("n", "<leader>sm", function()
-	require("telescope.builtin").man_pages()
+	telescope.man_pages()
 end, { desc = "Search man" })
 
 map("n", "<leader>sn", function()
-	require("telescope").extensions.notify.notify()
+	telescope.extensions.notify.notify()
 end, { desc = "Search notifications" })
 
 map("n", "<leader>sr", function()
-	require("telescope.builtin").registers()
+	telescope.registers()
 end, { desc = "Search registers" })
 
 map("n", "<leader>sk", function()
-	require("telescope.builtin").keymaps()
+	telescope.keymaps()
 end, { desc = "Search keymaps" })
 
 map("n", "<leader>sc", function()
-	require("telescope.builtin").commands()
+	telescope.commands()
 end, { desc = "Search commands" })
 
 map("n", "<leader>ls", function()
-	require("telescope.builtin").lsp_document_symbols()
+	telescope.lsp_document_symbols()
 end, { desc = "Search symbols" })
 
 map("n", "<leader>lS", function()
-	require("telescope.builtin").lsp_workspace_symbols()
+	telescope.lsp_workspace_symbols()
 end, { desc = "Search all symbols" })
 
 map("n", "<leader>lR", function()
-	require("telescope.builtin").lsp_references()
+	telescope.lsp_references()
 end, { desc = "Search references" })
 
 map("n", "<leader>lD", function()
-	require("telescope.builtin").diagnostics()
+	telescope.diagnostics()
 end, { desc = "Search diagnostics" })
 
 
