@@ -27,3 +27,4 @@ hi TelescopePromptBorder ctermbg=black
 hi link NvimTreeFolderIcon Directory
 hi NvimTreeRootFolder ctermfg=magenta
 hi Directory ctermfg=darkcyan
+hi TelescopeSelection ctermbg=darkgrey
