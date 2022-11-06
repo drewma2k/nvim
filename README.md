@@ -4,16 +4,15 @@
 ![screenshot2](screenshots/screenshot2.png)
 
 ## Features:
-  - Minimal UI; icons are kept to a tasteful minimum (this is a cli tool after all)
+  - Install LSPs, Linters, DAPs, with `mason.nvim`
   - Automatic default configuration of installed LSPs
   - Useable with default vim colorschemes
-  - Minimal statusbar that works out of the box with any colorscheme
-  - base16 colorschemes included, modified to leave telescope alone
-  - which-key for keybind discovery
+  - Minimal statusbar and tabline
+  - Custom base16-colorschemes 
+  - `which-key` for keybind discovery
   - completion with `cmp`
 
 ## Requirements
-- `fortune` and `cowsay` are required for default dashboard
 - `ripgrep` for fuzzy-finding words
 - Any [NerdFont](https://www.nerdfonts.com) for icon support
 
@@ -35,16 +34,28 @@ Use `:LspInstall` and select a server for the filetype you are currently editing
 
 ### Colorscheme
 base16 colorschemes are included for best integration with terminal colors.
-colorscheme is configured in `/lua/nvim_settings.lua`
+colorscheme is configured in `/lua/config/colorscheme.lua`
 
 ### Keybinds
 Keybinds are configured in `/lua/config/key-mapping.lua`
 
 ### Plugins
-Plugins are added in `/lua/plugin/init.lua`.
-Plugins with small configurations are configured in the above mentioned file, 
-while those with larger configurations have a dedicated file in `/lua/config/plugin/`
+Plugins are added in `/lua/config/plugin.lua`.
+Plugins are generally configured in a file under `lua/config` named after them.
 
 ### LSP
-LSPs installed by `:LspInstall` are automatically configured with nvim-lspconfig.
-Custom configurations are done in a dedicated file in `/lua/config/lsp/`
+LSPs installed by `:LspInstall` are automatically configured with 
+nvim-lspconfig.
+Custom configurations are done in a dedicated file in `/lua/config/lsp/` or 
+directly in `lua/config/lspconfig.lua`
+
+## Goals
+- Be tuned to my personal taste
+- Rely on native features when appropriate
+- Configure all essential IDE features
+	- Treesitter
+	- LSP
+	- Autocomplete
+- Be colorscheme agnostic
+- Easy to install
+- Perfect in every way
