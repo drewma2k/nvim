@@ -1,7 +1,11 @@
+local ok, nvim_tree = pcall(require, 'nvim-tree')
+if not ok then
+	return
+end
 -- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
 -- nested options are documented by accessing them with `.` (eg: `:help nvim-tree.view.mappings.list`).
-require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   auto_reload_on_write = true,
   disable_netrw = true,
   hijack_cursor = false,
