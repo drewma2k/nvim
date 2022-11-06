@@ -24,9 +24,6 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
---Set colorscheme
-vim.cmd [[colorscheme base16-eighties]]
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
 
