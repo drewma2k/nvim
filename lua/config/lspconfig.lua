@@ -129,7 +129,12 @@ local options = {
 
 -- Setup Language servers
 mason.setup({
-	PATH = 'append'
+	PATH = 'append',
+	providers = {
+		"mason.providers.registry-api",
+		"mason.providers.client",
+	},
+	log_level = vim.log.levels.DEBUG,
 })
 mason_lspconfig.setup({
 	automatic_installation = true,
