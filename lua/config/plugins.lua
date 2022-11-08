@@ -106,6 +106,10 @@ return require('packer').startup(function(use)
 
 	use 'stevearc/dressing.nvim'
 
+	use { 'kosayoda/nvim-lightbulb',
+		requires = 'antoinemadec/FixCursorHold.nvim'
+	}
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
