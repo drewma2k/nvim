@@ -17,4 +17,6 @@ require('config.autopairs')
 require('config.luasnip')
 require('config.comment')
 require('config.livecommand')
+require('config.key-mapping')
+require('config.dressing')
 -- vim: ts=2 sts=2 sw=2 et
