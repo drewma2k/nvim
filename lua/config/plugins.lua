@@ -110,6 +110,10 @@ return require('packer').startup(function(use)
 		requires = 'antoinemadec/FixCursorHold.nvim'
 	}
 
+	use 'mfussenegger/nvim-dap'
+	use 'rcarriga/nvim-dap-ui'
+	use 'leoluz/nvim-dap-go'
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
