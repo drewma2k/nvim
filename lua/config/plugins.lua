@@ -104,6 +104,8 @@ return require('packer').startup(function(use)
 	use 'williamboman/mason.nvim'
 	use 'williamboman/mason-lspconfig'
 
+	use 'stevearc/dressing.nvim'
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
