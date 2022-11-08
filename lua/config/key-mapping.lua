@@ -2,6 +2,11 @@ vim.g.mapleader = " "
 local map = vim.keymap.set
 
 -- Normal --
+-- DAP
+map("n", "<leader>dd", "<cmd>lua require('dap').continue()<cr>", { desc = "start debugger"})
+map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", { desc = "toggle breakpoint"})
+
+
 -- Standard Operations
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })

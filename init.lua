@@ -20,4 +20,5 @@ require('config.livecommand')
 require('config.key-mapping')
 require('config.dressing')
 require('config.lightbulb')
+require('config.dap')
 -- vim: ts=2 sts=2 sw=2 et
