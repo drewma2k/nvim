@@ -114,6 +114,8 @@ return require('packer').startup(function(use)
 	use 'rcarriga/nvim-dap-ui'
 	use 'leoluz/nvim-dap-go'
 
+	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
