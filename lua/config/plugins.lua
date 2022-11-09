@@ -89,7 +89,7 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
-	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- snippets
 	use 'honza/vim-snippets'
@@ -116,6 +116,8 @@ return require('packer').startup(function(use)
 	use 'leoluz/nvim-dap-go'
 
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+	use { 'lewis6991/gitsigns.nvim' }
 
 	-- automatic installation of packer
 	if packer_bootstrap then

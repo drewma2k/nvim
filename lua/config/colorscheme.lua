@@ -14,3 +14,8 @@ vim.cmd[[hi WhichKeyFloat ctermbg=black]]
 --Set colorscheme
 vim.cmd [[colorscheme base16-eighties]]
 -- vim.cmd [[colorscheme defaultplus]]
+
+-- temporary fix for diff
+vim.cmd[[hi DiffAdd gui=inverse]]
+vim.cmd[[hi DiffRemove gui=inverse]]
+vim.cmd[[hi DiffText gui=inverse]]
