@@ -17,5 +17,6 @@ vim.cmd [[colorscheme base16-eighties]]
 
 -- temporary fix for diff
 vim.cmd[[hi DiffAdd gui=inverse]]
-vim.cmd[[hi DiffRemove gui=inverse]]
+vim.cmd[[hi DiffDelete gui=inverse]]
 vim.cmd[[hi DiffText gui=inverse]]
+-- vim.cmd[[hi NormalFloat guibg=None]] -- for floats with border
