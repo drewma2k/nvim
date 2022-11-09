@@ -148,7 +148,7 @@ map("n", "<leader>ls", function()
 end, { desc = "Search symbols" })
 
 map("n", "<leader>lS", function()
-	telescope.lsp_workspace_symbols()
+	telescope.lsp_dynamic_workspace_symbols()
 end, { desc = "Search all symbols" })
 
 map("n", "<leader>lR", function()

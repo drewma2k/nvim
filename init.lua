@@ -22,4 +22,5 @@ require('config.dressing')
 require('config.lightbulb')
 require('config.dap')
 require('config.telescope')
+require('config.gitsigns')
 -- vim: ts=2 sts=2 sw=2 et
