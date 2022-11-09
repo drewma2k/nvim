@@ -25,3 +25,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
 end
 
 dap_go.setup()
+
+vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg='red' })
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='', numhl=''})
+
