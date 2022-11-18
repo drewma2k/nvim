@@ -130,3 +130,7 @@ cmp.setup.cmdline(':', {
 		{ name = 'cmdline' }
 	})
 })
+
+-- create command for disabling autocomplete
+vim.api.nvim_create_user_command("CmpDisable", function() require('cmp').setup.buffer { enabled = false } end, {})
+vim.api.nvim_create_user_command("CmpEnable", function() require('cmp').setup.buffer { enabled = true } end, {})
