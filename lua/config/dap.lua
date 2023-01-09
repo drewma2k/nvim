@@ -29,3 +29,17 @@ dap_go.setup()
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg='red' })
 vim.fn.sign_define('DapBreakpoint', {text='', texthl='DapBreakpoint', linehl='', numhl=''})
 
+-- go configuration
+table.insert(dap.configurations.go, {
+	type = "go",
+    name = "Debug cmd/server",
+    request = "launch",
+    program = "${workspaceFolder}/cmd/server"
+})
+
+table.insert(dap.configurations.go, {
+	type = "go",
+    name = "Debug $MAINPATH",
+    request = "launch",
+    program = "${workspaceFolder}${env:MAINPATH}"
+})
