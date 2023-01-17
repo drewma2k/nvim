@@ -41,5 +41,18 @@ table.insert(dap.configurations.go, {
 	type = "go",
     name = "Debug $MAINPATH",
     request = "launch",
-    program = "${workspaceFolder}${env:MAINPATH}"
+	program = function ()
+		local co = coroutine.running()
+		local cb = function (input)
+			coroutine.resume(co, input)
+		end
+		cb = vim.schedule_wrap(cb)
+		vim.ui.input({"Enter path to main.go: ", kind = 'dap'}, cb)
+		local path = coroutine.yield()
+		return "${workspaceFolder}/".. path
+	end
+	-- program = function ()
+	-- 	return "${workspaceFolder}"..vim.fn.input("Enter path to main.go: ")
+	-- end;
+    -- program = "${workspaceFolder}${MAINPATH}"
 })
