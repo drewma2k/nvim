@@ -60,7 +60,13 @@ dressing.setup({
     end,
 
     -- see :help dressing_get_config
-    get_config = nil,
+    get_config = function (opts)
+    	if opts.kind == 'dap' then
+    		return {
+				relative = 'win',
+			}
+    	end
+    end
   },
   select = {
     -- Set to false to disable the vim.ui.select implementation
