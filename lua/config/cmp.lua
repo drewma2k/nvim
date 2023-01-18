@@ -113,6 +113,19 @@ cmp.setup.filetype('gitcommit', {
 	})
 })
 
+-- nvim api for lua files
+cmp.setup.filetype('lua', {
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = 'path' },
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'nvim_lua' }
+	}, {
+		{ name = 'buffer' },
+	})
+})
+
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
 	mapping = cmp.mapping.preset.cmdline(),
