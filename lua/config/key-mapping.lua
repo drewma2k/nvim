@@ -13,6 +13,15 @@ map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", { desc
 
 
 -- Standard Operations
+map("n", "<leader>m", function()
+	local mouse = vim.opt.mouse:get()
+	if mouse.n then
+		vim.opt.mouse = ""
+	else
+		vim.opt.mouse = "nvi"
+	end
+end,
+	{ desc = "toggle mouse support" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
 map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })

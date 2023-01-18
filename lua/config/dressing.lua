@@ -63,7 +63,7 @@ dressing.setup({
     get_config = function (opts)
     	if opts.kind == 'dap' then
     		return {
-				relative = 'win',
+				relative = 'editor',
 			}
     	end
     end
