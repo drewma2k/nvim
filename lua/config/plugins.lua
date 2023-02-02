@@ -120,6 +120,12 @@ return require('packer').startup(function(use)
 
 	use { 'lewis6991/gitsigns.nvim' }
 
+	-- better quickfix
+	use {
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons"
+	}
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
