@@ -23,4 +23,5 @@ require('config.lightbulb')
 require('config.dap')
 require('config.telescope')
 require('config.gitsigns')
+require('config.trouble')
 -- vim: ts=2 sts=2 sw=2 et
