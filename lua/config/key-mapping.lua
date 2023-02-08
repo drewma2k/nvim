@@ -23,8 +23,8 @@ map("n", "<leader>m",
 		end
 	end,
 	{ desc = "toggle mouse support" })
-map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
-map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
+-- map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
+-- map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
@@ -201,8 +201,5 @@ map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
   {silent = true, noremap = true}
 )
 map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
-  {silent = true, noremap = true}
-)
-map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   {silent = true, noremap = true}
 )
