@@ -23,6 +23,13 @@ if not ok then
 	return
 end
 
+local ok, trouble = pcall(require, 'trouble')
+if not ok then
+	return
+end
+
+local map = vim.keymap.set
+
 -- local border = {
 --   { " ", "NormalFloat" },
 --   { " ", "NormalFloat" },
@@ -49,30 +56,43 @@ vim.diagnostic.config({
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>d', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, opts)
-vim.keymap.set('n', '<space>qq', vim.diagnostic.setqflist, opts)
+map('n', '<space>d', vim.diagnostic.open_float, opts)
+map('n', '[d', vim.diagnostic.goto_prev, opts)
+map('n', ']d', vim.diagnostic.goto_next, opts)
+map('n', '<space>ll', vim.diagnostic.setloclist, opts)
+map('n', '<space>qq', vim.diagnostic.setqflist, opts)
 
 -- LSP maps
 local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set('n', '<leader>wl', function()
+	map('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	map('n', 'gd', vim.lsp.buf.definition, bufopts)
+	map('n', 'K', vim.lsp.buf.hover, bufopts)
+	map('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	map('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+	map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+	map('n', '<leader>wl', function()
 		vim.inspect(vim.lsp.buf.list_workspace_folders())
 	end, bufopts)
-	vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts, { desc = "LSP Type Definition" })
-	vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, bufopts)
+	map('n', '<leader>D', vim.lsp.buf.type_definition, bufopts, { desc = "LSP Type Definition" })
+	map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+	map('n', 'gr', vim.lsp.buf.references, bufopts)
+	map('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+	map('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, bufopts)
+
+	-- enable trouble maps if trouble is installed
+	if trouble then
+		map("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", bufopts)
+		map("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", bufopts)
+		map("n", "gi", "<cmd>TroubleToggle lsp_implementations<cr>", bufopts)
+		map("n", "q[", function ()
+			trouble.previous({skip_groups = true, jump = true})
+		end, bufopts)
+		map("n", "q]", function ()
+			trouble.next({skip_groups = true, jump = true})
+		end, bufopts)
+	end
 	vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format { async = true } end, {})
 	-- vim.lsp.buf.format { async = true }
 	vim.api.nvim_create_autocmd("CursorHold", {
