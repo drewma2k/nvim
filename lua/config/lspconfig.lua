@@ -83,9 +83,9 @@ local on_attach = function(_, bufnr)
 
 	-- enable trouble maps if trouble is installed
 	if trouble then
-		map("n", "gr", "<cmd>TroubleToggle lsp_references<cr>", bufopts)
-		map("n", "gd", "<cmd>TroubleToggle lsp_definitions<cr>", bufopts)
-		map("n", "gi", "<cmd>TroubleToggle lsp_implementations<cr>", bufopts)
+		map("n", "gr", "<cmd>Trouble lsp_references<cr>", bufopts)
+		map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
+		map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
 		map("n", "q[", function ()
 			trouble.previous({skip_groups = true, jump = true})
 		end, bufopts)
