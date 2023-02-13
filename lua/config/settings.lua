@@ -72,3 +72,6 @@ vim.g.go_gopls_enabled = 0
 vim.g.go_code_completion_enabled = 0
 
 vim.cmd[[inoremap jk <esc>]]
+
+vim.opt.foldmethod = 'indent'
+vim.opt.foldenable = false

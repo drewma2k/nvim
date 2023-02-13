@@ -86,11 +86,11 @@ local on_attach = function(_, bufnr)
 		map("n", "gr", "<cmd>Trouble lsp_references<cr>", bufopts)
 		map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
 		map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
-		map("n", "q[", function ()
-			trouble.previous({skip_groups = true, jump = true})
+		map("n", "q[", function()
+			trouble.previous({ skip_groups = true, jump = true })
 		end, bufopts)
-		map("n", "q]", function ()
-			trouble.next({skip_groups = true, jump = true})
+		map("n", "q]", function()
+			trouble.next({ skip_groups = true, jump = true })
 		end, bufopts)
 	end
 	vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format { async = true } end, {})
@@ -138,6 +138,9 @@ local override_servers = {
 		on_attach = function(client, bufnr)
 			sqls.on_attach(client, bufnr)
 		end
+	},
+	cucumber_language_server = {
+		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio'}
 	}
 }
 
@@ -161,7 +164,7 @@ mason_lspconfig.setup({
 })
 
 mason_lspconfig.setup_handlers {
-	function (server_name)
+	function(server_name)
 		opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
 		lspconfig[server_name].setup(opts)
 	end
