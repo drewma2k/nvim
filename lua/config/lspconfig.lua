@@ -140,9 +140,25 @@ local override_servers = {
 		end
 	},
 	cucumber_language_server = {
-		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio'}
+		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
+	},
+	efm = {
+		init_options = { documentFormatting = true, hover = true,
+			documentSymbol = true,
+			codeAction = true,
+			completion = true },
+		settings = {
+			rootMarkers = { ".git/" },
+			languages = {
+				text = {
+					{ hoverCommand = 'dict -d wn', hoverStdin = false }
+				}
+			}
+		},
+		filetypes = { 'text' }
 	}
 }
+
 
 -- default options for all servers
 local options = {
