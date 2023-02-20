@@ -8,7 +8,7 @@ dressing.setup({
     -- Set to false to disable the vim.ui.input implementation
     enabled = true,
 
-	winoptions = {
+	win_options = {
 		-- Change default highlight groups (see :help winhl)
 		winhighlight = "",
 
