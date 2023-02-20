@@ -142,21 +142,21 @@ local override_servers = {
 	cucumber_language_server = {
 		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
 	},
-	efm = {
-		init_options = { documentFormatting = true, hover = true,
-			documentSymbol = true,
-			codeAction = true,
-			completion = true },
-		settings = {
-			rootMarkers = { ".git/" },
-			languages = {
-				text = {
-					{ hoverCommand = 'dict -d wn', hoverStdin = false }
-				}
-			}
-		},
-		filetypes = { 'text' }
-	}
+	-- efm = {
+	-- 	init_options = { documentFormatting = true, hover = true,
+	-- 		documentSymbol = true,
+	-- 		codeAction = true,
+	-- 		completion = true },
+	-- 	settings = {
+	-- 		rootMarkers = { ".git/" },
+	-- 		languages = {
+	-- 			text = {
+	-- 				{ hoverCommand = 'dict -d wn', hoverStdin = false }
+	-- 			}
+	-- 		}
+	-- 	},
+	-- 	filetypes = { 'text' }
+	-- }
 }
 
 
@@ -184,4 +184,10 @@ mason_lspconfig.setup_handlers {
 		opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
 		lspconfig[server_name].setup(opts)
 	end
+}
+
+ON_ATTACH = on_attach
+
+return {
+	on_attach = ON_ATTACH
 }

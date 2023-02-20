@@ -126,6 +126,8 @@ return require('packer').startup(function(use)
 		requires = "nvim-tree/nvim-web-devicons"
 	}
 
+	use { "jose-elias-alvarez/null-ls.nvim" }
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
