@@ -1,1 +1,2 @@
 - add leader keymap for ':cnext' and ':cprev'
+- make <space> + [ manage qf list
