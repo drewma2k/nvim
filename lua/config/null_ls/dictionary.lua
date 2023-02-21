@@ -11,7 +11,7 @@ return h.make_builtin({
         fn = function(_, done)
             local cword = vim.fn.expand("<cword>")
             local send_definition = function(def)
-                done({ cword .. ": " .. def })
+                done(def)
             end
 
             require("plenary.curl").request({
@@ -29,14 +29,29 @@ return h.make_builtin({
                         return
                     end
 
-                    send_definition(decoded[1].meanings[1].definitions[1].definition)
+										local strings = {}
+										table.insert(strings, '----------------------------------------')
+										for _, meaning in pairs(decoded[1].meanings) do
+											table.insert(strings, meaning['partOfSpeech'])
+											for i, definition in ipairs(meaning.definitions) do
+												local def = definition.definition
+												if string.len(def) > 60 then
+													local sub1 = string.sub(def, 0, string.len(def) / 2)
+													local sub2 = string.sub(def, string.len(def)/2+1, string.len(def)-1)
+													def =  string.format("%s-\n\t\t %s", sub1, sub2)
+												end
+												table.insert(strings, string.format('\t%s: %s', i, def))
+											end
+										table.insert(strings, '----------------------------------------')
+										end
+										send_definition(strings)
                 end),
             })
         end,
         async = true,
     },
     meta = {
-        url = "https://dictionaryapi.dev/",
+        url = "https://dictionaryapi.dev/api/v2/entries/en/",
         description = "Shows the first available definition for the current word under the cursor.",
         notes = {
             "Depends on Plenary's `curl` module, which itself depends on having `curl` installed and available on your `$PATH`.",
