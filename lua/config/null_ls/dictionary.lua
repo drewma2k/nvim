@@ -4,6 +4,10 @@ local methods = require("null-ls.methods")
 local HOVER = methods.internal.HOVER
 
 local insert_def = function (meaning, strings)
+	-- catch error
+	if type(meaning) == "string" then
+		table.insert(strings, meaning)
+	end
 	for i, definition in ipairs(meaning.definitions) do
 		local def = definition.definition
 		if string.len(def) > 60 then
