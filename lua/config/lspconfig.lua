@@ -1,3 +1,13 @@
+local ok, null_ls = pcall(require, 'null-ls')
+if not ok then
+	return
+end
+
+local ok, dict = pcall(require, 'config.null_ls.dictionary')
+if not ok then
+	return
+end
+
 local ok, cmp = pcall(require, 'cmp_nvim_lsp')
 if not ok then
 	return
@@ -142,21 +152,6 @@ local override_servers = {
 	cucumber_language_server = {
 		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
 	},
-	-- efm = {
-	-- 	init_options = { documentFormatting = true, hover = true,
-	-- 		documentSymbol = true,
-	-- 		codeAction = true,
-	-- 		completion = true },
-	-- 	settings = {
-	-- 		rootMarkers = { ".git/" },
-	-- 		languages = {
-	-- 			text = {
-	-- 				{ hoverCommand = 'dict -d wn', hoverStdin = false }
-	-- 			}
-	-- 		}
-	-- 	},
-	-- 	filetypes = { 'text' }
-	-- }
 }
 
 
@@ -186,8 +181,7 @@ mason_lspconfig.setup_handlers {
 	end
 }
 
-ON_ATTACH = on_attach
-
-return {
-	on_attach = ON_ATTACH
-}
+null_ls.setup({
+	sources = { dict },
+	on_attach = on_attach
+})
