@@ -3,7 +3,7 @@ if not ok then
 	return
 end
 
-local ok, dict = pcall(require, 'config.null_ls.dictionary')
+local ok, dict = pcall(require, 'config.dictionary')
 if not ok then
 	return
 end
