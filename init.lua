@@ -24,4 +24,5 @@ require('config.dap')
 require('config.telescope')
 require('config.gitsigns')
 require('config.trouble')
+require('config.nvim-r')
 -- vim: ts=2 sts=2 sw=2 et
