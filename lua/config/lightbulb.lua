@@ -21,4 +21,4 @@ lightbulb.setup({
         events = {"CursorHold", "CursorHoldI"}
     }
 })
-vim.fn.sign_define('LightBulbSign', { text = "", texthl = "", linehl="", numhl="" })
+vim.fn.sign_define('LightBulbSign', { text = "", texthl = "DiagnosticSignInfo", linehl="", numhl="" })
