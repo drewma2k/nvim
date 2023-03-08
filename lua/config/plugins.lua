@@ -128,6 +128,8 @@ return require('packer').startup(function(use)
 
 	use { "jose-elias-alvarez/null-ls.nvim" }
 
+	use { 'jalvesaq/Nvim-R' }
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()

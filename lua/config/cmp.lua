@@ -28,6 +28,7 @@ cmp.setup({
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
 				latex_symbols = "[Latex]",
+				cmp_nvim_r = "[R]"
 			}),
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
@@ -108,6 +109,19 @@ cmp.setup({
 cmp.setup.filetype('gitcommit', {
 	sources = cmp.config.sources({
 		{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+	}, {
+		{ name = 'buffer' },
+	})
+})
+
+-- special config for R files
+cmp.setup.filetype('R', {
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp' },
+		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = 'path' },
+		{ name = 'nvim_lsp_signature_help' },
+		{ name = 'cmp_nvim_r' }
 	}, {
 		{ name = 'buffer' },
 	})
