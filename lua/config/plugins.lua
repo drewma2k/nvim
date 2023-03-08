@@ -37,6 +37,13 @@ return require('packer').startup(function(use)
 	-- colorschemes
 	use 'drewma2k/nvim-base16'
 	-- use 'RRethy/nvim-base16'
+	-- use 'altercation/vim-colors-solarized'
+	-- use 'tjdevries/colorbuddy.nvim'
+	-- use { 'svrana/neosolarized.nvim' }
+	use 'ishan9299/nvim-solarized-lua'
+	use 'folke/tokyonight.nvim'
+	use { "catppuccin/nvim", as = "catppuccin" }
+
 
 	-- tree
 	use {
