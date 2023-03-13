@@ -58,6 +58,12 @@ local map = vim.keymap.set
 --   opts.border = opts.border or border
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    -- Use a sharp border with `FloatBorder` highlights
+    border = "rounded"
+  }
+)
 
 -- disable virtual text
 vim.diagnostic.config({
@@ -111,7 +117,7 @@ local on_attach = function(_, bufnr)
 			local opts = {
 				focusable = false,
 				close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-				border = 'none', -- none, single, double, rounded, solid, shadow
+				border = 'rounded', -- none, single, double, rounded, solid, shadow
 				source = 'always',
 				prefix = ' ',
 				scope = 'cursor',
