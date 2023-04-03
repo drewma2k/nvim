@@ -119,7 +119,8 @@ map("n", "<leader>gc", function()
 end, { desc = "Git commits" })
 
 map("n", "<leader>ff", function()
-	telescope.find_files()
+	local opts = {no_ignore=true}
+	telescope.find_files(opts)
 end, { desc = "Search files" })
 
 map("n", "<leader>fb", function()
