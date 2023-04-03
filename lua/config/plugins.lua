@@ -137,6 +137,9 @@ return require('packer').startup(function(use)
 
 	use { 'jalvesaq/Nvim-R' }
 
+	-- mini library
+	use 'echasnovski/mini.nvim'
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
