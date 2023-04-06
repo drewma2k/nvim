@@ -25,8 +25,9 @@ return require('packer').startup(function(use)
 	-- keymap popup
 	use 'folke/which-key.nvim'
 
-	-- sqls helper
-	use 'nanotee/sqls.nvim'
+	-- sql helper
+	use 'tpope/vim-dadbod'
+	use 'kristijanhusak/vim-dadbod-ui'
 
 	-- completion types / sources
 	use "onsails/lspkind.nvim"
