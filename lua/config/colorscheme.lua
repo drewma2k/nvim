@@ -28,10 +28,10 @@ vim.cmd[[hi WhichKeyFloat ctermbg=black]]
 -- vim.cmd[[colorscheme base16-solarized-dark]]
 -- vim.cmd[[colorscheme solarized]]
 -- temporary fix for diff
--- vim.cmd[[hi DiffAdd gui=inverse]]
--- vim.cmd[[hi DiffDelete gui=inverse]]
--- vim.cmd[[hi DiffText gui=inverse]]
--- vim.cmd[[hi DiffChange gui=inverse]]
+vim.cmd[[hi DiffAdd gui=inverse]]
+vim.cmd[[hi DiffDelete gui=inverse]]
+vim.cmd[[hi DiffText gui=inverse]]
+vim.cmd[[hi DiffChange gui=inverse]]
 vim.cmd[[hi NormalFloat guibg=None]] -- for floats with border
 
 -- brighter signcol and number col
