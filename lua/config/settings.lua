@@ -74,3 +74,6 @@ vim.g.go_code_completion_enabled = 0
 vim.opt.foldmethod = 'indent'
 vim.opt.foldenable = false
 
+-- vim-dadbod-ui use nerdfonts
+vim.g.db_ui_show_database_icon = 1
+vim.g.db_ui_use_nerd_fonts = 1
