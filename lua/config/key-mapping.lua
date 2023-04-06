@@ -58,6 +58,11 @@ map(
 )
 
 -- -- GitSigns
+ok, gs = pcall(require, 'gitsigns')
+if not ok then
+	return
+end
+map("n", "<leader>gs", "<cmd>Gitsigns<cr>", {desc = "Gitsigns menu"})
 -- if is_available "gitsigns.nvim" then
 --   map("n", "<leader>gj", function()
 --     require("gitsigns").next_hunk()
