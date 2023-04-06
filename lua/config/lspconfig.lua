@@ -13,11 +13,6 @@ if not ok then
 	return
 end
 
-local ok, sqls = pcall(require, 'sqls')
-if not ok then
-	return
-end
-
 local ok, mason = pcall(require, 'mason')
 if not ok then
 	return
@@ -94,7 +89,7 @@ local on_attach = function(_, bufnr)
 	map('n', '<leader>D', vim.lsp.buf.type_definition, bufopts, { desc = "LSP Type Definition" })
 	map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 	map('n', 'gr', vim.lsp.buf.references, bufopts)
-	map('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+	map('n', '<leader>cc', vim.lsp.buf.code_action, bufopts)
 	map('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, bufopts)
 
 	-- enable trouble maps if trouble is installed
@@ -149,11 +144,6 @@ local override_servers = {
 				staticcheck = true,
 			}
 		}
-	},
-	sqls = {
-		on_attach = function(client, bufnr)
-			sqls.on_attach(client, bufnr)
-		end
 	},
 	cucumber_language_server = {
 		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
