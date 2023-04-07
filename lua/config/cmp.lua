@@ -97,6 +97,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = 'vim-dadbod-completion' },
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		{ name = 'path' },
 		{ name = 'nvim_lsp_signature_help' }
