@@ -143,6 +143,8 @@ return require('packer').startup(function(use)
 	-- mini library
 	use 'echasnovski/mini.nvim'
 
+	use 'luukvbaal/statuscol.nvim'
+
 	-- automatic installation of packer
 	if packer_bootstrap then
 		require('packer').sync()
