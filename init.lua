@@ -26,4 +26,5 @@ require('config.gitsigns')
 require('config.trouble')
 require('config.nvim-r')
 require('config.mini')
+require('config.statuscol')
 -- vim: ts=2 sts=2 sw=2 et
