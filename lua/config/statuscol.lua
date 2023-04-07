@@ -16,7 +16,7 @@ statuscol.setup({
 		{
 			click = "v:lua.ScSa",
 			sign = {
-				name = { "Dap", "Diagnostic" },
+				name = { ".*" },
 				condition = { true, builtin.not_empty },
 				click = "v:lua.ScLa",
 			}
