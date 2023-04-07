@@ -42,3 +42,9 @@ vim.api.nvim_set_hl(0, 'DiagnosticSignHint', {bg=colors['solarized-dark']['base0
 vim.api.nvim_set_hl(0, 'DiagnosticSignWarn', {bg=colors['solarized-dark']['base01']})
 vim.api.nvim_set_hl(0, 'DiagnosticSignInfo', {bg=colors['solarized-dark']['base01']})
 vim.api.nvim_set_hl(0, 'DiagnosticSignError', {bg=colors['solarized-dark']['base01']})
+
+local ok, onedark = pcall(require, 'onedark')
+if not ok then
+	return
+end
+onedark.load()

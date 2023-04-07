@@ -11,7 +11,13 @@ end
 -- customize auto theme
 for mode, components in pairs(custom_auto_theme) do
 	for component, _ in pairs(components) do
-		custom_auto_theme[mode][component] = 'StatusLine'
+		if mode == 'inactive' then
+			custom_auto_theme[mode][component] = 'StatusLineNC'
+		else
+			custom_auto_theme[mode][component] = 'StatusLine'
+		end
+
+
 	end
 	custom_auto_theme[mode].z = custom_auto_theme[mode].b
 end
