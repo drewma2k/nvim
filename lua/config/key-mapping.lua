@@ -180,6 +180,10 @@ map("n", "<leader>lD", function()
 	telescope.diagnostics()
 end, { desc = "Search diagnostics" })
 
+map("n", "<leader>scs", function()
+	telescope.colorscheme()
+end, { desc = "Search colorschemes" })
+
 
 -- Stay in indent mode
 map("v", "<", "<gv", { desc = "unindent line" })

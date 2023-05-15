@@ -1,16 +1,16 @@
-local ok, base = pcall(require, 'base16-colorscheme')
-if not ok then
-	return
-end
+-- local ok, base = pcall(require, 'base16-colorscheme')
+-- if not ok then
+-- 	return
+-- end
 
-local ok, colors = pcall(require, 'colors')
-if not ok then
-	return
-end
+-- local ok, colors = pcall(require, 'colors')
+-- if not ok then
+-- 	return
+-- end
 
 
 -- set colorscheme, lua way
-base.setup(colors['solarized-dark'])
+-- base.setup(colors['solarized-dark'])
 
 -- better default highlight groups
 vim.cmd[[hi Pmenu ctermbg=darkgrey ctermfg=white]]
@@ -35,16 +35,18 @@ vim.cmd[[hi DiffChange gui=inverse]]
 vim.cmd[[hi NormalFloat guibg=None]] -- for floats with border
 
 -- brighter signcol and number col
-vim.api.nvim_set_hl(0, 'SignColumn', {bg=colors['solarized-dark']['base01']})
-vim.api.nvim_set_hl(0, 'LineNr', {bg=colors['solarized-dark']['base01']})
-vim.api.nvim_set_hl(0, 'LineNr', {bg=colors['solarized-dark']['base01']})
-vim.api.nvim_set_hl(0, 'DiagnosticSignHint', {bg=colors['solarized-dark']['base01']})
-vim.api.nvim_set_hl(0, 'DiagnosticSignWarn', {bg=colors['solarized-dark']['base01']})
-vim.api.nvim_set_hl(0, 'DiagnosticSignInfo', {bg=colors['solarized-dark']['base01']})
-vim.api.nvim_set_hl(0, 'DiagnosticSignError', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'SignColumn', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'LineNr', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'LineNr', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'DiagnosticSignHint', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'DiagnosticSignWarn', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'DiagnosticSignInfo', {bg=colors['solarized-dark']['base01']})
+-- vim.api.nvim_set_hl(0, 'DiagnosticSignError', {bg=colors['solarized-dark']['base01']})
 
-local ok, onedark = pcall(require, 'onedark')
-if not ok then
-	return
-end
-onedark.load()
+-- local ok, onedark = pcall(require, 'onedark')
+-- if not ok then
+-- 	return
+-- end
+-- onedark.load()
+vim.cmd[[set termguicolors]]
+vim.cmd[[colorscheme everforest]]

@@ -74,7 +74,7 @@ map('n', '<space>ll', vim.diagnostic.setloclist, opts)
 map('n', '<space>qq', vim.diagnostic.setqflist, opts)
 
 -- LSP maps
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	map('n', 'gD', vim.lsp.buf.declaration, bufopts)
 	map('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -120,6 +120,7 @@ local on_attach = function(_, bufnr)
 			vim.diagnostic.open_float(nil, opts)
 		end
 	})
+	client.server_capabilities.semanticTokensProvider = nil
 end
 
 -- nvim-cmp supports additional completion capabilities
@@ -148,6 +149,10 @@ local override_servers = {
 	cucumber_language_server = {
 		cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
 	},
+	sqlls = {
+		cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug' },
+		-- root_dir = require('lspconfig.util').root_pattern '',
+	}
 }
 
 
@@ -174,7 +179,12 @@ mason_lspconfig.setup_handlers {
 	function(server_name)
 		opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
 		lspconfig[server_name].setup(opts)
-	end
+	end,
+	--
+	-- ["sqlls"] = function ()
+	-- 	opts = vim.tbl_deep_extend("force", options, override_servers['sqlls'])
+	-- 	lspconfig['sqlls'].setup(opts)
+	-- end,
 }
 
 null_ls.setup({

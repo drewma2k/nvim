@@ -9,6 +9,17 @@ telescope.setup({
       -- override_generic_sorter = true,  -- override the generic sorter
       -- override_file_sorter = true,     -- override the file sorter
       case_mode = "smart_case",
-	}
+	},
+    defaults = {
+        vimgrep_arguments = {
+	    "rg",
+	    "--color=never",
+	    "--no-heading",
+	    "--with-filename",
+	    "--line-number",
+	    "--column",
+	    "--smart-case",
+        }
+    }
 })
 -- telescope.load_extension('fzf')

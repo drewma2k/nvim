@@ -36,7 +36,8 @@ return require('packer').startup(function(use)
 	use 'fatih/vim-go'
 
 	-- colorschemes
-	use 'drewma2k/nvim-base16'
+	-- use 'drewma2k/nvim-base16'
+	use 'EdenEast/nightfox.nvim'
 	-- use 'RRethy/nvim-base16'
 	-- use 'altercation/vim-colors-solarized'
 	-- use 'tjdevries/colorbuddy.nvim'
@@ -45,6 +46,7 @@ return require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 	use { "catppuccin/nvim", as = "catppuccin" }
 	use 'navarasu/onedark.nvim'
+	use 'sainnhe/everforest'
 
 
 	-- tree
