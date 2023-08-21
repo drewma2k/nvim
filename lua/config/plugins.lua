@@ -152,4 +152,5 @@ return require('packer').startup(function(use)
 		require('packer').sync()
 	end
 
+	use "lukas-reineke/indent-blankline.nvim"
 end)
