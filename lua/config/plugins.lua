@@ -165,4 +165,7 @@ return require('packer').startup(function(use)
 			require"octo".setup()
 		end
 	}
+
+	use "christoomey/vim-tmux-navigator"
+
 end)
