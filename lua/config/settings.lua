@@ -78,3 +78,6 @@ vim.opt.foldminlines = 0
 -- vim-dadbod-ui use nerdfonts
 vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_use_nerd_fonts = 1
+
+-- shortmess
+vim.opt.shortmess = vim.opt.shortmess + 'I'

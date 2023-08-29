@@ -56,3 +56,12 @@ table.insert(dap.configurations.go, {
 	-- end;
     -- program = "${workspaceFolder}${MAINPATH}"
 })
+
+--  attach remote
+table.insert(dap.configurations.go, {
+	type = "go",
+	name = "Attach remote",
+	mode = "local",
+	request = "attach",
+	processId = require('dap.utils').pick_process,
+})

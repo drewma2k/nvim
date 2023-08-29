@@ -169,4 +169,6 @@ return require('packer').startup(function(use)
 
 	use "christoomey/vim-tmux-navigator"
 
+	use "chentoast/marks.nvim"
+
 end)
