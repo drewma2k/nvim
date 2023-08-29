@@ -12,7 +12,6 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
-
 	-- plugin manager
 	use 'wbthomason/packer.nvim'
 
@@ -55,7 +54,7 @@ return require('packer').startup(function(use)
 		requires = {
 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
 		},
-		tag = 'nightly' -- optional, updated every week. (see issue #1193)
+		tag = 'nightly'            -- optional, updated every week. (see issue #1193)
 	}
 
 	-- better tabline
@@ -162,8 +161,8 @@ return require('packer').startup(function(use)
 			'nvim-telescope/telescope.nvim',
 			'nvim-tree/nvim-web-devicons',
 		},
-		config = function ()
-			require"octo".setup()
+		config = function()
+			require "octo".setup()
 		end
 	}
 
@@ -171,4 +170,9 @@ return require('packer').startup(function(use)
 
 	use "chentoast/marks.nvim"
 
+	use { 'anuvyklack/pretty-fold.nvim',
+		config = function()
+			require('pretty-fold').setup()
+		end
+	}
 end)
