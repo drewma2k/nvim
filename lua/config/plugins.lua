@@ -175,4 +175,30 @@ return require('packer').startup(function(use)
 			require('pretty-fold').setup()
 		end
 	}
-end)
+
+	use { 'sheerun/vim-polyglot' }
+	use 'martinda/Jenkinsfile-vim-syntax'
+
+	use {
+		"zbirenbaum/copilot.lua",
+		-- cmd = "Copilot",
+		-- -- event = "InsertEnter",
+	}
+	use {
+		"zbirenbaum/copilot-cmp",
+		-- after = { "copilot.lua" },
+	}
+
+	use 'ixru/nvim-markdown'
+
+	-- markdown preview
+	use({
+			"iamcco/markdown-preview.nvim",
+			run = function() vim.fn["mkdp#util#install"]() end,
+		})
+
+	use "hedyhli/outline.nvim"
+
+	use "mfussenegger/nvim-jdtls"
+
+	end)

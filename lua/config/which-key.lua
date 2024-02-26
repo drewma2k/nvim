@@ -9,6 +9,7 @@ whichkey.setup {
 	plugins = {
 		spelling = { enabled = true },
 		presets = { operators = false },
+		-- registers = false,
 	},
 	window = {
 		border = "rounded",

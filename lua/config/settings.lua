@@ -81,3 +81,9 @@ vim.g.db_ui_use_nerd_fonts = 1
 
 -- shortmess
 vim.opt.shortmess = vim.opt.shortmess + 'I'
+
+-- change directory when switching buffers etc
+-- vim.opt.autochdir = true
+
+-- Use system clipboard for yanking and pasting
+vim.opt.clipboard = 'unnamedplus'

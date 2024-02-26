@@ -5,6 +5,7 @@ require('config.settings')
 require('config.colorscheme')
 
 -- setup plugins
+require('config.copilot')
 require('config.impatient')
 require('config.which-key')
 require('config.alpha_config')
@@ -28,5 +29,7 @@ require('config.nvim-r')
 require('config.mini')
 require('config.statuscol')
 require('config.indentblankline')
+require('config.outline')
 require('config.marks')
+require('config.nvim_jdtls')
 -- vim: ts=2 sts=2 sw=2 et

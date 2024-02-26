@@ -41,7 +41,7 @@ map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "Packer Update" })
 
 -- Tree
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
-map("n", "<leader>o", "<cmd>NvimTreeFocus<cr>", { desc = "Focus Explorer" })
+-- map("n", "<leader>o", "<cmd>NvimTreeFocus<cr>", { desc = "Focus Explorer" })
 
 -- Alpha
 map("n", "<leader>a", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
@@ -213,3 +213,6 @@ map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
 map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
   {silent = true, noremap = true}
 )
+
+-- open file under cursor with system default
+map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")

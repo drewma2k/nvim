@@ -46,3 +46,5 @@ old/*
 autoload/everforest.vim
 plugin/packer_compiled.lua
 spell/*
+dependencies
+.luarc.json

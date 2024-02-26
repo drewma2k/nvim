@@ -153,6 +153,24 @@ local override_servers = {
 	sqlls = {
 		cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug' },
 		-- root_dir = require('lspconfig.util').root_pattern '',
+	},
+	pylsp = {
+	-- 	cmd = { '/usr/local/bin/pylsp'}
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						enabled = false
+					},
+					black = {
+						enabled = true
+					},
+					pylint = {
+						enabled = true
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -181,14 +199,9 @@ mason_lspconfig.setup_handlers {
 		opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
 		lspconfig[server_name].setup(opts)
 	end,
-	--
-	-- ["sqlls"] = function ()
-	-- 	opts = vim.tbl_deep_extend("force", options, override_servers['sqlls'])
-	-- 	lspconfig['sqlls'].setup(opts)
-	-- end,
 }
 
-null_ls.setup({
-	sources = { dict },
-	on_attach = on_attach
-})
+-- null_ls.setup({
+-- 	sources = { dict },
+-- 	on_attach = on_attach
+-- })

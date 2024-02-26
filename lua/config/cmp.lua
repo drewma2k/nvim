@@ -28,7 +28,8 @@ cmp.setup({
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
 				latex_symbols = "[Latex]",
-				cmp_nvim_r = "[R]"
+				cmp_nvim_r = "[R]",
+				copilot = "[Copilot]"
 			}),
 			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
@@ -97,6 +98,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
+		{ name = 'copilot' },
 		{ name = 'vim-dadbod-completion' },
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		{ name = 'path' },
