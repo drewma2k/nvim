@@ -10,7 +10,7 @@ end
 
 statuscol.setup({
 	ft_ignore = {
-		'NvimTree', 'help', 'alpha', 'Trouble', 'mason'
+		'NvimTree', 'help', 'alpha', 'Trouble', 'mason', 'Outline'
 	},
 	segments = {
 		{
