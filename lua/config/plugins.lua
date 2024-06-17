@@ -35,17 +35,19 @@ return require('packer').startup(function(use)
 	use 'fatih/vim-go'
 
 	-- colorschemes
+	use 'rebelot/kanagawa.nvim'
 	-- use 'drewma2k/nvim-base16'
 	use 'EdenEast/nightfox.nvim'
+	use 'bluz71/vim-moonfly-colors'
 	-- use 'RRethy/nvim-base16'
 	-- use 'altercation/vim-colors-solarized'
 	-- use 'tjdevries/colorbuddy.nvim'
 	-- use { 'svrana/neosolarized.nvim' }
-	use 'ishan9299/nvim-solarized-lua'
-	use 'folke/tokyonight.nvim'
-	use { "catppuccin/nvim", as = "catppuccin" }
-	use 'navarasu/onedark.nvim'
-	use 'sainnhe/everforest'
+	-- use 'ishan9299/nvim-solarized-lua'
+	-- use 'folke/tokyonight.nvim'
+	-- use { "catppuccin/nvim", as = "catppuccin" }
+	-- use 'navarasu/onedark.nvim'
+	-- use 'sainnhe/everforest'
 
 
 	-- tree
@@ -54,7 +56,7 @@ return require('packer').startup(function(use)
 		requires = {
 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
 		},
-		tag = 'nightly'            -- optional, updated every week. (see issue #1193)
+		-- tag = 'nightly'            -- optional, updated every week. (see issue #1193)
 	}
 
 	-- better tabline
@@ -74,7 +76,7 @@ return require('packer').startup(function(use)
 
 	-- better syntax highlighting
 	use { 'nvim-treesitter/nvim-treesitter',
-		tag = "v0.9.0",
+		-- tag = "v0.9.0",
 		run = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
@@ -140,7 +142,7 @@ return require('packer').startup(function(use)
 
 	use { "jose-elias-alvarez/null-ls.nvim" }
 
-	use { 'jalvesaq/Nvim-R' }
+	-- use { 'jalvesaq/Nvim-R' }
 
 	-- mini library
 	use 'echasnovski/mini.nvim'
@@ -154,17 +156,17 @@ return require('packer').startup(function(use)
 
 	use "lukas-reineke/indent-blankline.nvim"
 
-	use {
-		'pwntester/octo.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope.nvim',
-			'nvim-tree/nvim-web-devicons',
-		},
-		config = function()
-			require "octo".setup()
-		end
-	}
+	-- use {
+	-- 	'pwntester/octo.nvim',
+	-- 	requires = {
+	-- 		'nvim-lua/plenary.nvim',
+	-- 		'nvim-telescope/telescope.nvim',
+	-- 		'nvim-tree/nvim-web-devicons',
+	-- 	},
+	-- 	config = function()
+	-- 		require "octo".setup()
+	-- 	end
+	-- }
 
 	use "christoomey/vim-tmux-navigator"
 

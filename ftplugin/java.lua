@@ -87,8 +87,8 @@ local config = {
     '-Dlog.level=ALL',
     '-Xmx1g',
     '-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
-    '-jar', '/usr/local/Cellar/jdtls/1.33.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.700.v20231214-2017.jar',
-    '-configuration', '/usr/local/Cellar/jdtls/1.33.0/libexec/config_mac',
+    '-jar', '/opt/homebrew/Cellar/jdtls/1.36.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.800.v20240513-1750.jar',
+    '-configuration', '/opt/homebrew/Cellar/jdtls/1.36.0/libexec/config_mac_arm',
     '-data', '/Users/yde639/workspace/'
   },
 

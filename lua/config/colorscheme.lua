@@ -49,12 +49,13 @@
 -- 	return
 -- end
 -- onedark.load()
-vim.cmd[[set termguicolors]]
+-- vim.cmd[[set termguicolors]]
 
 -- everforest transparent
 -- vim.cmd[[let g:everforest_transparent_background=2]]
-vim.cmd[[colorscheme everforest]]
+-- vim.cmd[[colorscheme everforest]]
 -- vim.cmd[[hi CursorLine guibg=none gui=underline]]
 -- vim.cmd[[hi ColorColumn guibg=none gui=underline]]
 -- vim.cmd[[hi StatusLine gui=underline]]
 -- vim.cmd[[hi StatusLineNC gui=underline]]
+vim.cmd[[colorscheme moonfly]]
