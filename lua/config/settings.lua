@@ -87,3 +87,5 @@ vim.opt.shortmess = vim.opt.shortmess + 'I'
 
 -- Use system clipboard for yanking and pasting
 vim.opt.clipboard = 'unnamedplus'
+
+vim.cmd[[colorscheme moonfly]]

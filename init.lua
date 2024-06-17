@@ -2,7 +2,6 @@
 require('config.key-mapping')
 require('config.plugins')
 require('config.settings')
-require('config.colorscheme')
 
 -- setup plugins
 require('config.copilot')

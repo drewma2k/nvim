@@ -66,44 +66,10 @@ if not ok then
 	return
 end
 map("n", "<leader>gs", "<cmd>Gitsigns<cr>", {desc = "Gitsigns menu"})
--- if is_available "gitsigns.nvim" then
---   map("n", "<leader>gj", function()
---     require("gitsigns").next_hunk()
---   end, { desc = "Next git hunk" })
---   map("n", "<leader>gk", function()
---     require("gitsigns").prev_hunk()
---   end, { desc = "Previous git hunk" })
---   map("n", "<leader>gl", function()
---     require("gitsigns").blame_line()
---   end, { desc = "View git blame" })
---   map("n", "<leader>gp", function()
---     require("gitsigns").preview_hunk()
---   end, { desc = "Preview git hunk" })
---   map("n", "<leader>gh", function()
---     require("gitsigns").reset_hunk()
---   end, { desc = "Reset git hunk" })
---   map("n", "<leader>gr", function()
---     require("gitsigns").reset_buffer()
---   end, { desc = "Reset git buffer" })
---   map("n", "<leader>gs", function()
---     require("gitsigns").stage_hunk()
---   end, { desc = "Stage git hunk" })
---   map("n", "<leader>gu", function()
---     require("gitsigns").undo_stage_hunk()
---   end, { desc = "Unstage git hunk" })
---   map("n", "<leader>gd", function()
---     require("gitsigns").diffthis()
---   end, { desc = "View git diff" })
--- end
-
-
 
 -- LSP Installer
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
 vim.keymap.set("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
-
--- SymbolsOutline
--- map("n", "<leader>lS", "<cmd>AerialToggle<cr>", { desc = "Symbols outline" })
 
 -- Telescope
 local ok, telescope = pcall(require, 'telescope.builtin')
@@ -201,19 +167,19 @@ map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" 
 map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
 
 -- trouble.nvim
-map("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",
   {silent = true, noremap = true}
 )
-map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics toggle<cr>",
   {silent = true, noremap = true}
 )
-map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics toggle<cr>",
   {silent = true, noremap = true}
 )
-map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
+map("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>",
   {silent = true, noremap = true}
 )
-map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+map("n", "<leader>xq", "<cmd>Trouble quickfix toggle <cr>",
   {silent = true, noremap = true}
 )
 

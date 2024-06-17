@@ -7,6 +7,4 @@ if not ok then
 	return 
 end
 
--- menu
-
 alpha.setup(dashboard.opts)
