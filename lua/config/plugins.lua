@@ -184,7 +184,7 @@ return require('packer').startup(function(use)
 	-- 	end
 	-- }
 
-	use { 'sheerun/vim-polyglot' }
+	-- use { 'sheerun/vim-polyglot' }
 	use 'martinda/Jenkinsfile-vim-syntax'
 
 	use {
@@ -248,5 +248,6 @@ return require('packer').startup(function(use)
     use 'JavaHello/spring-boot.nvim'
 	use	'nvim-java/lua-async-await'
 	use 'MunifTanjim/nui.nvim'
+	use 'bullets-vim/bullets.vim'
 
 end)
