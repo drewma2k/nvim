@@ -1,12 +1,12 @@
-local ok, null_ls = pcall(require, 'null-ls')
-if not ok then
-	return
-end
+-- local ok, null_ls = pcall(require, 'null-ls')
+-- if not ok then
+-- 	return
+-- end
 
-local ok, dict = pcall(require, 'config.dictionary')
-if not ok then
-	return
-end
+-- local ok, dict = pcall(require, 'config.dictionary')
+-- if not ok then
+-- 	return
+-- end
 
 local ok, cmp = pcall(require, 'cmp_nvim_lsp')
 if not ok then
@@ -188,8 +188,16 @@ mason.setup({
 		"mason.providers.registry-api",
 		"mason.providers.client",
 	},
+	registries = {
+	'github:nvim-java/mason-registry',
+	'github:mason-org/mason-registry',
+	},
 	log_level = vim.log.levels.DEBUG,
 })
+
+
+require('java').setup()
+
 mason_lspconfig.setup({
 	automatic_installation = true,
 })

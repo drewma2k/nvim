@@ -13,6 +13,11 @@ if not ok then
 	return
 end
 
+-- for moonfly colorscheme
+local winhighlight = {
+  winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
+}
+
 cmp.setup({
 	performance = {
 		debounce = 500,
@@ -50,8 +55,10 @@ cmp.setup({
 		end,
 	},
 	window = {
+		completion = cmp.config.window.bordered(winhighlight),
+    documentation = cmp.config.window.bordered(winhighlight),
 		-- completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		-- documentation = cmp.config.window.bordered(),
 	},
 	mapping = {
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),

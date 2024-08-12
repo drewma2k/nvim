@@ -49,7 +49,7 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
 -- Alpha
 map("n", "<leader>a", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
 
-map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+-- map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
 -- Comment
 map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
@@ -93,7 +93,7 @@ map("n", "<leader>gc", function()
 end, { desc = "Git commits" })
 
 map("n", "<leader>ff", function()
-	local opts = {no_ignore=true}
+	local opts = {no_ignore=true, hidden=false}
 	telescope.find_files(opts)
 end, { desc = "Search files" })
 
@@ -102,8 +102,8 @@ map("n", "<leader>fb", function()
 end, { desc = "Search buffers" })
 
 map("n", "<leader>fh", function()
-	telescope.help_tags()
-end, { desc = "Search help" })
+	telescope.find_files({no_ignore=true, hidden=true})
+end, { desc = "Find hidden files" })
 
 map("n", "<leader>fm", function()
 	telescope.marks()
@@ -159,12 +159,12 @@ map("v", "<", "<gv", { desc = "unindent line" })
 map("v", ">", ">gv", { desc = "indent line" })
 
 -- Improved Terminal Mappings
-map("t", "<esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
-map("t", "jk", "<C-\\><C-n>", { desc = "Terminal normal mode" })
-map("t", "<C-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window navigation" })
-map("t", "<C-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal down window navigation" })
-map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
-map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
+-- map("t", "<esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+-- map("t", "jk", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+-- map("t", "<C-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window navigation" })
+-- map("t", "<C-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal down window navigation" })
+-- map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
+-- map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
 
 -- trouble.nvim
 map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",
@@ -185,3 +185,7 @@ map("n", "<leader>xq", "<cmd>Trouble quickfix toggle <cr>",
 
 -- open file under cursor with system default
 map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")
+
+-- toggle folds with tab
+-- collides with <C-i> because of terminal jank but may be possible
+-- map("n", "<Tab>", "za")

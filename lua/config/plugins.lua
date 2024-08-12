@@ -44,9 +44,9 @@ return require('packer').startup(function(use)
 	-- use 'tjdevries/colorbuddy.nvim'
 	-- use { 'svrana/neosolarized.nvim' }
 	-- use 'ishan9299/nvim-solarized-lua'
-	-- use 'folke/tokyonight.nvim'
-	-- use { "catppuccin/nvim", as = "catppuccin" }
-	-- use 'navarasu/onedark.nvim'
+	use 'folke/tokyonight.nvim'
+	use { "catppuccin/nvim", as = "catppuccin" }
+	use 'navarasu/onedark.nvim'
 	-- use 'sainnhe/everforest'
 
 
@@ -122,7 +122,12 @@ return require('packer').startup(function(use)
 
 	use 'stevearc/dressing.nvim'
 
-	use { 'kosayoda/nvim-lightbulb',
+	-- use { 'kosayoda/nvim-lightbulb',
+	-- 	requires = 'antoinemadec/FixCursorHold.nvim'
+	-- }
+
+	-- use a branch while the deprecated fix is not merged
+	use { 'lvim-tech/nvim-lightbulb',
 		requires = 'antoinemadec/FixCursorHold.nvim'
 	}
 
@@ -170,13 +175,14 @@ return require('packer').startup(function(use)
 
 	use "christoomey/vim-tmux-navigator"
 
-	use "chentoast/marks.nvim"
+	-- use "chentoast/marks.nvim"
 
-	use { 'anuvyklack/pretty-fold.nvim',
-		config = function()
-			require('pretty-fold').setup()
-		end
-	}
+	-- broken for 0.10
+	-- use { 'anuvyklack/pretty-fold.nvim',
+	-- 	config = function()
+	-- 		require('pretty-fold').setup()
+	-- 	end
+	-- }
 
 	use { 'sheerun/vim-polyglot' }
 	use 'martinda/Jenkinsfile-vim-syntax'
@@ -186,21 +192,61 @@ return require('packer').startup(function(use)
 		-- cmd = "Copilot",
 		-- -- event = "InsertEnter",
 	}
+
+	use {
+		'CopilotC-Nvim/CopilotChat.nvim',
+		requires = {
+			"zbirenbaum/copilot.lua",
+			"nvim-lua/plenary.nvim"
+		},
+	}
+
 	use {
 		"zbirenbaum/copilot-cmp",
 		-- after = { "copilot.lua" },
 	}
 
-	use 'ixru/nvim-markdown'
-
-	-- markdown preview
-	use({
-			"iamcco/markdown-preview.nvim",
-			run = function() vim.fn["mkdp#util#install"]() end,
-		})
+	-- use 'ixru/nvim-markdown'
+	-- use 'godlygeek/tabular'
+	-- use 'preservim/vim-markdown'
 
 	use "hedyhli/outline.nvim"
 
-	use "mfussenegger/nvim-jdtls"
+	-- use "mfussenegger/nvim-jdtls"
 
-	end)
+	use({
+		'MeanderingProgrammer/markdown.nvim',
+		as = 'render-markdown',                         -- Only needed if you have another plugin named markdown.nvim
+		after = { 'nvim-treesitter' },
+		-- requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+		-- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+		config = function()
+			require('render-markdown').setup({})
+		end,
+	})
+
+	-- use {
+	-- 	"OXY2DEV/markview.nvim",
+	-- 	requires = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"nvim-tree/nvim-web-devicons"
+	-- 	}
+	-- }
+	--
+
+	use 'opdavies/toggle-checkbox.nvim'
+
+	use 'dhruvasagar/vim-table-mode'
+
+	use 'nvim-java/nvim-java'
+    use 'nvim-java/nvim-java-refactor'
+    use 'nvim-java/nvim-java-core'
+    use 'nvim-java/nvim-java-test'
+    use 'nvim-java/nvim-java-dap'
+    use 'nvim-java/nvim-java'
+    use 'JavaHello/spring-boot.nvim'
+	use	'nvim-java/lua-async-await'
+	use 'MunifTanjim/nui.nvim'
+
+end)

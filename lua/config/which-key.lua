@@ -11,7 +11,7 @@ whichkey.setup {
 		presets = { operators = false },
 		-- registers = false,
 	},
-	window = {
+	win = {
 		border = "rounded",
 		padding = { 2, 2, 2, 2 },
 	},

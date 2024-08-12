@@ -3,7 +3,7 @@ if not ok then
   return
 end
 
-local ok, copilot_cmp = pcall(require, "copilot_cmp")
+local ok, copilot_chat = pcall(require, "CopilotChat")
 if not ok then
   return
 end
@@ -52,4 +52,17 @@ copilot.setup({
   server_opts_overrides = {},
 })
 
--- copilot_cmp.setup()
+copilot_chat.setup({
+    window = {
+      width = 0.25,
+    },
+    mappings = {
+      reset = {
+        normal = ""
+      }
+    }
+  })
+
+vim.keymap.set("n", "<C-c>", function ()
+  vim.cmd[[CopilotChatToggle]]
+end)
