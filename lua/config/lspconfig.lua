@@ -171,7 +171,22 @@ local override_servers = {
 				}
 			}
 		}
-	}
+	},
+	-- jdtls = {
+	-- 	cmd = {
+ --    'java',
+ --    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+ --    '-Dosgi.bundles.defaultStartLevel=4',
+ --    '-Declipse.product=org.eclipse.jdt.ls.core.product',
+ --    '-Dlog.protocol=true',
+ --    '-Dlog.level=ALL',
+ --    '-Xmx1g',
+ --    '-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
+ --    '-jar', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+ --    '-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
+ --    '-data', '/Users/yde639/workspace/' .. project_name
+	--   }
+	-- }
 }
 
 
@@ -189,14 +204,11 @@ mason.setup({
 		"mason.providers.client",
 	},
 	registries = {
-	'github:nvim-java/mason-registry',
 	'github:mason-org/mason-registry',
 	},
 	log_level = vim.log.levels.DEBUG,
 })
 
-
-require('java').setup()
 
 mason_lspconfig.setup({
 	automatic_installation = true,
@@ -208,6 +220,8 @@ mason_lspconfig.setup_handlers {
 		lspconfig[server_name].setup(opts)
 	end,
 }
+
+
 
 -- null_ls.setup({
 -- 	sources = { dict },

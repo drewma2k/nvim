@@ -64,5 +64,9 @@ copilot_chat.setup({
   })
 
 vim.keymap.set("n", "<C-c>", function ()
-  vim.cmd[[CopilotChatToggle]]
+  copilot_chat.open({
+      window = {
+        layout = "float"
+      }
+    })
 end)

@@ -47,6 +47,10 @@ return require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 	use { "catppuccin/nvim", as = "catppuccin" }
 	use 'navarasu/onedark.nvim'
+	use {
+		'zenbones-theme/zenbones.nvim',
+		requires = "rktjmp/lush.nvim"
+	}
 	-- use 'sainnhe/everforest'
 
 
@@ -102,9 +106,11 @@ return require('packer').startup(function(use)
 	-- popup search menu
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/plenary.nvim' } }
+		requires = { { 'nvim-lua/plenary.nvim' } },
+		-- commit = "05f4d6f0a9ec1aa35816c34c52b6f8578511b434"
+		version = "0.1.8"
 	}
-	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	-- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- snippets
 	use 'honza/vim-snippets'
@@ -184,7 +190,7 @@ return require('packer').startup(function(use)
 	-- 	end
 	-- }
 
-	-- use { 'sheerun/vim-polyglot' }
+	use { 'sheerun/vim-polyglot' }
 	use 'martinda/Jenkinsfile-vim-syntax'
 
 	use {
@@ -212,42 +218,53 @@ return require('packer').startup(function(use)
 
 	use "hedyhli/outline.nvim"
 
-	-- use "mfussenegger/nvim-jdtls"
+	use "mfussenegger/nvim-jdtls"
 
-	use({
-		'MeanderingProgrammer/markdown.nvim',
-		as = 'render-markdown',                         -- Only needed if you have another plugin named markdown.nvim
-		after = { 'nvim-treesitter' },
-		-- requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
-		-- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
-		config = function()
-			require('render-markdown').setup({})
-		end,
-	})
+	-- use({
+	-- 	'MeanderingProgrammer/markdown.nvim',
+	-- 	as = 'render-markdown',                         -- Only needed if you have another plugin named markdown.nvim
+	-- 	after = { 'nvim-treesitter' },
+	-- 	-- requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+	-- 	-- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+	-- 	requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+	-- 	config = function()
+	-- 		require('render-markdown').setup({})
+	-- 	end,
+	-- })
 
-	-- use {
-	-- 	"OXY2DEV/markview.nvim",
-	-- 	requires = {
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 		"nvim-tree/nvim-web-devicons"
-	-- 	}
-	-- }
+	use {
+		"OXY2DEV/markview.nvim",
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons"
+		}
+	}
 	--
 
 	use 'opdavies/toggle-checkbox.nvim'
 
 	use 'dhruvasagar/vim-table-mode'
 
-	use 'nvim-java/nvim-java'
-    use 'nvim-java/nvim-java-refactor'
-    use 'nvim-java/nvim-java-core'
-    use 'nvim-java/nvim-java-test'
-    use 'nvim-java/nvim-java-dap'
-    use 'nvim-java/nvim-java'
-    use 'JavaHello/spring-boot.nvim'
-	use	'nvim-java/lua-async-await'
-	use 'MunifTanjim/nui.nvim'
+	-- use {
+	-- 	'nvim-java/nvim-java',
+	-- 	requires = {
+	-- 		'nvim-java/nvim-java-refactor',
+	-- 		'nvim-java/nvim-java-core',
+	-- 		'nvim-java/nvim-java-test',
+	-- 		'nvim-java/nvim-java-dap',
+	-- 		'JavaHello/spring-boot.nvim',
+	-- 		'nvim-java/lua-async-await',
+	-- 		'MunifTanjim/nui.nvim',
+	--
+	-- 	}
+	-- }
+	--    use 'nvim-java/nvim-java-refactor'
+	--    use 'nvim-java/nvim-java-core'
+	--    use 'nvim-java/nvim-java-test'
+	--    use 'nvim-java/nvim-java-dap'
+	--    -- use 'nvim-java/nvim-java'
+	--    use 'JavaHello/spring-boot.nvim'
+	-- use	'nvim-java/lua-async-await'
+	-- use 'MunifTanjim/nui.nvim'
 	use 'bullets-vim/bullets.vim'
-
 end)

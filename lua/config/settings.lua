@@ -92,3 +92,6 @@ vim.opt.shortmess = vim.opt.shortmess + 'I'
 vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.splitbelow = true
+
+-- disable for markdown because indent is broken
+vim.g.polyglot_disabled = {'markdown'}
