@@ -1,5 +1,8 @@
 -- load modular configs
-require('config.colorscheme.zenburned')
+-- require('config.colorscheme.zenburned')
+-- vim.cmd[[colorscheme onedark]]
+vim.cmd[[set bg=dark]]
+vim.cmd[[colorscheme onedark]]
 require('config.key-mapping')
 require('config.plugins')
 require('config.settings')

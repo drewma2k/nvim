@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
 	use 'fatih/vim-go'
 
 	-- colorschemes
+	use { "ellisonleao/gruvbox.nvim" }
 	use 'rebelot/kanagawa.nvim'
 	-- use 'drewma2k/nvim-base16'
 	use 'EdenEast/nightfox.nvim'
