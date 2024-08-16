@@ -63,10 +63,11 @@ copilot_chat.setup({
     }
   })
 
-vim.keymap.set("n", "<C-c>", function ()
+vim.keymap.set("n", "<leader>cp", function ()
   copilot_chat.open({
       window = {
-        layout = "float"
+        -- layout = "float"
+				width = 0.33
       }
     })
 end)

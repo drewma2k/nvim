@@ -66,8 +66,8 @@ cmp.setup({
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
 		['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		["<C-n>"] = cmp.mapping.select_next_item(),
-		["<C-p>"] = cmp.mapping.select_prev_item(),
+		-- ["<C-n>"] = cmp.mapping.select_next_item(),
+		-- ["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-h>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(1) then
 				luasnip.jump(1)
@@ -75,7 +75,7 @@ cmp.setup({
 				fallback()
 			end
 		end, { 'i', 's' }),
-		["<C-l>"] = cmp.mapping(function(fallback)
+		["<C-n>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else

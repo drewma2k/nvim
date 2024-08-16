@@ -20,7 +20,7 @@ end
 
 -- setup useful directories
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-local root_dir = require('jdtls.setup').find_root({'.git', 'mvnw', 'gradlew'})
+local root_dir = require('jdtls.setup').find_root({ '.git', 'mvnw', 'gradlew' })
 
 local map = vim.keymap.set
 -- See `:help vim.lsp.start_client` for an overview of the suppor-- If you started neovim within `~/dev/xy/project-1` this would resolve to `project-1`
@@ -86,50 +86,58 @@ capabilities = vim.tbl_deep_extend(
 -- JDTLS configuration
 ----------------------
 local config = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {
-    'java',
-    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-    '-Dosgi.bundles.defaultStartLevel=4',
-    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-    '-Dlog.protocol=true',
-    '-Dlog.level=ALL',
-    '-Xmx1g',
-    '-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
-    '-jar', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
-    '-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
-    '-data', '/Users/yde639/workspace/' .. project_name
-  },
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = {
+		'java',
+		'-Declipse.application=org.eclipse.jdt.ls.core.id1',
+		'-Dosgi.bundles.defaultStartLevel=4',
+		'-Declipse.product=org.eclipse.jdt.ls.core.product',
+		'-Dlog.protocol=true',
+		'-Dlog.level=ALL',
+		'-Xmx1g',
+		'-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
+		'-jar',
+		'/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+		'-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
+		'-data', '/Users/yde639/workspace/' .. project_name
+	},
 
-  -- 💀
-  -- This is the default if not provided, you can remove it. Or adjust as needed.
-  -- One dedicated LSP server & client will be started per unique root_dir
-  root_dir = root_dir,
+	-- 💀
+	-- This is the default if not provided, you can remove it. Or adjust as needed.
+	-- One dedicated LSP server & client will be started per unique root_dir
+	root_dir = root_dir,
 
-  -- Here you can configure eclipse.jdt.ls specific settings
-  -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-  -- for a list of options
-  settings = {
-    java = {
-      configuration = {
-        maven = {
-          -- globalSettings = '/Users/yde639/.m2/settings.xml'
-        }
-      }
-    }
-  },
+	-- Here you can configure eclipse.jdt.ls specific settings
+	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+	-- for a list of options
+	settings = {
+		java = {
+			format = {
+				enabled = false,
+				settings = {
+					url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+					profile = "GoogleStyle"
+				}
+			},
+			configuration = {
+				maven = {
+					-- globalSettings = '/Users/yde639/.m2/settings.xml'
+				}
+			}
+		}
+	},
 
-  -- Language server `initializationOptions`
-  -- You need to extend the `bundles` with paths to jar files
-  -- if you want to use additional eclipse.jdt.ls plugins.
-  --
-  -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-  --
-  -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
-  init_options = {
-    bundles = {}
-  },
+	-- Language server `initializationOptions`
+	-- You need to extend the `bundles` with paths to jar files
+	-- if you want to use additional eclipse.jdt.ls plugins.
+	--
+	-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
+	--
+	-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+	init_options = {
+		bundles = {}
+	},
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
