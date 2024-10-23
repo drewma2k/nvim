@@ -332,4 +332,7 @@ return require('packer').startup(function(use)
 			"nvim-treesitter/nvim-treesitter"
 		}
 	}
+
+	use "nvchad/volt"
+	use "nvchad/menu"
 end)
