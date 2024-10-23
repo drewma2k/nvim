@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
 	use "onsails/lspkind.nvim"
 
 	-- go specific commands
-	use 'fatih/vim-go'
+	-- use 'fatih/vim-go'
 
 	-- colorschemes
 	use { "ellisonleao/gruvbox.nvim" }
@@ -138,11 +138,30 @@ return require('packer').startup(function(use)
 		requires = 'antoinemadec/FixCursorHold.nvim'
 	}
 
-	use 'mfussenegger/nvim-dap'
+	use {
+		'mfussenegger/nvim-dap',
+		requires = "nvim-neotest/nvim-nio"
+	}
 	use 'rcarriga/nvim-dap-ui'
 	use 'leoluz/nvim-dap-go'
 
-	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+	use {
+		'sindrets/diffview.nvim',
+		requires = 'nvim-lua/plenary.nvim',
+		config = function()
+			local ok, diffview = pcall(require, "diffview")
+			if not ok then
+				return
+			end
+			diffview.setup({
+				view = {
+					default = {
+						-- layout = -1
+					}
+				}
+			})
+		end
+	}
 
 	use { 'lewis6991/gitsigns.nvim' }
 
@@ -267,5 +286,50 @@ return require('packer').startup(function(use)
 	--    use 'JavaHello/spring-boot.nvim'
 	-- use	'nvim-java/lua-async-await'
 	-- use 'MunifTanjim/nui.nvim'
-	use 'bullets-vim/bullets.vim'
+	-- use 'bullets-vim/bullets.vim'
+	use {
+		'gaoDean/autolist.nvim',
+		ft = "markdown",
+		config = function()
+			require("autolist").setup()
+			vim.keymap.set("i", "<tab>", "<cmd>AutolistTab<cr>")
+			vim.keymap.set("i", "<s-tab>", "<cmd>AutolistShiftTab<cr>")
+			-- vim.keymap.set("i", "<c-t>", "<c-t><cmd>AutolistRecalculate<cr>") -- an example of using <c-t> to indent
+			vim.keymap.set("i", "<CR>", "<CR><cmd>AutolistNewBullet<cr>")
+			vim.keymap.set("n", "o", "o<cmd>AutolistNewBullet<cr>")
+			vim.keymap.set("n", "O", "O<cmd>AutolistNewBulletBefore<cr>")
+			vim.keymap.set("n", "<CR>", "<cmd>AutolistToggleCheckbox<cr><CR>")
+			vim.keymap.set("n", "<C-r>", "<cmd>AutolistRecalculate<cr>")
+
+			-- cycle list types with dot-repeat
+			vim.keymap.set("n", "<leader>cn", require("autolist").cycle_next_dr, { expr = true })
+			vim.keymap.set("n", "<leader>cp", require("autolist").cycle_prev_dr, { expr = true })
+
+			-- if you don't want dot-repeat
+			-- vim.keymap.set("n", "<leader>cn", "<cmd>AutolistCycleNext<cr>")
+			-- vim.keymap.set("n", "<leader>cp", "<cmd>AutolistCycleNext<cr>")
+
+			-- functions to recalculate list on edit
+			vim.keymap.set("n", ">>", ">><cmd>AutolistRecalculate<cr>")
+			vim.keymap.set("n", "<<", "<<<cmd>AutolistRecalculate<cr>")
+			vim.keymap.set("n", "dd", "dd<cmd>AutolistRecalculate<cr>")
+			vim.keymap.set("v", "d", "d<cmd>AutolistRecalculate<cr>")
+		end
+	}
+
+	use {
+		"nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	}
+
+	use {
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-neotest/neotest-python",
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter"
+		}
+	}
 end)

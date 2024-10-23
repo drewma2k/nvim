@@ -45,7 +45,7 @@ local on_attach = function(client, bufnr)
 
 	-- enable trouble maps if trouble is installed
 	if trouble then
-		map("n", "gr", "<cmd>Trouble lsp_references<cr>", bufopts)
+		map("n", "gr", "<cmd>Trouble lsp_references auto_refresh=false follow=false<cr>", bufopts)
 		map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
 		map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
 		map("n", "q[", function()
@@ -98,8 +98,8 @@ local config = {
 		'-Xmx1g',
 		'-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
 		'-jar',
-		'/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
-		'-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
+		'/opt/homebrew/Cellar/jdtls/1.40.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+		'-configuration', '/opt/homebrew/Cellar/jdtls/1.40.0/libexec/config_mac_arm',
 		'-data', '/Users/yde639/workspace/' .. project_name
 	},
 

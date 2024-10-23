@@ -8,10 +8,7 @@ if not ok then
 	return
 end
 
-local ok, dapui = pcall(require, 'dapui')
-if not ok then
-	return
-end
+local dapui = require('dapui')
 
 dapui.setup()
 dap.listeners.after.event_initialized["dapui_config"] = function()

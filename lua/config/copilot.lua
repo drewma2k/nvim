@@ -8,6 +8,8 @@ if not ok then
   return
 end
 
+vim.g.copilot_proxy = "http://entproxy.kdc.capitalone.com:8099"
+
 copilot.setup({
   panel = {
     enabled = true,
@@ -27,11 +29,11 @@ copilot.setup({
   suggestion = {
     enabled = true,
     auto_trigger = true,
-    debounce = 75,
+    debounce = 0,
     keymap = {
-      accept = "<C-l>",
-      accept_word = false,
-      accept_line = false,
+      accept = "<C-;>",
+      accept_word = "<C-l>",
+      -- accept_line = "<C-;>",
       next = "<M-]>",
       prev = "<M-[>",
       dismiss = "<C-]>",

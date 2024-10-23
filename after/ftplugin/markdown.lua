@@ -19,3 +19,7 @@ vim.keymap.set("n", "<C-c>", function()
 	require('toggle-checkbox').toggle()
 end
 )
+
+-- vim.keymap.set("i", "<TAB>", "<Plug>(bullets-demote)")
+-- vim.keymap.set("i", "<S-TAB>", "<Plug>(bullets-promote)")
+-- vim.g.bullets_outline_levels = {}

@@ -167,7 +167,7 @@ map("v", ">", ">gv", { desc = "indent line" })
 -- map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
 
 -- trouble.nvim
-map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",
+map("n", "<leader>xx", "<cmd>Trouble toggle<cr>",
   {silent = true, noremap = true}
 )
 map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics toggle<cr>",
@@ -183,9 +183,12 @@ map("n", "<leader>xq", "<cmd>Trouble quickfix toggle <cr>",
   {silent = true, noremap = true}
 )
 
+map("n", "<leader>xr", "<cmd>Trouble lsp_references toggle <cr>",
+  {silent = true, noremap = true}
+)
 -- open file under cursor with system default
 map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")
 
 -- toggle folds with tab
 -- collides with <C-i> because of terminal jank but may be possible
--- map("n", "<Tab>", "za")
+map("n", "<Tab>", "za")

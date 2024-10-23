@@ -20,9 +20,9 @@ local winhighlight = {
 
 cmp.setup({
 	performance = {
-		debounce = 500,
-		throttle = 80,
-		fetching_timeout = 80
+		debounce = 0,
+		throttle = 0,
+		-- fetching_timeout = 80
 	},
 	formatting = {
 		format = lspkind.cmp_format({

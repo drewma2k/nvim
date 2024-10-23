@@ -154,24 +154,24 @@ local override_servers = {
 		cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug' },
 		-- root_dir = require('lspconfig.util').root_pattern '',
 	},
-	pylsp = {
-	-- 	cmd = { '/usr/local/bin/pylsp'}
-		settings = {
-			pylsp = {
-				plugins = {
-					pycodestyle = {
-						enabled = false
-					},
-					black = {
-						enabled = true
-					},
-					pylint = {
-						enabled = true
-					}
-				}
-			}
-		}
-	},
+	-- pylsp = {
+	-- 	cmd = { '/opt/homebrew/bin/pylsp'},
+	-- 	settings = {
+	-- 		pylsp = {
+	-- 			plugins = {
+	-- 				pycodestyle = {
+	-- 					enabled = false
+	-- 				},
+	-- 				black = {
+	-- 					enabled = true
+	-- 				},
+	-- 				pylint = {
+	-- 					enabled = true
+	-- 				}
+	-- 			}
+	-- 		}
+	-- 	}
+	-- },
 	-- jdtls = {
 	-- 	cmd = {
  --    'java',
