@@ -1,153 +1,215 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-		vim.cmd [[packadd packer.nvim]]
-		return true
-	end
-	return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
+return {
 	-- plugin manager
-	use 'wbthomason/packer.nvim'
+	{
+		'wbthomason/packer.nvim'
+	},
 
 	-- lazy loading plugins
-	use 'lewis6991/impatient.nvim'
+	{
+		'lewis6991/impatient.nvim'
+	},
 
 	-- lua library
-	use 'nvim-lua/plenary.nvim'
+	{
+		'nvim-lua/plenary.nvim'
+	},
 
 	-- keymap popup
-	use 'folke/which-key.nvim'
+	{
+		'folke/which-key.nvim'
+	},
 
 	-- sql helper
-	use 'tpope/vim-dadbod'
-	use 'kristijanhusak/vim-dadbod-ui'
+	{
+		'tpope/vim-dadbod'
+	},
+	{
+		'kristijanhusak/vim-dadbod-ui'
+	},
 
 	-- completion types / sources
-	use "onsails/lspkind.nvim"
+	{
+		"onsails/lspkind.nvim"
+	},
 
 	-- go specific commands
 	-- use 'fatih/vim-go'
 
 	-- colorschemes
-	use { "ellisonleao/gruvbox.nvim" }
-	use 'rebelot/kanagawa.nvim'
+	{
+		"ellisonleao/gruvbox.nvim"
+	},
+	{
+		'rebelot/kanagawa.nvim'
+	},
 	-- use 'drewma2k/nvim-base16'
-	use 'EdenEast/nightfox.nvim'
-	use 'bluz71/vim-moonfly-colors'
+	{
+		'EdenEast/nightfox.nvim'
+	},
+	{
+		'bluz71/vim-moonfly-colors'
+	},
 	-- use 'RRethy/nvim-base16'
 	-- use 'altercation/vim-colors-solarized'
 	-- use 'tjdevries/colorbuddy.nvim'
 	-- use { 'svrana/neosolarized.nvim' }
 	-- use 'ishan9299/nvim-solarized-lua'
-	use 'folke/tokyonight.nvim'
-	use { "catppuccin/nvim", as = "catppuccin" }
-	use 'navarasu/onedark.nvim'
-	use {
+	{
+		'folke/tokyonight.nvim'
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin"
+	},
+	{
+		'navarasu/onedark.nvim'
+	},
+	{
 		'zenbones-theme/zenbones.nvim',
-		requires = "rktjmp/lush.nvim"
-	}
+		dependencies = "rktjmp/lush.nvim"
+	},
 	-- use 'sainnhe/everforest'
 
 
 	-- tree
-	use {
+	{
 		'kyazdani42/nvim-tree.lua',
-		requires = {
+		dependencies = {
 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
 		},
 		-- tag = 'nightly'            -- optional, updated every week. (see issue #1193)
-	}
+	},
 
 	-- better tabline
-	use 'mkitt/tabline.vim'
+	{
+		'mkitt/tabline.vim'
+	},
 
 	-- comment shortcut
-	use 'numToStr/Comment.nvim'
+	{
+		'numToStr/Comment.nvim'
+	},
 
 	-- statusline
-	use {
+	{
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-	}
+		dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
+	},
 
 	-- official lsp configurations
-	use 'neovim/nvim-lspconfig'
+	{
+		'neovim/nvim-lspconfig'
+	},
 
 	-- better syntax highlighting
-	use { 'nvim-treesitter/nvim-treesitter',
+	{ 'nvim-treesitter/nvim-treesitter',
 		-- tag = "v0.9.0",
-		run = function()
+		build = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
 		end,
-	}
+	},
 
 	-- completion engine
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/nvim-cmp'
-	use 'hrsh7th/cmp-nvim-lua'
-	use 'hrsh7th/cmp-nvim-lsp-signature-help'
-	use 'kristijanhusak/vim-dadbod-completion'
+	{
+		'hrsh7th/cmp-nvim-lsp'
+	},
+	{
+		'hrsh7th/cmp-buffer'
+	},
+	{
+		'hrsh7th/cmp-path'
+	},
+	{
+		'hrsh7th/cmp-cmdline'
+	},
+	{
+		'hrsh7th/nvim-cmp'
+	},
+	{
+		'hrsh7th/cmp-nvim-lua'
+	},
+	{
+		'hrsh7th/cmp-nvim-lsp-signature-help'
+	},
+	{
+		'kristijanhusak/vim-dadbod-completion'
+	},
 
-	use 'L3MON4D3/LuaSnip'
-	use 'saadparwaiz1/cmp_luasnip'
+	{
+		'L3MON4D3/LuaSnip'
+	},
+	{
+		'saadparwaiz1/cmp_luasnip'
+	},
 
 	-- dashboard
-	use 'goolord/alpha-nvim'
+	{
+		'goolord/alpha-nvim'
+	},
 
 	-- popup search menu
-	use {
+	{
 		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/plenary.nvim' } },
+		dependencies = { { 'nvim-lua/plenary.nvim' } },
 		-- commit = "05f4d6f0a9ec1aa35816c34c52b6f8578511b434"
 		version = "0.1.8"
-	}
+	},
 	-- use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- snippets
-	use 'honza/vim-snippets'
+	{
+		'honza/vim-snippets'
+	},
 
 	-- auto close (, [, etc
-	use 'windwp/nvim-autopairs'
+	{
+		'windwp/nvim-autopairs'
+	},
 
 	-- git wrapper
-	use 'tpope/vim-fugitive'
+	{
+		'tpope/vim-fugitive'
+	},
 
-	use "smjonas/live-command.nvim"
+	{
+		"smjonas/live-command.nvim"
+	},
 
-	use 'williamboman/mason.nvim'
-	use 'williamboman/mason-lspconfig'
+	{
+		'williamboman/mason.nvim'
+	},
+	{
+		'williamboman/mason-lspconfig'
+	},
 
-	use 'stevearc/dressing.nvim'
+	{
+		'stevearc/dressing.nvim'
+	},
 
 	-- use { 'kosayoda/nvim-lightbulb',
 	-- 	requires = 'antoinemadec/FixCursorHold.nvim'
 	-- }
 
 	-- use a branch while the deprecated fix is not merged
-	use { 'lvim-tech/nvim-lightbulb',
-		requires = 'antoinemadec/FixCursorHold.nvim'
-	}
+	{ 'lvim-tech/nvim-lightbulb',
+		dependencies = 'antoinemadec/FixCursorHold.nvim'
+	},
 
-	use {
+	{
 		'mfussenegger/nvim-dap',
-		requires = "nvim-neotest/nvim-nio"
-	}
-	use 'rcarriga/nvim-dap-ui'
-	use 'leoluz/nvim-dap-go'
+		dependencies = "nvim-neotest/nvim-nio"
+	},
+	{
+		'rcarriga/nvim-dap-ui'
+	},
+	{
+		'leoluz/nvim-dap-go'
+	},
 
-	use {
+	{
 		'sindrets/diffview.nvim',
-		requires = 'nvim-lua/plenary.nvim',
+		dependencies = 'nvim-lua/plenary.nvim',
 		config = function()
 			local ok, diffview = pcall(require, "diffview")
 			if not ok then
@@ -161,31 +223,34 @@ return require('packer').startup(function(use)
 				}
 			})
 		end
-	}
+	},
 
-	use { 'lewis6991/gitsigns.nvim' }
+	{ 'lewis6991/gitsigns.nvim' },
 
 	-- better quickfix
-	use {
+	{
 		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons"
-	}
+		dependencies = "nvim-tree/nvim-web-devicons"
+	},
 
-	use { "jose-elias-alvarez/null-ls.nvim" }
+	{
+		"jose-elias-alvarez/null-ls.nvim"
+	},
 
 	-- use { 'jalvesaq/Nvim-R' }
 
 	-- mini library
-	use 'echasnovski/mini.nvim'
+	{
+		'echasnovski/mini.nvim'
+	},
 
-	use 'luukvbaal/statuscol.nvim'
+	{
+		'luukvbaal/statuscol.nvim'
+	},
 
-	-- automatic installation of packer
-	if packer_bootstrap then
-		require('packer').sync()
-	end
-
-	use "lukas-reineke/indent-blankline.nvim"
+	{
+		"lukas-reineke/indent-blankline.nvim"
+	},
 
 	-- use {
 	-- 	'pwntester/octo.nvim',
@@ -199,7 +264,9 @@ return require('packer').startup(function(use)
 	-- 	end
 	-- }
 
-	use "christoomey/vim-tmux-navigator"
+	{
+		"christoomey/vim-tmux-navigator"
+	},
 
 	-- use "chentoast/marks.nvim"
 
@@ -210,22 +277,26 @@ return require('packer').startup(function(use)
 	-- 	end
 	-- }
 
-	use { 'sheerun/vim-polyglot' }
-	use 'martinda/Jenkinsfile-vim-syntax'
+	{
+		'sheerun/vim-polyglot'
+	},
+	{
+		'martinda/Jenkinsfile-vim-syntax'
+	},
 
-	use {
+	{
 		-- "zbirenbaum/copilot.lua",
 		-- using fork, because auto_trigger without input is broken
 		"jsongerber/copilot.lua"
-	}
+	},
 
-	use {
+	{
 		'CopilotC-Nvim/CopilotChat.nvim',
-		requires = {
+		dependencies = {
 			"zbirenbaum/copilot.lua",
 			"nvim-lua/plenary.nvim"
 		},
-	}
+	},
 
 	-- use {
 	-- 	"zbirenbaum/copilot-cmp",
@@ -236,9 +307,13 @@ return require('packer').startup(function(use)
 	-- use 'godlygeek/tabular'
 	-- use 'preservim/vim-markdown'
 
-	use "hedyhli/outline.nvim"
+	{
+		"hedyhli/outline.nvim"
+	},
 
-	use "mfussenegger/nvim-jdtls"
+	{
+		"mfussenegger/nvim-jdtls"
+	},
 
 	-- use({
 	-- 	'MeanderingProgrammer/markdown.nvim',
@@ -252,18 +327,22 @@ return require('packer').startup(function(use)
 	-- 	end,
 	-- })
 
-	use {
+	{
 		"OXY2DEV/markview.nvim",
-		requires = {
+		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons"
 		}
-	}
+	},
 	--
 
-	use 'opdavies/toggle-checkbox.nvim'
+	{
+		'opdavies/toggle-checkbox.nvim'
+	},
 
-	use 'dhruvasagar/vim-table-mode'
+	{
+		'dhruvasagar/vim-table-mode'
+	},
 
 	-- use {
 	-- 	'nvim-java/nvim-java',
@@ -287,7 +366,7 @@ return require('packer').startup(function(use)
 	-- use	'nvim-java/lua-async-await'
 	-- use 'MunifTanjim/nui.nvim'
 	-- use 'bullets-vim/bullets.vim'
-	use {
+	{
 		'gaoDean/autolist.nvim',
 		ft = "markdown",
 		config = function()
@@ -315,24 +394,28 @@ return require('packer').startup(function(use)
 			vim.keymap.set("n", "dd", "dd<cmd>AutolistRecalculate<cr>")
 			vim.keymap.set("v", "d", "d<cmd>AutolistRecalculate<cr>")
 		end
-	}
+	},
 
-	use {
+	{
 		"nvim-telescope/telescope-file-browser.nvim",
-		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-	}
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	},
 
-	use {
+	{
 		"nvim-neotest/neotest",
-		requires = {
+		dependencies = {
 			"nvim-neotest/neotest-python",
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter"
 		}
-	}
+	},
 
-	use "nvchad/volt"
-	use "nvchad/menu"
-end)
+	{
+		"nvchad/volt"
+	},
+	{
+		"nvchad/menu"
+	},
+}

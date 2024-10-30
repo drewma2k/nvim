@@ -1,14 +1,14 @@
 -- load modular configs
--- require('config.colorscheme.zenburned')
--- vim.cmd[[colorscheme onedark]]
+require('config.settings')
+require("config.lazy")
+
 vim.cmd[[set bg=dark]]
 vim.cmd[[colorscheme onedark]]
+
 require('config.key-mapping')
-require('config.plugins')
-require('config.settings')
 
 
--- setup plugins
+-- -- setup plugins
 require('config.copilot')
 require('config.impatient')
 require('config.which-key')
