@@ -183,7 +183,7 @@ map("n", "<leader>xq", "<cmd>Trouble quickfix toggle <cr>",
   {silent = true, noremap = true}
 )
 
-map("n", "<leader>xr", "<cmd>Trouble lsp_references toggle <cr>",
+map("n", "<leader>xr", "<cmd>Trouble lsp_references toggle auto_refresh=false<cr>",
   {silent = true, noremap = true}
 )
 -- open file under cursor with system default
@@ -192,3 +192,12 @@ map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")
 -- toggle folds with tab
 -- collides with <C-i> because of terminal jank but may be possible
 map("n", "<Tab>", "za")
+
+-- center after going to next search result
+map("n", "n", "nzzzv")
+
+-- DiffView
+map("n", "<leader>dvo", "<cmd>DiffviewOpen main<cr>", { desc = "Open DiffView" })
+map("n", "<leader>dvc", "<cmd>DiffviewClose<cr>", { desc = "Close DiffView" })
+map("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { desc = "DiffView File History" })
+

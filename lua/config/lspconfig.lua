@@ -95,7 +95,7 @@ local on_attach = function(client, bufnr)
 
 	-- enable trouble maps if trouble is installed
 	if trouble then
-		map("n", "gr", "<cmd>Trouble lsp_references<cr>", bufopts)
+		map("n", "gr", "<cmd>Trouble lsp_references auto_refresh=false<cr>", bufopts)
 		map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
 		map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
 		map("n", "q[", function()

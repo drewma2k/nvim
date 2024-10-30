@@ -7,9 +7,6 @@ vim.o.hlsearch = false
 --Make line numbers default
 vim.wo.number = true
 
---Enable mouse mode
-vim.o.mouse = 'a'
-
 --Enable break indent
 vim.o.breakindent = true
 
@@ -37,7 +34,7 @@ vim.opt.showmode = false
 vim.opt.autoindent = true
 
 -- disable mouse
--- vim.opt.mouse = ''
+vim.opt.mouse = ''
 
 -- match uppercase in search
 vim.opt.smartcase = true
@@ -96,3 +93,5 @@ vim.opt.splitbelow = true
 -- disable for markdown because indent is broken
 -- :Format conflicts for java
 vim.g.polyglot_disabled = {'markdown', 'java'}
+
+vim.g.table_mode_syntax = 0

@@ -214,9 +214,9 @@ return require('packer').startup(function(use)
 	use 'martinda/Jenkinsfile-vim-syntax'
 
 	use {
-		"zbirenbaum/copilot.lua",
-		-- cmd = "Copilot",
-		-- -- event = "InsertEnter",
+		-- "zbirenbaum/copilot.lua",
+		-- using fork, because auto_trigger without input is broken
+		"jsongerber/copilot.lua"
 	}
 
 	use {
@@ -227,10 +227,10 @@ return require('packer').startup(function(use)
 		},
 	}
 
-	use {
-		"zbirenbaum/copilot-cmp",
-		-- after = { "copilot.lua" },
-	}
+	-- use {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	-- after = { "copilot.lua" },
+	-- }
 
 	-- use 'ixru/nvim-markdown'
 	-- use 'godlygeek/tabular'
