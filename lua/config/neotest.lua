@@ -5,5 +5,10 @@ end
 neotest.setup({
   adapters = {
     require("neotest-python")
-  }
+  },
+	{
+		output = {
+			open_on_run = true
+		}
+	}
 })

@@ -7,4 +7,6 @@ if not ok then
 	return 
 end
 
+dashboard.section.header.val = require('ascii').art.planets.planets.saturn
+
 alpha.setup(dashboard.opts)

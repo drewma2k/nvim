@@ -1,13 +1,4 @@
 return {
-	-- plugin manager
-	{
-		'wbthomason/packer.nvim'
-	},
-
-	-- lazy loading plugins
-	{
-		'lewis6991/impatient.nvim'
-	},
 
 	-- lua library
 	{
@@ -102,12 +93,20 @@ return {
 	},
 
 	-- better syntax highlighting
-	{ 'nvim-treesitter/nvim-treesitter',
-		-- tag = "v0.9.0",
-		build = function()
-			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-			ts_update()
-		end,
+	{
+		'nvim-treesitter/nvim-treesitter',
+		-- version = "v0.9.0",
+		build = ":TSUpdate",
+		config = function()
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "python" },
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end
 	},
 
 	-- completion engine
@@ -177,7 +176,19 @@ return {
 	},
 
 	{
-		'williamboman/mason.nvim'
+		'williamboman/mason.nvim',
+		-- opts = {
+		-- 	PATH = 'append',
+		-- 	providers = {
+		-- 		"mason.providers.registry-api",
+		-- 		"mason.providers.client",
+		-- 	},
+		-- 	registries = {
+		-- 		'github:mason-org/mason-registry',
+		-- 	},
+		-- 	log_level = vim.log.levels.DEBUG,
+		-- }
+
 	},
 	{
 		'williamboman/mason-lspconfig'
@@ -192,7 +203,8 @@ return {
 	-- }
 
 	-- use a branch while the deprecated fix is not merged
-	{ 'lvim-tech/nvim-lightbulb',
+	{
+		'lvim-tech/nvim-lightbulb',
 		dependencies = 'antoinemadec/FixCursorHold.nvim'
 	},
 
@@ -293,7 +305,7 @@ return {
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
 		dependencies = {
-			"zbirenbaum/copilot.lua",
+			"jsongerber/copilot.lua",
 			"nvim-lua/plenary.nvim"
 		},
 	},
@@ -311,9 +323,9 @@ return {
 		"hedyhli/outline.nvim"
 	},
 
-	{
-		"mfussenegger/nvim-jdtls"
-	},
+	-- {
+	-- 	"mfussenegger/nvim-jdtls"
+	-- },
 
 	-- use({
 	-- 	'MeanderingProgrammer/markdown.nvim',
@@ -342,6 +354,10 @@ return {
 
 	{
 		'dhruvasagar/vim-table-mode'
+	},
+
+	{
+		'nvim-java/nvim-java'
 	},
 
 	-- use {
@@ -409,13 +425,30 @@ return {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter"
-		}
+		},
+		config = function()
+			require('neotest').setup({
+				adapters = {
+					require("neotest-python")
+				},
+				output = {
+					enabled = true,
+					open_on_run = true
+				}
+			})
+		end
+	},
+	{
+		"MaximilianLloyd/ascii.nvim",
+		dependencies = "MunifTanjim/nui.nvim"
 	},
 
-	{
-		"nvchad/volt"
-	},
-	{
-		"nvchad/menu"
-	},
+	-- { "nvim-java/nvim-java" }
+
+	-- {
+	-- 	"nvchad/volt"
+	-- },
+	-- {
+	-- 	"nvchad/menu"
+	-- },
 }

@@ -1,13 +1,3 @@
--- local ok, null_ls = pcall(require, 'null-ls')
--- if not ok then
--- 	return
--- end
-
--- local ok, dict = pcall(require, 'config.dictionary')
--- if not ok then
--- 	return
--- end
-
 local ok, cmp = pcall(require, 'cmp_nvim_lsp')
 if not ok then
 	return
@@ -35,6 +25,15 @@ end
 
 local map = vim.keymap.set
 
+mason.setup()
+require('java').setup({
+	spring_boot_tools = {
+		enable = false
+	},
+	jdk = {
+		auto_install = false
+	}
+})
 -- local border = {
 --   { " ", "NormalFloat" },
 --   { " ", "NormalFloat" },
@@ -196,20 +195,6 @@ local options = {
 	capabilities = capabilities,
 }
 
--- Setup Language servers
-mason.setup({
-	PATH = 'append',
-	providers = {
-		"mason.providers.registry-api",
-		"mason.providers.client",
-	},
-	registries = {
-	'github:mason-org/mason-registry',
-	},
-	log_level = vim.log.levels.DEBUG,
-})
-
-
 mason_lspconfig.setup({
 	automatic_installation = true,
 })
@@ -220,10 +205,3 @@ mason_lspconfig.setup_handlers {
 		lspconfig[server_name].setup(opts)
 	end,
 }
-
-
-
--- null_ls.setup({
--- 	sources = { dict },
--- 	on_attach = on_attach
--- })
