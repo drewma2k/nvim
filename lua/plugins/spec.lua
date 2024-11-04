@@ -40,11 +40,6 @@ return {
 	{
 		'bluz71/vim-moonfly-colors'
 	},
-	-- use 'RRethy/nvim-base16'
-	-- use 'altercation/vim-colors-solarized'
-	-- use 'tjdevries/colorbuddy.nvim'
-	-- use { 'svrana/neosolarized.nvim' }
-	-- use 'ishan9299/nvim-solarized-lua'
 	{
 		'folke/tokyonight.nvim'
 	},
@@ -59,8 +54,6 @@ return {
 		'zenbones-theme/zenbones.nvim',
 		dependencies = "rktjmp/lush.nvim"
 	},
-	-- use 'sainnhe/everforest'
-
 
 	-- tree
 	{
@@ -360,28 +353,6 @@ return {
 		'nvim-java/nvim-java'
 	},
 
-	-- use {
-	-- 	'nvim-java/nvim-java',
-	-- 	requires = {
-	-- 		'nvim-java/nvim-java-refactor',
-	-- 		'nvim-java/nvim-java-core',
-	-- 		'nvim-java/nvim-java-test',
-	-- 		'nvim-java/nvim-java-dap',
-	-- 		'JavaHello/spring-boot.nvim',
-	-- 		'nvim-java/lua-async-await',
-	-- 		'MunifTanjim/nui.nvim',
-	--
-	-- 	}
-	-- }
-	--    use 'nvim-java/nvim-java-refactor'
-	--    use 'nvim-java/nvim-java-core'
-	--    use 'nvim-java/nvim-java-test'
-	--    use 'nvim-java/nvim-java-dap'
-	--    -- use 'nvim-java/nvim-java'
-	--    use 'JavaHello/spring-boot.nvim'
-	-- use	'nvim-java/lua-async-await'
-	-- use 'MunifTanjim/nui.nvim'
-	-- use 'bullets-vim/bullets.vim'
 	{
 		'gaoDean/autolist.nvim',
 		ft = "markdown",
@@ -442,13 +413,4 @@ return {
 		"MaximilianLloyd/ascii.nvim",
 		dependencies = "MunifTanjim/nui.nvim"
 	},
-
-	-- { "nvim-java/nvim-java" }
-
-	-- {
-	-- 	"nvchad/volt"
-	-- },
-	-- {
-	-- 	"nvchad/menu"
-	-- },
 }
