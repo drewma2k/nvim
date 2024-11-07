@@ -13,10 +13,16 @@ if not ok then
 	return
 end
 
+local ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+if not ok then
+	return
+end
+
 -- for moonfly colorscheme
 local winhighlight = {
   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 }
+
 
 cmp.setup({
 	performance = {
@@ -87,6 +93,9 @@ cmp.setup({
 
 			if cmp.visible() then
 				cmp.select_next_item()
+			elseif luasnip.jumpable() then
+				luasnip.jump(1)
+			-- don't autocomplete if the cursor is at the end of the line or if the character before the cursor is a space
 			elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
 				fallback()
 			else
@@ -168,6 +177,10 @@ cmp.setup.cmdline(':', {
 	})
 })
 
+cmp.event:on(
+	'confirm_done',
+	cmp_autopairs.on_confirm_done()
+)
 -- create command for disabling autocomplete
 vim.api.nvim_create_user_command("CmpDisable", function() require('cmp').setup.buffer { enabled = false } end, {})
 vim.api.nvim_create_user_command("CmpEnable", function() require('cmp').setup.buffer { enabled = true } end, {})

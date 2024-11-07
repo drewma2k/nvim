@@ -53,10 +53,10 @@ require('java').setup({
 --   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 -- end
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    -- Use a sharp border with `FloatBorder` highlights
-    border = "rounded"
-  }
+	vim.lsp.handlers.hover, {
+		-- Use a sharp border with `FloatBorder` highlights
+		border = "rounded"
+	}
 )
 
 -- disable virtual text
@@ -128,6 +128,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = vim.tbl_deep_extend(
 	'force',
 	capabilities,
+	-- require('blink.cmp').get_lsp_capabilities()
 	cmp.default_capabilities()
 )
 -- override individual language server options with a file that
@@ -171,19 +172,38 @@ local override_servers = {
 	-- 		}
 	-- 	}
 	-- },
-	-- jdtls = {
+	jdtls = {
+		settings = {
+			java = {
+				format = {
+					enabled = true,
+					settings = {
+						url =
+						"https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+						profile = "GoogleStyle"
+					}
+				},
+				configuration = {
+					maven = {
+						-- globalSettings = '/Users/yde639/.m2/settings.xml'
+					}
+				}
+			}
+		},
+	},
+
 	-- 	cmd = {
- --    'java',
- --    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
- --    '-Dosgi.bundles.defaultStartLevel=4',
- --    '-Declipse.product=org.eclipse.jdt.ls.core.product',
- --    '-Dlog.protocol=true',
- --    '-Dlog.level=ALL',
- --    '-Xmx1g',
- --    '-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
- --    '-jar', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
- --    '-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
- --    '-data', '/Users/yde639/workspace/' .. project_name
+	--    'java',
+	--    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+	--    '-Dosgi.bundles.defaultStartLevel=4',
+	--    '-Declipse.product=org.eclipse.jdt.ls.core.product',
+	--    '-Dlog.protocol=true',
+	--    '-Dlog.level=ALL',
+	--    '-Xmx1g',
+	--    '-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
+	--    '-jar', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
+	--    '-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
+	--    '-data', '/Users/yde639/workspace/' .. project_name
 	--   }
 	-- }
 }
