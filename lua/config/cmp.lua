@@ -13,16 +13,10 @@ if not ok then
 	return
 end
 
-local ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
-if not ok then
-	return
-end
-
 -- for moonfly colorscheme
 local winhighlight = {
   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel",
 }
-
 
 cmp.setup({
 	performance = {
@@ -177,10 +171,6 @@ cmp.setup.cmdline(':', {
 	})
 })
 
-cmp.event:on(
-	'confirm_done',
-	cmp_autopairs.on_confirm_done()
-)
 -- create command for disabling autocomplete
 vim.api.nvim_create_user_command("CmpDisable", function() require('cmp').setup.buffer { enabled = false } end, {})
 vim.api.nvim_create_user_command("CmpEnable", function() require('cmp').setup.buffer { enabled = true } end, {})
