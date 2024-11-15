@@ -38,4 +38,6 @@ require('config.outline')
 require('config.marks')
 -- require('config.neotest')
 require('config.markview')
+-- vim.cmd[[let &t_TI = "\<Esc>[>4;2m"]]
+-- vim.cmd[[let &t_TE = "\<Esc>[>4;m"]]
 -- vim: ts=2 sts=2 sw=2 et

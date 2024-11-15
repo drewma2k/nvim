@@ -5,6 +5,10 @@ end
 neotest.setup({
   adapters = {
     require("neotest-python")
+		-- 	({
+		-- 	python = "/Users/yde639/.venv/bin/python",
+		-- 	runner = "/Users/yde639/.venv/bin/pytest"
+		-- })
   },
 	{
 		output = {

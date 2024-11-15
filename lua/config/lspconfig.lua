@@ -77,6 +77,7 @@ local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	map('n', 'gD', vim.lsp.buf.declaration, bufopts)
 	map('n', 'gd', vim.lsp.buf.definition, bufopts)
+	-- map('n', 'K', "<cmd>Lspsaga hover_doc<CR>", bufopts)
 	map('n', 'K', vim.lsp.buf.hover, bufopts)
 	map('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	-- covered by cmp
@@ -124,7 +125,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = lspconfig.util.default_config.capabilities
 capabilities = vim.tbl_deep_extend(
 	'force',
 	capabilities,
@@ -154,24 +155,27 @@ local override_servers = {
 		cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug' },
 		-- root_dir = require('lspconfig.util').root_pattern '',
 	},
-	-- pylsp = {
-	-- 	cmd = { '/opt/homebrew/bin/pylsp'},
-	-- 	settings = {
-	-- 		pylsp = {
-	-- 			plugins = {
-	-- 				pycodestyle = {
-	-- 					enabled = false
-	-- 				},
-	-- 				black = {
-	-- 					enabled = true
-	-- 				},
-	-- 				pylint = {
-	-- 					enabled = true
-	-- 				}
-	-- 			}
-	-- 		}
-	-- 	}
-	-- },
+	pylsp = {
+		-- cmd = { '/Users/yde639/.venv/bin/pylsp' },
+		settings = {
+			pylsp = {
+				plugins = {
+					pycodestyle = {
+						enabled = false
+					},
+					black = {
+						enabled = true
+					},
+					pylint = {
+						enabled = false
+					},
+					jedi_hover = {
+						enabled = true
+					}
+				}
+			}
+		}
+	},
 	jdtls = {
 		settings = {
 			java = {

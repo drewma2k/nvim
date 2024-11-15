@@ -192,6 +192,7 @@ map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")
 -- toggle folds with tab
 -- collides with <C-i> because of terminal jank but may be possible
 map("n", "<Tab>", "za")
+map("n", "<C-i>", "<C-i>")
 
 -- center after going to next search result
 map("n", "n", "nzzzv")

@@ -112,7 +112,7 @@ cmp.setup({
 		{ name = 'vim-dadbod-completion' },
 		-- { name = 'ultisnips' }, -- For ultisnips users.
 		{ name = 'path' },
-		{ name = 'nvim_lsp_signature_help' }
+		-- { name = 'nvim_lsp_signature_help' }
 	}, {
 		{ name = 'buffer' },
 	})

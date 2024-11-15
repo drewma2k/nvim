@@ -59,3 +59,11 @@ directly in `lua/config/lspconfig.lua`
 - Be colorscheme agnostic
 - Easy to install
 - Perfect in every way
+
+## Troubleshooting
+- CSI-u was very difficult to enable, here is how I did it for the record:
+- both TAB and C-I must be mapped as per `:h CTRL-I`
+- iterm must be configured to send CSI-u
+- iterm must be configured with "Apps can change how keys are reported"
+  - otherwise, escape was not working in insert mode and sending literal "u27"
+- tmux must have `set -s extended-keys on`
