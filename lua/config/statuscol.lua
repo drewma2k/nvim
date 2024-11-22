@@ -13,16 +13,16 @@ statuscol.setup({
 		'NvimTree', 'help', 'alpha', 'Trouble', 'mason', 'Outline'
 	},
 	segments = {
-		{
-			sign = {
-				name = { 'Marks_*' },
-				maxwidth = 1,
-				colwidth = 1,
-				auto = false
-			},
-			click = 'v:lua.ScSa'
-		},
-		{ text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+		-- {
+		-- 	sign = {
+		-- 		name = { 'Marks_*' },
+		-- 		maxwidth = 1,
+		-- 		colwidth = 1,
+		-- 		auto = false
+		-- 	},
+		-- 	click = 'v:lua.ScSa'
+		-- },
+		-- { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
 		{
 			CLICK = "v:lua.ScSa",
 			sign = {

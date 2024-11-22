@@ -25,6 +25,7 @@ end
 
 local map = vim.keymap.set
 
+-- required for nvim-java
 mason.setup()
 require('java').setup({
 	spring_boot_tools = {
@@ -34,30 +35,6 @@ require('java').setup({
 		auto_install = false
 	}
 })
--- local border = {
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
---   { " ", "NormalFloat" },
--- }
---
---
--- local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
--- function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
---   opts = opts or {}
---   opts.border = opts.border or border
---   return orig_util_open_floating_preview(contents, syntax, opts, ...)
--- end
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-	vim.lsp.handlers.hover, {
-		-- Use a sharp border with `FloatBorder` highlights
-		border = "rounded"
-	}
-)
 
 -- disable virtual text
 vim.diagnostic.config({
@@ -87,7 +64,7 @@ local on_attach = function(client, bufnr)
 	map('n', '<leader>wl', function()
 		vim.inspect(vim.lsp.buf.list_workspace_folders())
 	end, bufopts)
-	map('n', '<leader>D', vim.lsp.buf.type_definition, bufopts, { desc = "LSP Type Definition" })
+	map('n', '<leader>D', vim.lsp.buf.type_definition, { desc = "LSP Type Definition" })
 	map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 	map('n', 'gr', vim.lsp.buf.references, bufopts)
 	map('n', '<leader>cc', vim.lsp.buf.code_action, bufopts)
@@ -121,11 +98,18 @@ local on_attach = function(client, bufnr)
 			vim.diagnostic.open_float(nil, opts)
 		end
 	})
+	-- disable LSP highlighting, because it is worse than treesitter
 	client.server_capabilities.semanticTokensProvider = nil
 end
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = lspconfig.util.default_config.capabilities
+
+-- ufo.nvim - tell server that client accepts folding ranges
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 capabilities = vim.tbl_deep_extend(
 	'force',
 	capabilities,
@@ -196,22 +180,7 @@ local override_servers = {
 		},
 	},
 
-	-- 	cmd = {
-	--    'java',
-	--    '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-	--    '-Dosgi.bundles.defaultStartLevel=4',
-	--    '-Declipse.product=org.eclipse.jdt.ls.core.product',
-	--    '-Dlog.protocol=true',
-	--    '-Dlog.level=ALL',
-	--    '-Xmx1g',
-	--    '-javaagent:/Users/yde639/.config/nvim/dependencies/lombok-edge.jar',
-	--    '-jar', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar',
-	--    '-configuration', '/opt/homebrew/Cellar/jdtls/1.38.0/libexec/config_mac_arm',
-	--    '-data', '/Users/yde639/workspace/' .. project_name
-	--   }
-	-- }
 }
-
 
 -- default options for all servers
 local options = {

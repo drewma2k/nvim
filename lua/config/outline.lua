@@ -3,5 +3,12 @@ if not ok then
   return
 end
 
-vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "toggle Outline"})
-outline.setup()
+vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "toggle Outline" })
+outline.setup({
+  symbols = {
+    filter = {
+      -- default = { 'String', exclude = true },
+      python = { 'Function' },
+    }
+  }
+})

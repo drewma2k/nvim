@@ -16,3 +16,8 @@ neotest.setup({
 		}
 	}
 })
+
+vim.keymap.set("n", "<leader>tr", "<cmd>Neotest run<CR>", { desc = "Run tests" })
+vim.keymap.set("n", "<leader>td", function ()
+	require("neotest").run.run({strategy = "dap"})
+end, { desc = "Run test" })
