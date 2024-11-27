@@ -46,7 +46,8 @@ return {
 	},
 	-- Bogiefiles
 	{
-		"https://github.cloud.capitalone.com/forecast/vim"
+		"https://github.cloud.capitalone.com/forecast/vim",
+		optional = true
 	},
 	-- sql helper
 	{'tpope/vim-dadbod'},
