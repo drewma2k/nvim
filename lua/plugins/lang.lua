@@ -29,7 +29,7 @@ return {
 		end
 	},
 	{'nvim-java/nvim-java'},
-	{'sheerun/vim-polyglot'},
+	-- {'sheerun/vim-polyglot'},
 	{'martinda/Jenkinsfile-vim-syntax'},
 	{
 		"eatgrass/maven.nvim",

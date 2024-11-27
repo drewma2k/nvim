@@ -1,6 +1,6 @@
 return {
 	-- keymap popup
-	{'folke/which-key.nvim'},
+	{ 'folke/which-key.nvim' },
 	{
 		'kyazdani42/nvim-tree.lua',
 		dependencies = {
@@ -21,24 +21,54 @@ return {
 		}
 	},
 	-- dashboard
-	{'goolord/alpha-nvim'},
+	{
+		'goolord/alpha-nvim',
+		dependencies = {
+			"MaximilianLloyd/ascii.nvim"
+		},
+		config = function()
+			local alpha = require('alpha')
+			local dashboard = require('alpha.themes.dashboard')
+			local ascii = require('ascii').art.planets.planets.saturn
+			local hl = {}
+			local rowhls = {}
+			for i = 1, #ascii do
+				for c = 1, #ascii[1] do
+					-- if ascii[i]:sub(c, c) ~= "8" then
+					if (";:-.,"):find(ascii[i]:sub(c, c), 1, true) then
+						table.insert(rowhls, { "@keyword", c - 1, c })
+					else
+						table.insert(rowhls, { "@method", c - 1, c })
+					end
+				end
+				if rowhls ~= {} then
+					table.insert(hl, rowhls)
+					rowhls = {}
+				end
+			end
+			dashboard.section.header.val = ascii
+			dashboard.section.header.opts.hl = hl
+
+			alpha.setup(dashboard.opts)
+		end
+	},
 	-- ascii images for dashboard
-	{"MaximilianLloyd/ascii.nvim", dependencies = "MunifTanjim/nui.nvim"},
+	{ "MaximilianLloyd/ascii.nvim", dependencies = "MunifTanjim/nui.nvim" },
 	{
 		"smjonas/live-command.nvim"
 	},
 	-- TODO: this does nothing right now
 	{
 		'lvim-tech/nvim-lightbulb',
-		dependencies = 'antoinemadec/FixCursorHold.nvim'
+		-- dependencies = 'antoinemadec/FixCursorHold.nvim'
 	},
 	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons"
 	},
-	{'luukvbaal/statuscol.nvim'},
-	{"lukas-reineke/indent-blankline.nvim"},
-	{"hedyhli/outline.nvim"},
+	{ 'luukvbaal/statuscol.nvim' },
+	{ "lukas-reineke/indent-blankline.nvim" },
+	{ "hedyhli/outline.nvim" },
 	{
 		"OXY2DEV/markview.nvim",
 		dependencies = {
@@ -46,11 +76,12 @@ return {
 			"nvim-tree/nvim-web-devicons"
 		},
 		opts = {
-			hybrid_modes = { 'n' },
+			initial_state = false,
+			-- hybrid_modes = { 'n' },
 			headings = {
-				shift_width = 0,
+				-- shift_width = 0,
 				heading_1 = {
-					style = 'simple'
+					style = 'simple',
 				},
 				heading_2 = {
 					style = 'simple'
@@ -111,7 +142,7 @@ return {
 				-- view = "mini"
 			},
 			notify = {
-				enabled = false
+				enabled = true
 				-- view = "mini"
 			},
 			hover = {
@@ -128,6 +159,10 @@ return {
 				}
 			}
 		},
+		config = function (self)
+			require('noice').setup(self.opts)
+			vim.notify("noice.nvim loaded", "info", { title = "noice.nvim" })
+		end,
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
@@ -187,8 +222,7 @@ return {
 	},
 	{
 		'nvim-telescope/telescope.nvim',
-		dependencies = { { 'nvim-lua/plenary.nvim' } },
-		-- commit = "05f4d6f0a9ec1aa35816c34c52b6f8578511b434"
+		dependencies = { 'nvim-lua/plenary.nvim' },
 		version = "0.1.8"
 	},
 	{

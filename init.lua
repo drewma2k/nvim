@@ -1,4 +1,4 @@
--- load modular configs
+-- load modular configsini
 require('config.settings')
 require("config.lazy")
 
@@ -9,11 +9,8 @@ require('config.key-mapping')
 
 
 -- -- setup plugins
--- require('config.treesitter')
 require('config.copilot')
--- require('config.impatient')
 require('config.which-key')
-require('config.alpha_config')
 require('config.lualine')
 require('config.lspconfig')
 require('config.cmp')
@@ -33,12 +30,15 @@ require('config.nvim-r')
 require('config.mini')
 require('config.statuscol')
 require('config.indentblankline')
--- require('config.menu')
 require('config.outline')
 require('config.marks')
 require('config.neotest')
 require('config.markview')
 require('config.ufo')
--- vim.cmd[[let &t_TI = "\<Esc>[>4;2m"]]
--- vim.cmd[[let &t_TE = "\<Esc>[>4;m"]]
+
+
+-- run the fortune command and generate a fortune as a string
+local fortune = vim.fn.system("fortune")
+require("noice").notify(fortune, "warn", { title = "LunarVim" })
+
 -- vim: ts=2 sts=2 sw=2 et
