@@ -2,12 +2,14 @@ return {
 	{
 		-- "zbirenbaum/copilot.lua",
 		-- using fork, because auto_trigger without input is broken
-		"jsongerber/copilot.lua"
+		"zbirenbaum/copilot.lua"
 	},
 	{
 		'CopilotC-Nvim/CopilotChat.nvim',
+		branch = 'main',
+		version = '3.2.0',
 		dependencies = {
-			"jsongerber/copilot.lua",
+			"zbirenbaum/copilot.lua",
 			"nvim-lua/plenary.nvim"
 		},
 	},

@@ -163,6 +163,9 @@ local override_servers = {
 	jdtls = {
 		settings = {
 			java = {
+				maven = {
+					downloadSources = true,
+				},
 				format = {
 					enabled = true,
 					settings = {

@@ -76,7 +76,7 @@ return {
 			"nvim-tree/nvim-web-devicons"
 		},
 		opts = {
-			initial_state = false,
+			initial_state = true,
 			-- hybrid_modes = { 'n' },
 			headings = {
 				-- shift_width = 0,
@@ -187,7 +187,7 @@ return {
 			open_fold_hl_timeout = 150,
 			close_fold_kinds_for_ft = {
 				default = { 'imports', 'comment' },
-				json = { 'array' },
+				-- json = { 'array' },
 				c = { 'comment', 'region' }
 			},
 			preview = {
