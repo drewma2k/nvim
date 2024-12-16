@@ -1,6 +1,6 @@
 -- load modular configsini
-require('config.settings')
 require("config.lazy")
+require('config.settings')
 
 vim.cmd[[set bg=dark]]
 vim.cmd[[colorscheme onedark]]
@@ -12,8 +12,6 @@ require('config.key-mapping')
 require('config.copilot')
 require('config.which-key')
 require('config.lualine')
-require('config.lspconfig')
-require('config.cmp')
 require('config.nvim-tree')
 require('config.autopairs')
 require('config.luasnip')
@@ -39,6 +37,6 @@ require('config.ufo')
 
 -- run the fortune command and generate a fortune as a string
 local fortune = vim.fn.system("fortune")
-require("noice").notify(fortune, "warn", { title = "Fortune" })
+-- require("noice").notify(fortune, "warn", { title = "Fortune" })
 
 -- vim: ts=2 sts=2 sw=2 et

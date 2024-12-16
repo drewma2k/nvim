@@ -22,7 +22,7 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect,noinsert'
 
 -- show statusbar on all windows
 vim.o.laststatus = 2
@@ -95,3 +95,6 @@ vim.opt.splitbelow = true
 vim.g.polyglot_disabled = {'markdown', 'java'}
 
 vim.g.table_mode_syntax = 0
+
+vim.opt.wildmode = 'longest:full,full'
+

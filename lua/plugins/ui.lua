@@ -113,6 +113,7 @@ return {
 	},
 	{
 		"folke/noice.nvim",
+		enabled = true,
 		event = "VeryLazy",
 		opts = {
 			-- add any options here
@@ -128,18 +129,21 @@ return {
 			},
 			presets = {
 				-- bottom_search = true, -- use a classic bottom cmdline for search
-				-- command_palette = true, -- position the cmdline and popupmenu together
+				command_palette = false, -- position the cmdline and popupmenu together
 				-- long_message_to_split = true, -- long messages will be sent to a split
 				-- inc_rename = false, -- enables an input dialog for inc-rename.nvim
 				lsp_doc_border = true, -- add a border to hover docs and signature help
 			},
 			cmdline = {
-				enabled = false
+				enabled = false,
 				-- view = "cmdline"
 			},
 			messages = {
 				enabled = false,
 				-- view = "mini"
+			},
+			popupmenu = {
+				enabled = false
 			},
 			notify = {
 				enabled = true
@@ -156,7 +160,7 @@ return {
 					position = {
 						row = -2
 					}
-				}
+				},
 			}
 		},
 		config = function (self)
