@@ -163,7 +163,7 @@ return {
 				},
 			}
 		},
-		config = function (self)
+		config = function(self)
 			require('noice').setup(self.opts)
 			vim.notify("noice.nvim loaded", "info", { title = "noice.nvim" })
 		end,
@@ -241,4 +241,23 @@ return {
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
+	{
+		'gelguy/wilder.nvim',
+		config = function()
+			local wilder = require('wilder')
+			wilder.setup({ modes = { ':', '/', '?' } })
+
+			wilder.set_option('pipeline', {
+				wilder.branch(
+					wilder.cmdline_pipeline(),
+					wilder.search_pipeline()
+				),
+			})
+
+			wilder.set_option('renderer', wilder.popupmenu_renderer({
+				highlighter = wilder.basic_highlighter(),
+			}))
+		end
+	}
+
 }
