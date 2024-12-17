@@ -441,6 +441,7 @@ return {
 	{ "MaximilianLloyd/ascii.nvim", dependencies = "MunifTanjim/nui.nvim" },
 	{
 		"smjonas/live-command.nvim",
+		main = "live-command",
 		opts = {
 			commands = {
 				Norm = { cmd = 'norm' }
@@ -583,12 +584,21 @@ return {
 				lsp_doc_border = true, -- add a border to hover docs and signature help
 			},
 			cmdline = {
-				enabled = false,
-				-- view = "cmdline"
+				enabled = true,
+				view = "cmdline",
+				format = {
+					cmdline = false,
+					search_down = false,
+					search_up = false,
+					filter = false,
+					lua = false,
+					help = false,
+					input = false,
+				}
 			},
 			messages = {
-				enabled = false,
-				-- view = "mini"
+				enabled = true,
+				view = "mini"
 			},
 			popupmenu = {
 				enabled = false
@@ -609,6 +619,9 @@ return {
 						row = -2
 					}
 				},
+				notify = {
+					style = "minimal"
+				}
 			}
 		},
 		config = function(self)
@@ -716,6 +729,7 @@ return {
 	},
 	{
 		'gelguy/wilder.nvim',
+		enabled = true,
 		config = function()
 			local wilder = require('wilder')
 			wilder.setup({ modes = { ':', '/', '?' } })
@@ -731,6 +745,12 @@ return {
 				highlighter = wilder.basic_highlighter(),
 			}))
 		end
+	},
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			stages = "static"
+		}
 	}
 
 }

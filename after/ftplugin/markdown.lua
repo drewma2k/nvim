@@ -1,4 +1,4 @@
-vim.o.spell = true
+vim.o.spell = false
 vim.o.ts = 2
 vim.o.sw = 2
 vim.o.tw = 79
