@@ -728,25 +728,6 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
 	{
-		'gelguy/wilder.nvim',
-		enabled = true,
-		config = function()
-			local wilder = require('wilder')
-			wilder.setup({ modes = { ':', '/', '?' } })
-
-			wilder.set_option('pipeline', {
-				wilder.branch(
-					wilder.cmdline_pipeline(),
-					wilder.search_pipeline()
-				),
-			})
-
-			wilder.set_option('renderer', wilder.popupmenu_renderer({
-				highlighter = wilder.basic_highlighter(),
-			}))
-		end
-	},
-	{
 		"rcarriga/nvim-notify",
 		opts = {
 			stages = "static"
