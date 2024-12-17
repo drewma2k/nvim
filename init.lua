@@ -1,37 +1,14 @@
 -- load modular configsini
 require("config.lazy")
 require('config.settings')
-
-vim.cmd[[set bg=dark]]
-vim.cmd[[colorscheme onedark]]
-
 require('config.key-mapping')
 
 
 -- -- setup plugins
-require('config.copilot')
-require('config.which-key')
-require('config.lualine')
-require('config.nvim-tree')
-require('config.autopairs')
-require('config.luasnip')
-require('config.comment')
-require('config.livecommand')
-require('config.key-mapping')
-require('config.dressing')
-require('config.lightbulb')
 require('config.dap')
-require('config.telescope')
-require('config.gitsigns')
-require('config.trouble')
-require('config.nvim-r')
-require('config.mini')
-require('config.statuscol')
-require('config.indentblankline')
 require('config.outline')
 require('config.marks')
 require('config.neotest')
-require('config.markview')
 require('config.ufo')
 
 
