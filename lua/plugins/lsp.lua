@@ -1,7 +1,7 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		dependencies = {"saghen/blink.cmp"},
+		dependencies = { "saghen/blink.cmp" },
 		config = function()
 			local ok, mason = pcall(require, 'mason')
 			if not ok then
@@ -163,8 +163,12 @@ return {
 					}
 				},
 				jdtls = {
+					root_dir = function() return vim.fs.root(0, '.git') end,
 					settings = {
 						java = {
+							eclipse = {
+								downloadSources = true
+							},
 							maven = {
 								downloadSources = true,
 							},
