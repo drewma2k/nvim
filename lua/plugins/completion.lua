@@ -1,16 +1,23 @@
 return {
-	-- {
-	-- 	'L3MON4D3/LuaSnip'
-	-- },
-	-- {
-	-- 	'honza/vim-snippets'
-	-- },
+	{
+		'L3MON4D3/LuaSnip',
+		build = "make install_jsregexp",
+		config = function ()
+			require('luasnip.loaders.from_vscode').lazy_load()
+			require('luasnip.loaders.from_snipmate').lazy_load()
+		end
+
+	},
+	{
+		'honza/vim-snippets'
+	},
 	{
 		'saghen/blink.cmp',
 		lazy = false, -- lazy loading handled internally
 		-- event = 'InsertEnter',
 		-- optional: provides snippets for the snippet source
-		dependencies = { 'rafamadriz/friendly-snippets' },
+		dependencies = { 'rafamadriz/friendly-snippets',
+			{ 'L3MON4D3/LuaSnip', version = 'v2.*' } },
 
 		-- use a release tag to download pre-built binaries
 		-- version = 'v0.*',
@@ -42,27 +49,25 @@ return {
 				['<CR>'] = { 'accept', 'fallback' },
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 
-				-- cmdline = {
-				-- 	-- ['<space>'] = {
-				-- 	-- 	"accept",
-				-- 	-- 	"fallback"
-				-- 	-- },
-				-- -- 	preset = 'enter',
-				-- 	['<Tab>'] = {
-				-- 		'select_next',
-				-- 		-- 'snippet_forward',
-				-- 		-- 'select_and_accept',
-				-- 		-- 'select_next'
-				-- 		-- 'fallback'
-				-- 	},
-				-- 	['<S-Tab>'] = {
-				-- 		'select_prev',
-				-- 		'snippet_backward',
-				-- 		'fallback'
-				-- 	},
-				-- -- 	['<CR>'] = {},
-				-- -- 	["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-				-- }
+				cmdline = {
+					preset = 'enter',
+					['<Tab>'] = {
+						'select_next',
+						'snippet_forward',
+						'fallback'
+					},
+					['<S-Tab>'] = {
+						'select_prev',
+						'snippet_backward',
+						'fallback'
+					},
+					['<CR>'] = {'fallback' },
+					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+
+					cmdline = {
+
+					}
+				}
 			},
 			completion = {
 				list = {
@@ -78,7 +83,6 @@ return {
 				-- 	}
 				-- }
 			},
-
 			appearance = {
 				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 				-- Useful for when your theme doesn't support blink.cmp
@@ -88,17 +92,25 @@ return {
 				-- Adjusts spacing to ensure icons are aligned
 				nerd_font_variant = 'mono'
 			},
-
 			-- default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, via `opts_extend`
 			sources = {
-				default = { 'lsp', 'path', 'snippets', 'buffer' },
+				default = { 'lsp', 'path', 'luasnip', 'buffer' },
 				-- optionally disable cmdline completions
 				-- cmdline = {},
 			},
-
 			-- experimental signature help support
-			signature = { enabled = true }
+			signature = { enabled = true },
+			snippets = {
+				expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+				active = function(filter)
+					if filter and filter.direction then
+						return require('luasnip').jumpable(filter.direction)
+					end
+					return require('luasnip').in_snippet()
+				end,
+				jump = function(direction) require('luasnip').jump(direction) end,
+			},
 		},
 		-- allows extending the providers array elsewhere in your config
 		-- without having to redefine it
