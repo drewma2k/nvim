@@ -27,14 +27,14 @@ local map = vim.keymap.set
 
 -- required for nvim-java
 mason.setup()
-require('java').setup({
-	spring_boot_tools = {
-		enable = false
-	},
-	jdk = {
-		auto_install = false
-	}
-})
+-- require('java').setup({
+-- 	spring_boot_tools = {
+-- 		enable = false
+-- 	},
+-- 	jdk = {
+-- 		auto_install = false
+-- 	}
+-- })
 
 -- disable virtual text
 vim.diagnostic.config({
@@ -100,6 +100,7 @@ local on_attach = function(client, bufnr)
 	})
 	-- disable LSP highlighting, because it is worse than treesitter
 	client.server_capabilities.semanticTokensProvider = nil
+
 end
 
 -- nvim-cmp supports additional completion capabilities

@@ -1,4 +1,4 @@
- -- General Settings
+-- General Settings
 vim.o.wrap = false
 
 --Set highlight on search
@@ -49,8 +49,8 @@ vim.cmd [[
 ]]
 
 -- tab settings
-vim.o.tabstop=4
-vim.o.shiftwidth=4
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
 
 -- mark column 80, max length of lines
 vim.o.colorcolumn = '80'
@@ -68,11 +68,10 @@ vim.opt.cursorline = true
 vim.g.go_gopls_enabled = 0
 vim.g.go_code_completion_enabled = 0
 
-vim.opt.foldmethod = 'indent'
-vim.opt.foldenable = false
+vim.opt.foldenable = true
 vim.opt.foldminlines = 0
 vim.g.markdown_folding = 1
-vim.opt.foldignore=""
+vim.opt.foldignore = ""
 
 
 -- vim-dadbod-ui use nerdfonts
@@ -92,6 +91,36 @@ vim.opt.splitbelow = true
 
 -- disable for markdown because indent is broken
 -- :Format conflicts for java
-vim.g.polyglot_disabled = {'markdown', 'java'}
+vim.g.polyglot_disabled = { 'markdown', 'java' }
 
 vim.g.table_mode_syntax = 0
+
+-- folding
+vim.opt.foldenable = true
+vim.opt.foldminlines = 0
+vim.g.markdown_folding = 1
+vim.opt.foldignore = ""
+-- lsp folding; requires nightly
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client:supports_method('textDocument/foldingRange') then
+			vim.wo.foldmethod = 'expr'
+			vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+			vim.wo.foldtext = ""
+		end
+	end,
+})
+
+vim.opt.foldlevel=99
+
+-- vim.-- automatically close import folds
+vim.api.nvim_create_autocmd('LspNotify', {
+	callback = function(args)
+		if args.data.method == 'textDocument/didOpen' then
+			vim.opt.foldlevel=99 -- java import folding doesn't work without this...
+			vim.lsp.foldclose('imports')
+		end
+	end,
+})
+

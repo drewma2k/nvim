@@ -28,9 +28,23 @@ return {
 			vim.keymap.set("v", "d", "d<cmd>AutolistRecalculate<cr>")
 		end
 	},
-	{'nvim-java/nvim-java'},
+	{
+		'nvim-java/nvim-java',
+		priority = 10, -- higher than lspconfig
+		opts = {
+			notifications = {
+				dap = false,
+			},
+			spring_boot_tools = {
+				enable = false
+			},
+			jdk = {
+				auto_install = false
+			}
+		}
+	},
 	-- {'sheerun/vim-polyglot'},
-	{'martinda/Jenkinsfile-vim-syntax'},
+	{ 'martinda/Jenkinsfile-vim-syntax' },
 	{
 		"eatgrass/maven.nvim",
 		cmd = { "Maven", "MavenExec" },
@@ -50,7 +64,7 @@ return {
 		optional = true
 	},
 	-- sql helper
-	{'tpope/vim-dadbod'},
-	{'kristijanhusak/vim-dadbod-ui'},
-	{'kristijanhusak/vim-dadbod-completion'},
+	{ 'tpope/vim-dadbod' },
+	{ 'kristijanhusak/vim-dadbod-ui' },
+	{ 'kristijanhusak/vim-dadbod-completion' },
 }

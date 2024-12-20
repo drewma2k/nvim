@@ -58,10 +58,10 @@ return {
 		"smjonas/live-command.nvim"
 	},
 	-- TODO: this does nothing right now
-	{
-		'lvim-tech/nvim-lightbulb',
-		-- dependencies = 'antoinemadec/FixCursorHold.nvim'
-	},
+	-- {
+	-- 	'lvim-tech/nvim-lightbulb',
+	-- 	-- dependencies = 'antoinemadec/FixCursorHold.nvim'
+	-- },
 	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons"
@@ -115,6 +115,12 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
+			routes = {
+				{
+					view = "mini",
+					filter = { event = "msg_showmode" }
+				}
+			},
 			-- add any options here
 			lsp = {
 				signature = {
@@ -129,7 +135,7 @@ return {
 			presets = {
 				-- bottom_search = true, -- use a classic bottom cmdline for search
 				-- command_palette = true, -- position the cmdline and popupmenu together
-				-- long_message_to_split = true, -- long messages will be sent to a split
+				long_message_to_split = true, -- long messages will be sent to a split
 				-- inc_rename = false, -- enables an input dialog for inc-rename.nvim
 				lsp_doc_border = true, -- add a border to hover docs and signature help
 			},
@@ -148,7 +154,8 @@ return {
 			},
 			messages = {
 				enabled = true,
-				view = "mini"
+				view = "mini",
+				view_search = false
 			},
 			popupmenu = {
 				enabled = false
@@ -160,13 +167,10 @@ return {
 			hover = {
 				silent = true
 			},
-			message = {
-				view = "mini",
-			},
 			views = {
 				mini = {
 					position = {
-						row = -1
+						row = -2
 					}
 				},
 			}
@@ -182,39 +186,6 @@ return {
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
-		}
-	},
-	{
-		'kevinhwang91/nvim-ufo',
-		dependencies = {
-			'kevinhwang91/promise-async'
-		},
-		opts = {
-			provider_selector = function(bufnr, filetype, buftype)
-				if filetype == 'markdown' then
-					return ''
-				end
-				return nil
-			end,
-			open_fold_hl_timeout = 150,
-			close_fold_kinds_for_ft = {
-				default = { 'imports', 'comment' },
-				-- json = { 'array' },
-				c = { 'comment', 'region' }
-			},
-			preview = {
-				win_config = {
-					border = { '', '─', '', '', '', '─', '', '' },
-					winhighlight = 'Normal:Folded',
-					winblend = 0
-				},
-				mappings = {
-					scrollU = '<C-u>',
-					scrollD = '<C-d>',
-					jumpTop = '[',
-					jumpBot = ']'
-				}
-			}
 		}
 	},
 	{
