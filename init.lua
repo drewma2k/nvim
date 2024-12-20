@@ -35,10 +35,4 @@ require('config.marks')
 require('config.neotest')
 require('config.markview')
 require('config.ufo')
-
-
--- run the fortune command and generate a fortune as a string
-local fortune = vim.fn.system("fortune")
-require("noice").notify(fortune, "warn", { title = "Fortune" })
-
 -- vim: ts=2 sts=2 sw=2 et

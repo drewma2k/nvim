@@ -134,16 +134,28 @@ return {
 				lsp_doc_border = true, -- add a border to hover docs and signature help
 			},
 			cmdline = {
-				enabled = false
-				-- view = "cmdline"
+				enabled = true,
+				view = "cmdline",
+				format = {
+					cmdline = false,
+					search_down = false,
+					search_up = false,
+					filter = false,
+					lua = false,
+					help = false,
+					input = false
+				}
 			},
 			messages = {
-				enabled = false,
-				-- view = "mini"
+				enabled = true,
+				view = "mini"
+			},
+			popupmenu = {
+				enabled = false
 			},
 			notify = {
-				enabled = true
-				-- view = "mini"
+				enabled = true,
+				view = "mini"
 			},
 			hover = {
 				silent = true
@@ -156,10 +168,13 @@ return {
 					position = {
 						row = -2
 					}
+				},
+				notify = {
+					style = "minimal"
 				}
 			}
 		},
-		config = function (self)
+		config = function(self)
 			require('noice').setup(self.opts)
 			vim.notify("noice.nvim loaded", "info", { title = "noice.nvim" })
 		end,
@@ -237,4 +252,11 @@ return {
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			stages = "static"
+		}
+
+	}
 }
