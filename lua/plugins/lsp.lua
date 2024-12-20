@@ -25,16 +25,7 @@ return {
 
 			local map = vim.keymap.set
 
-			-- required for nvim-java
 			mason.setup()
-			require('java').setup({
-				spring_boot_tools = {
-					enable = false
-				},
-				jdk = {
-					auto_install = false
-				}
-			})
 
 			-- disable virtual text
 			vim.diagnostic.config({
