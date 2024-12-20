@@ -22,7 +22,7 @@ vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect,noinsert'
 
 -- show statusbar on all windows
 vim.o.laststatus = 2
@@ -114,7 +114,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.opt.foldlevel=99
 
--- vim.-- automatically close import folds
+-- automatically close import folds
 vim.api.nvim_create_autocmd('LspNotify', {
 	callback = function(args)
 		if args.data.method == 'textDocument/didOpen' then
@@ -123,4 +123,6 @@ vim.api.nvim_create_autocmd('LspNotify', {
 		end
 	end,
 })
+
+vim.opt.wildmode = 'longest:full,full'
 
