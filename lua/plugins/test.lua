@@ -5,8 +5,16 @@ return {
 			"nvim-neotest/neotest-python",
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
-			-- "antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter"
+		},
+		keys = {
+			{ "n", "<leader>tr", "<cmd>Neotest run<CR>", desc = "Run tests" },
+			{ "n", "<leader>td",
+				function()
+					require("neotest").run.run({ strategy = "dap" })
+				end,
+				desc = "Run test"
+			}
 		},
 		config = function()
 			require('neotest').setup({
