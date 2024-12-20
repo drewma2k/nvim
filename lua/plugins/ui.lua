@@ -166,12 +166,9 @@ return {
 			views = {
 				mini = {
 					position = {
-						row = -2
+						row = -1
 					}
 				},
-				notify = {
-					style = "minimal"
-				}
 			}
 		},
 		config = function(self)
