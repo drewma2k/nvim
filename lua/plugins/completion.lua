@@ -1,8 +1,29 @@
 return {
 	{
+		'hrsh7th/cmp-nvim-lsp'
+	},
+	{
+		'hrsh7th/cmp-buffer'
+	},
+	{
+		'hrsh7th/cmp-path'
+	},
+	{
+		'hrsh7th/cmp-cmdline'
+	},
+	{
+		'hrsh7th/nvim-cmp'
+	},
+	{
+		'hrsh7th/cmp-nvim-lua'
+	},
+	{
+		"onsails/lspkind.nvim"
+	},
+	{
 		'L3MON4D3/LuaSnip',
 		build = "make install_jsregexp",
-		config = function ()
+		config = function()
 			require('luasnip.loaders.from_vscode').lazy_load()
 			require('luasnip.loaders.from_snipmate').lazy_load()
 		end
@@ -13,6 +34,7 @@ return {
 	},
 	{
 		'saghen/blink.cmp',
+		enabled = false,
 		lazy = false, -- lazy loading handled internally
 		-- event = 'InsertEnter',
 		-- optional: provides snippets for the snippet source
@@ -61,7 +83,7 @@ return {
 						'snippet_backward',
 						'fallback'
 					},
-					['<CR>'] = {'fallback' },
+					['<CR>'] = { 'fallback' },
 					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 
 					cmdline = {

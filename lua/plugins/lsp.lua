@@ -1,8 +1,13 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		dependencies = { "saghen/blink.cmp" },
+		-- dependencies = { "saghen/blink.cmp" },
 		config = function()
+			local ok, cmp = pcall(require, 'cmp')
+			if not ok then
+				return
+			end
+
 			local ok, mason = pcall(require, 'mason')
 			if not ok then
 				return
@@ -101,14 +106,14 @@ return {
 				dynamicRegistration = false,
 				lineFoldingOnly = true
 			}
-			-- capabilities = vim.tbl_deep_extend(
-			-- 	'force',
-			-- 	capabilities,
-			-- 	-- require('blink.cmp').get_lsp_capabilities()
-			-- 	cmp.default_capabilities()
-			-- )
+			capabilities = vim.tbl_deep_extend(
+				'force',
+				capabilities,
+				-- require('blink.cmp').get_lsp_capabilities()
+				require('cmp_nvim_lsp').default_capabilities()
+			)
 
-			capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+			-- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 			-- override individual language server options with a file that
 			-- returns the options table
 			local override_servers = {
