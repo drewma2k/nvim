@@ -517,7 +517,20 @@ return {
 			}
 		}
 	},
-	{ "hedyhli/outline.nvim" },
+	{
+		"hedyhli/outline.nvim",
+		keys = {
+			{ "<leader>o", "<cmd>Outline<CR>", desc = "toggle Outline" }
+		},
+		opts = {
+			symbols = {
+				filter = {
+					-- default = { 'String', exclude = true },
+					python = { 'Function' },
+				}
+			}
+		}
+	},
 	{
 		"OXY2DEV/markview.nvim",
 		dependencies = {
