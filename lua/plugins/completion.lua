@@ -20,6 +20,7 @@ return {
 	{
 		"onsails/lspkind.nvim"
 	},
+	{ 'saadparwaiz1/cmp_luasnip' },
 	{
 		'L3MON4D3/LuaSnip',
 		build = "make install_jsregexp",
@@ -27,7 +28,6 @@ return {
 			require('luasnip.loaders.from_vscode').lazy_load()
 			require('luasnip.loaders.from_snipmate').lazy_load()
 		end
-
 	},
 	{
 		'honza/vim-snippets'
@@ -40,7 +40,6 @@ return {
 		-- optional: provides snippets for the snippet source
 		dependencies = { 'rafamadriz/friendly-snippets',
 			{ 'L3MON4D3/LuaSnip', version = 'v2.*' } },
-
 		-- use a release tag to download pre-built binaries
 		-- version = 'v0.*',
 		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -58,34 +57,32 @@ return {
 			-- your own keymap.
 			keymap = {
 				preset = 'enter',
-				['<Tab>'] = {
+					['<Tab>'] = {
 					'select_next',
 					'snippet_forward',
 					'fallback'
 				},
-				['<S-Tab>'] = {
+					['<S-Tab>'] = {
 					'select_prev',
 					'snippet_backward',
 					'fallback'
 				},
-				['<CR>'] = { 'accept', 'fallback' },
-				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-
+					['<CR>'] = { 'accept', 'fallback' },
+					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 				cmdline = {
 					preset = 'enter',
-					['<Tab>'] = {
+						['<Tab>'] = {
 						'select_next',
 						'snippet_forward',
 						'fallback'
 					},
-					['<S-Tab>'] = {
+						['<S-Tab>'] = {
 						'select_prev',
 						'snippet_backward',
 						'fallback'
 					},
-					['<CR>'] = { 'fallback' },
-					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-
+						['<CR>'] = { 'fallback' },
+						["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 					cmdline = {
 
 					}
