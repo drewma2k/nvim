@@ -232,3 +232,16 @@ local colors = function()
 end
 
 map("n", "<leader><leader>", colors)
+
+local function toggle_quickfix()
+  local windows = vim.fn.getwininfo()
+  for _, win in pairs(windows) do
+    if win["quickfix"] == 1 then
+      vim.cmd.cclose()
+      return
+    end
+  end
+  vim.cmd.copen()
+end
+
+map('n', '<space>qt', function() toggle_quickfix() end)

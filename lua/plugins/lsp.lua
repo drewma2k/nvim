@@ -23,10 +23,7 @@ return {
 				return
 			end
 
-			local ok, trouble = pcall(require, 'trouble')
-			if not ok then
-				return
-			end
+			local _, trouble = pcall(require, 'trouble')
 
 			local map = vim.keymap.set
 

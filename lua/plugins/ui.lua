@@ -408,6 +408,7 @@ return {
 	-- dashboard
 	{
 		'goolord/alpha-nvim',
+		enabled = true,
 		dependencies = {
 			"MaximilianLloyd/ascii.nvim"
 		},
@@ -450,6 +451,7 @@ return {
 	},
 	{
 		"folke/trouble.nvim",
+		enabled = false,
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = true
 	},

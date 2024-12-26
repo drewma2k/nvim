@@ -79,6 +79,7 @@ vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_use_nerd_fonts = 1
 
 -- shortmess
+-- disable start screen
 vim.opt.shortmess = vim.opt.shortmess + 'I'
 
 -- change directory when switching buffers etc
@@ -126,3 +127,4 @@ vim.api.nvim_create_autocmd('LspNotify', {
 
 vim.opt.wildmode = 'longest:full,full'
 
+vim.o.qftf = '{info -> v:lua.require("config.quickfixtextfunc").qftf(info)}'
