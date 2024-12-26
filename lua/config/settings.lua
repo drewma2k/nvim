@@ -126,5 +126,3 @@ vim.api.nvim_create_autocmd('LspNotify', {
 })
 
 vim.opt.wildmode = 'longest:full,full'
-
-vim.o.qftf = '{info -> v:lua.require("config.quickfixtextfunc").qftf(info)}'
