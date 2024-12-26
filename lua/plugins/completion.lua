@@ -81,11 +81,11 @@ return {
 				}
 			},
 			completion = {
-				list = {
-					selection = function(ctx)
-						return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect'
-					end
-				},
+				-- list = {
+				-- 	selection = function(ctx)
+				-- 		return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect'
+				-- 	end
+				-- },
 				menu = {
 					auto_show = false
 					-- 	draw = {
@@ -111,7 +111,7 @@ return {
 			sources = {
 				default = { 'lsp', 'path', 'luasnip', 'buffer' },
 				-- optionally disable cmdline completions
-				-- cmdline = {},
+				cmdline = {},
 			},
 			-- experimental signature help support
 			signature = { enabled = true },
