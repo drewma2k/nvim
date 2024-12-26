@@ -1,12 +1,12 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		-- dependencies = { "saghen/blink.cmp" },
+		dependencies = { "saghen/blink.cmp" },
 		config = function()
-			local ok, cmp = pcall(require, 'cmp')
-			if not ok then
-				return
-			end
+			-- local ok, cmp = pcall(require, 'cmp')
+			-- if not ok then
+			-- 	return
+			-- end
 
 			local ok, mason = pcall(require, 'mason')
 			if not ok then

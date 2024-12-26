@@ -5,10 +5,10 @@ return {
 		dependencies = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{ 'hrsh7th/cmp-buffer' },
-			{'hrsh7th/cmp-path'},
-			{'hrsh7th/cmp-cmdline'},
-			{'hrsh7th/cmp-nvim-lua'},
-			{"onsails/lspkind.nvim"},
+			{ 'hrsh7th/cmp-path' },
+			{ 'hrsh7th/cmp-cmdline' },
+			{ 'hrsh7th/cmp-nvim-lua' },
+			{ 'onsails/lspkind.nvim' },
 			{ 'saadparwaiz1/cmp_luasnip' },
 		},
 	},
@@ -47,7 +47,7 @@ return {
 			-- see the "default configuration" section below for full documentation on how to define
 			-- your own keymap.
 			keymap = {
-				preset = 'enter',
+				preset = 'default',
 					['<Tab>'] = {
 					'select_next',
 					'snippet_forward',
@@ -63,6 +63,7 @@ return {
 				cmdline = {
 					preset = 'enter',
 						['<Tab>'] = {
+						'show',
 						'select_next',
 						'snippet_forward',
 						'fallback'
@@ -81,17 +82,20 @@ return {
 			},
 			completion = {
 				list = {
-					selection = 'auto_insert',
+					selection = function(ctx)
+						return ctx.mode == 'cmdline' and 'auto_insert' or 'preselect'
+					end
 				},
-				-- menu = {
-				-- 	draw = {
-				-- 		columns = {
-				-- 			{ "label", "label_description", gap = 1 },
-				-- 			{"kind_icon", "kind", gap=1},
-				-- 			{"source_name"}
-				-- 		},
-				-- 	}
-				-- }
+				menu = {
+					auto_show = false
+					-- 	draw = {
+					-- 		columns = {
+					-- 			{ "label", "label_description", gap = 1 },
+					-- 			{"kind_icon", "kind", gap=1},
+					-- 			{"source_name"}
+					-- 		},
+					-- 	}
+				}
 			},
 			appearance = {
 				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
