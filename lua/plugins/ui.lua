@@ -690,14 +690,6 @@ return {
 		}
 	},
 	{
-		'stevearc/dressing.nvim',
-		opts = {
-			input = {
-				relative = "editor"
-			}
-		}
-	},
-	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
