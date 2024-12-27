@@ -142,7 +142,7 @@ map("v", ">", ">gv", { desc = "indent line" })
 map("n", "<Tab>", "za")
 map("n", "<C-i>", "<C-i>")
 
--- center after going to next search result
+-- center after going to next search result, and open folds
 map("n", "n", "nzzzv")
 
 -- DiffView
@@ -159,6 +159,7 @@ local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
 
+-- prototype custom menu
 local colors = function()
   opts = require("telescope.themes").get_dropdown{}
   pickers.new(opts, {
@@ -178,18 +179,4 @@ local colors = function()
     end,
   }):find()
 end
-
 map("n", "<leader><leader>", colors)
-
-local function toggle_quickfix()
-  local windows = vim.fn.getwininfo()
-  for _, win in pairs(windows) do
-    if win["quickfix"] == 1 then
-      vim.cmd.cclose()
-      return
-    end
-  end
-  vim.cmd.copen()
-end
-
-map('n', '<space>qt', function() toggle_quickfix() end)

@@ -1,13 +1,12 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		dependencies = { "saghen/blink.cmp" },
+		dependencies = {
+			"saghen/blink.cmp",
+			'williamboman/mason-lspconfig',
+			'williamboman/mason.nvim'
+		},
 		config = function()
-			-- local ok, cmp = pcall(require, 'cmp')
-			-- if not ok then
-			-- 	return
-			-- end
-
 			local ok, mason = pcall(require, 'mason')
 			if not ok then
 				return
@@ -36,27 +35,16 @@ return {
 
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			local opts = { noremap = true, silent = true }
-			map('n', '<space>d', vim.diagnostic.open_float, opts)
-			map('n', '[d', vim.diagnostic.goto_prev, opts)
-			map('n', ']d', vim.diagnostic.goto_next, opts)
-			map('n', '<space>ll', vim.diagnostic.setloclist, opts)
-			map('n', '<space>qq', vim.diagnostic.setqflist, opts)
-
 			-- LSP maps
 			local on_attach = function(client, bufnr)
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				map('n', 'gD', vim.lsp.buf.declaration, bufopts)
 				map('n', 'gd', vim.lsp.buf.definition, bufopts)
-				-- map('n', 'K', "<cmd>Lspsaga hover_doc<CR>", bufopts)
 				map('n', 'K', vim.lsp.buf.hover, bufopts)
 				map('n', 'gi', vim.lsp.buf.implementation, bufopts)
-				-- covered by cmp
-				-- map('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 				map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 				map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-				map('n', '<leader>wl', function()
-					vim.inspect(vim.lsp.buf.list_workspace_folders())
-				end, bufopts)
+				map('n', '<leader>wl', function()vim.inspect(vim.lsp.buf.list_workspace_folders())end, bufopts)
 				map('n', '<leader>D', vim.lsp.buf.type_definition, { desc = "LSP Type Definition" })
 				map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 				map('n', 'gr', vim.lsp.buf.references, bufopts)
@@ -66,24 +54,24 @@ return {
 				-- enable trouble maps if trouble is installed
 				if trouble then
 					map("n", "gr", "<cmd>Trouble lsp_references auto_refresh=false<cr>", bufopts)
+					-- remove this because it makes the previous one slow
+					map("n", "grr", "<Nop>", bufopts)
 					map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
 					map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
-					map("n", "q[", function()
+					map("n", "[q", function()
 						trouble.previous({ skip_groups = true, jump = true })
 					end, bufopts)
-					map("n", "q]", function()
+					map("n", "]q", function()
 						trouble.next({ skip_groups = true, jump = true })
 					end, bufopts)
 				end
 				vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format { async = true } end, {})
-				-- vim.lsp.buf.format { async = true }
 				vim.api.nvim_create_autocmd("CursorHold", {
 					buffer = bufnr,
 					callback = function()
 						local opts = {
 							focusable = false,
 							close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-							border = 'rounded', -- none, single, double, rounded, solid, shadow
 							source = 'always',
 							prefix = ' ',
 							scope = 'cursor',
@@ -107,10 +95,8 @@ return {
 				'force',
 				capabilities,
 				require('blink.cmp').get_lsp_capabilities()
-				-- require('cmp_nvim_lsp').default_capabilities()
 			)
 
-			-- capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 			-- override individual language server options with a file that
 			-- returns the options table
 			local override_servers = {
@@ -181,7 +167,6 @@ return {
 						}
 					},
 				},
-
 			}
 
 			-- default options for all servers
@@ -202,20 +187,4 @@ return {
 			}
 		end
 	},
-	{
-		'williamboman/mason.nvim',
-		-- opts = {
-		-- 	PATH = 'append',
-		-- 	providers = {
-		-- 		"mason.providers.registry-api",
-		-- 		"mason.providers.client",
-		-- 	},
-		-- 	registries = {
-		-- 		'github:mason-org/mason-registry',
-		-- 	},
-		-- 	log_level = vim.log.levels.DEBUG,
-		-- }
-
-	},
-	{ 'williamboman/mason-lspconfig' },
 }
