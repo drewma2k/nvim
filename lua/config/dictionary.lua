@@ -1,7 +1,4 @@
-local h = require("null-ls.helpers")
-local methods = require("null-ls.methods")
-
-local HOVER = methods.internal.HOVER
+local M = {}
 
 local function get_def(word)
 	local cmd = 'dict -d wn ' .. word.. " 2<&1"
@@ -28,17 +25,10 @@ local function get_def(word)
 	return results
 end
 
-local f = function(_, done)
+function M.def()
 	local cword = vim.fn.expand("<cword>")
-	done(get_def(cword))
+	get_def(cword)
 end
 
-return h.make_builtin({
-	name = "dictionary",
-	method = HOVER,
-	filetypes = { "org", "text", "markdown" },
-	generator = {
-		fn = f,
-		async = true,
-	},
-})
+return M
+

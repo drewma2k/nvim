@@ -24,7 +24,6 @@ return {
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				map('n', 'gD', vim.lsp.buf.declaration, bufopts)
 				map('n', 'gd', vim.lsp.buf.definition, bufopts)
-				map('n', 'K', vim.lsp.buf.hover, bufopts)
 				map('n', 'gi', vim.lsp.buf.implementation, bufopts)
 				map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 				map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -64,9 +63,13 @@ return {
 
 				-- disable LSP highlighting, because it is worse than treesitter
 				client.server_capabilities.semanticTokensProvider = nil
+
+				-- use keywordprg if in markdown file
+				if vim.bo[bufnr].filetype == 'markdown' then
+					vim.keymap.del("n", "K", {buffer=bufnr})
+				end
 			end
 
-			-- nvim-cmp supports additional completion capabilities
 			local capabilities = lspconfig.util.default_config.capabilities
 
 			-- ufo.nvim - tell server that client accepts folding ranges

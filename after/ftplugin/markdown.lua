@@ -20,6 +20,4 @@ vim.keymap.set("n", "<C-c>", function()
 end
 )
 
--- vim.keymap.set("i", "<TAB>", "<Plug>(bullets-demote)")
--- vim.keymap.set("i", "<S-TAB>", "<Plug>(bullets-promote)")
--- vim.g.bullets_outline_levels = {}
+vim.opt.keywordprg = ":!dict -d wn "
