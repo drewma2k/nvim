@@ -7,35 +7,20 @@ return {
 			'williamboman/mason.nvim'
 		},
 		config = function()
-			local ok, mason = pcall(require, 'mason')
-			if not ok then
-				return
-			end
 
-			local ok, mason_lspconfig = pcall(require, 'mason-lspconfig')
-			if not ok then
-				return
-			end
-
-			local ok, lspconfig = pcall(require, 'lspconfig')
-			if not ok then
-				return
-			end
-
+			local mason_lspconfig = require('mason-lspconfig')
+			local lspconfig = require('lspconfig')
 			local _, trouble = pcall(require, 'trouble')
-
 			local map = vim.keymap.set
 
-			mason.setup()
+			require('mason').setup()
 
 			-- disable virtual text
 			vim.diagnostic.config({
 				virtual_text = false,
 			})
 
-			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			local opts = { noremap = true, silent = true }
-			-- LSP maps
 			local on_attach = function(client, bufnr)
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				map('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -44,14 +29,12 @@ return {
 				map('n', 'gi', vim.lsp.buf.implementation, bufopts)
 				map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 				map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-				map('n', '<leader>wl', function()vim.inspect(vim.lsp.buf.list_workspace_folders())end, bufopts)
+				map('n', '<leader>wl', function() vim.inspect(vim.lsp.buf.list_workspace_folders()) end, bufopts)
 				map('n', '<leader>D', vim.lsp.buf.type_definition, { desc = "LSP Type Definition" })
 				map('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 				map('n', 'gr', vim.lsp.buf.references, bufopts)
 				map('n', '<leader>cc', vim.lsp.buf.code_action, bufopts)
 				map('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, bufopts)
-
-				-- enable trouble maps if trouble is installed
 				if trouble then
 					map("n", "gr", "<cmd>Trouble lsp_references auto_refresh=false<cr>", bufopts)
 					-- remove this because it makes the previous one slow
@@ -91,94 +74,26 @@ return {
 				dynamicRegistration = false,
 				lineFoldingOnly = true
 			}
-			capabilities = vim.tbl_deep_extend(
-				'force',
-				capabilities,
-				require('blink.cmp').get_lsp_capabilities()
-			)
+			capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
 			-- override individual language server options with a file that
 			-- returns the options table
 			local override_servers = {
-				sumneko_lua = {
-					settings = require('config.lsp.sumneko_lua')
-				},
-				gopls = {
-					settings = {
-						gopls = {
-							analyses = {
-								unusedparams = true,
-							},
-							staticcheck = true,
-						}
-					}
-				},
+				lua_ls = require('config.lsp.lua_ls'),
+				gopls = require('config.lsp.gopls'),
 				cucumber_language_server = {
 					cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
 				},
 				sqlls = {
-					cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug' },
-					-- root_dir = require('lspconfig.util').root_pattern '',
+					cmd = {'/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug'},
 				},
-				pylsp = {
-					-- cmd = { '/Users/yde639/.venv/bin/pylsp' },
-					settings = {
-						pylsp = {
-							plugins = {
-								pycodestyle = {
-									enabled = false
-								},
-								black = {
-									enabled = true
-								},
-								pylint = {
-									enabled = false
-								},
-								jedi_hover = {
-									enabled = true
-								}
-							}
-						}
-					}
-				},
-				jdtls = {
-					root_dir = function() return vim.fs.root(0, '.git') end,
-					settings = {
-						java = {
-							eclipse = {
-								downloadSources = true
-							},
-							maven = {
-								downloadSources = true,
-							},
-							format = {
-								enabled = true,
-								settings = {
-									url =
-									"https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
-									profile = "GoogleStyle"
-								}
-							},
-							configuration = {
-								maven = {
-									-- globalSettings = '/Users/yde639/.m2/settings.xml'
-								}
-							}
-						}
-					},
-				},
+				pylsp = require('config.lsp.pylsp'),
+				jdtls = require('config.lsp.jdtls'),
 			}
 
 			-- default options for all servers
-			local options = {
-				on_attach = on_attach,
-				capabilities = capabilities,
-			}
-
-			mason_lspconfig.setup({
-				automatic_installation = true,
-			})
-
+			local options = { on_attach = on_attach, capabilities = capabilities }
+			mason_lspconfig.setup({ automatic_installation = true })
 			mason_lspconfig.setup_handlers {
 				function(server_name)
 					opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
