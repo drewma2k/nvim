@@ -5,7 +5,6 @@ if not ok then
 	return
 end
 
--- Normal --
 -- DAP
 map("n", "<leader>dd",
 	function()
@@ -26,8 +25,6 @@ map("n", "<leader>m",
 		end
 	end,
 	{ desc = "toggle mouse support" })
--- map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
--- map("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" })
 map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "No Highlight" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<C-s>", "<cmd>w!<cr>", { desc = "Force write" })
@@ -35,21 +32,8 @@ map("n", "<C-q>", "<cmd>q!<cr>", { desc = "Force quit" })
 map("n", "Q", "<Nop>")
 map("n", "<leader>n", "<cmd>set norelativenumber!<cr>", { desc = "Toggle Relative Number " })
 
--- Packer
-map("n", "<leader>pc", "<cmd>PackerCompile<cr>", { desc = "Packer Compile" })
-map("n", "<leader>pi", "<cmd>PackerInstall<cr>", { desc = "Packer Install" })
-map("n", "<leader>ps", "<cmd>PackerSync<cr>", { desc = "Packer Sync" })
-map("n", "<leader>pS", "<cmd>PackerStatus<cr>", { desc = "Packer Status" })
-map("n", "<leader>pu", "<cmd>PackerUpdate<cr>", { desc = "Packer Update" })
-
 -- Tree
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
--- map("n", "<leader>o", "<cmd>NvimTreeFocus<cr>", { desc = "Focus Explorer" })
-
--- Alpha
-map("n", "<leader>a", "<cmd>Alpha<cr>", { desc = "Alpha Dashboard" })
-
--- map("n", "<leader>c", "<cmd>bdelete<cr>", { desc = "Close buffer" })
 
 -- Comment
 map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
@@ -66,10 +50,6 @@ if not ok then
 	return
 end
 map("n", "<leader>gs", "<cmd>Gitsigns<cr>", {desc = "Gitsigns menu"})
-
--- LSP Installer
-vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", { desc = "LSP information" })
-vim.keymap.set("n", "<leader>lI", "<cmd>LspInstallInfo<cr>", { desc = "LSP installer" })
 
 -- Telescope
 local ok, telescope = pcall(require, 'telescope.builtin')
@@ -158,39 +138,7 @@ end, { desc = "Search colorschemes" })
 map("v", "<", "<gv", { desc = "unindent line" })
 map("v", ">", ">gv", { desc = "indent line" })
 
--- Improved Terminal Mappings
--- map("t", "<esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
--- map("t", "jk", "<C-\\><C-n>", { desc = "Terminal normal mode" })
--- map("t", "<C-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window navigation" })
--- map("t", "<C-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal down window navigation" })
--- map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
--- map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
-
--- trouble.nvim
-map("n", "<leader>xx", "<cmd>Trouble toggle<cr>",
-  {silent = true, noremap = true}
-)
-map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics toggle<cr>",
-  {silent = true, noremap = true}
-)
-map("n", "<leader>xd", "<cmd>Trouble document_diagnostics toggle<cr>",
-  {silent = true, noremap = true}
-)
-map("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>",
-  {silent = true, noremap = true}
-)
-map("n", "<leader>xq", "<cmd>Trouble quickfix toggle <cr>",
-  {silent = true, noremap = true}
-)
-
-map("n", "<leader>xr", "<cmd>Trouble lsp_references toggle auto_refresh=false<cr>",
-  {silent = true, noremap = true}
-)
--- open file under cursor with system default
-map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")
-
 -- toggle folds with tab
--- collides with <C-i> because of terminal jank but may be possible
 map("n", "<Tab>", "za")
 map("n", "<C-i>", "<C-i>")
 
