@@ -23,6 +23,8 @@ return {
 				return
 			end
 
+			local _, trouble = pcall(require, 'trouble')
+
 			local map = vim.keymap.set
 
 			mason.setup()
@@ -45,8 +47,11 @@ return {
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				map('n', 'gD', vim.lsp.buf.declaration, bufopts)
 				map('n', 'gd', vim.lsp.buf.definition, bufopts)
+				-- map('n', 'K', "<cmd>Lspsaga hover_doc<CR>", bufopts)
 				map('n', 'K', vim.lsp.buf.hover, bufopts)
 				map('n', 'gi', vim.lsp.buf.implementation, bufopts)
+				-- covered by cmp
+				-- map('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 				map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 				map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
 				map('n', '<leader>wl', function()
@@ -58,6 +63,18 @@ return {
 				map('n', '<leader>cc', vim.lsp.buf.code_action, bufopts)
 				map('n', '<leader>so', require('telescope.builtin').lsp_document_symbols, bufopts)
 
+				-- enable trouble maps if trouble is installed
+				if trouble then
+					map("n", "gr", "<cmd>Trouble lsp_references auto_refresh=false<cr>", bufopts)
+					map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
+					map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
+					map("n", "q[", function()
+						trouble.previous({ skip_groups = true, jump = true })
+					end, bufopts)
+					map("n", "q]", function()
+						trouble.next({ skip_groups = true, jump = true })
+					end, bufopts)
+				end
 				vim.api.nvim_create_user_command("Format", function() vim.lsp.buf.format { async = true } end, {})
 				-- vim.lsp.buf.format { async = true }
 				vim.api.nvim_create_autocmd("CursorHold", {

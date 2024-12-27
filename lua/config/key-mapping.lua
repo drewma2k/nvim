@@ -166,6 +166,26 @@ map("v", ">", ">gv", { desc = "indent line" })
 -- map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
 -- map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
 
+-- trouble.nvim
+map("n", "<leader>xx", "<cmd>Trouble toggle<cr>",
+  {silent = true, noremap = true}
+)
+map("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics toggle<cr>",
+  {silent = true, noremap = true}
+)
+map("n", "<leader>xd", "<cmd>Trouble document_diagnostics toggle<cr>",
+  {silent = true, noremap = true}
+)
+map("n", "<leader>xl", "<cmd>Trouble loclist toggle<cr>",
+  {silent = true, noremap = true}
+)
+map("n", "<leader>xq", "<cmd>Trouble quickfix toggle <cr>",
+  {silent = true, noremap = true}
+)
+
+map("n", "<leader>xr", "<cmd>Trouble lsp_references toggle auto_refresh=false<cr>",
+  {silent = true, noremap = true}
+)
 -- open file under cursor with system default
 map("n", "gx", "<cmd>execute '!open ' . expand('<cfile>')<CR>")
 

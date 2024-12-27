@@ -450,6 +450,12 @@ return {
 		}
 	},
 	{
+		"folke/trouble.nvim",
+		enabled = false,
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = true
+	},
+	{
 		'luukvbaal/statuscol.nvim',
 		config = function()
 			local ok, statuscol = pcall(require, 'statuscol')
