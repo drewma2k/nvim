@@ -7,7 +7,6 @@ return {
 			'williamboman/mason.nvim'
 		},
 		config = function()
-
 			local mason_lspconfig = require('mason-lspconfig')
 			local lspconfig = require('lspconfig')
 			local _, trouble = pcall(require, 'trouble')
@@ -62,6 +61,7 @@ return {
 						vim.diagnostic.open_float(nil, opts)
 					end
 				})
+
 				-- disable LSP highlighting, because it is worse than treesitter
 				client.server_capabilities.semanticTokensProvider = nil
 			end
@@ -85,7 +85,7 @@ return {
 					cmd = { '/Users/yde639/bin/cucumber-language-server', '--stdio' }
 				},
 				sqlls = {
-					cmd = {'/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug'},
+					cmd = { '/usr/local/bin/sql-language-server', 'up', '--method', 'stdio', '--debug' },
 				},
 				pylsp = require('config.lsp.pylsp'),
 				jdtls = require('config.lsp.jdtls'),
