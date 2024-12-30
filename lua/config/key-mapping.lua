@@ -180,3 +180,6 @@ local colors = function()
   }):find()
 end
 map("n", "<leader><leader>", colors)
+
+-- gf creates files if they don't exist
+map("n", "gf", "<cmd>e <cfile><cr>")

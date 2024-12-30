@@ -85,8 +85,8 @@ vim.opt.shortmess = vim.opt.shortmess + 'I'
 -- change directory when switching buffers etc
 -- vim.opt.autochdir = true
 
--- Use system clipboard for yanking and pasting
-vim.opt.clipboard = 'unnamedplus'
+-- Use system clipboard for yanking and pasting (BAD IDEA)
+-- vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.splitbelow = true
 
