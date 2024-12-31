@@ -38,6 +38,17 @@ return {
 		-- If you use nix, you can build from source using latest nightly rust with:
 		-- build = 'nix run .#build-plugin',
 
+		init = function ()
+			-- toggle autoshow
+			vim.g.blink_mode = "noshow"
+			vim.keymap.set("n", "<leader>bs", function ()
+				if vim.g.blink_mode == "show" then
+					vim.g.blink_mode = "noshow"
+				else
+					vim.g.blink_mode = "show"
+				end
+			end, {desc = "Toggle Autocompletion"})
+		end,
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
@@ -87,7 +98,12 @@ return {
 				-- 	end
 				-- },
 				menu = {
-					auto_show = false
+					auto_show = function ()
+						if vim.g.blink_mode == "show" then
+							return true
+						end
+						return false
+					end
 					-- 	draw = {
 					-- 		columns = {
 					-- 			{ "label", "label_description", gap = 1 },
