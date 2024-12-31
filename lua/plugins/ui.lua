@@ -639,6 +639,9 @@ return {
 				case_mode = "smart_case",
 			},
 			defaults = {
+				file_ignore_patterns = {
+					"node_modules"
+				},
 				vimgrep_arguments = {
 					"rg",
 					"--color=never",
