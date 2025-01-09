@@ -24,18 +24,18 @@ return {
 	},
 	{
 		'nvim-java/nvim-java',
-		priority = 10, -- higher than lspconfig
-		opts = {
-			notifications = {
-				dap = false,
-			},
-			spring_boot_tools = {
-				enable = false
-			},
-			jdk = {
-				auto_install = false
-			}
-		}
+		config = false, -- for some reason, setup here does not work
+		-- opts = {
+		-- 	notifications = {
+		-- 		dap = false,
+		-- 	},
+		-- 	spring_boot_tools = {
+		-- 		enable = false
+		-- 	},
+		-- 	jdk = {
+		-- 		auto_install = false
+		-- 	}
+		-- }
 	},
 	-- {'sheerun/vim-polyglot'},
 	{ 'martinda/Jenkinsfile-vim-syntax' },

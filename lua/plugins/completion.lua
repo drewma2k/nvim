@@ -38,16 +38,16 @@ return {
 		-- If you use nix, you can build from source using latest nightly rust with:
 		-- build = 'nix run .#build-plugin',
 
-		init = function ()
+		init = function()
 			-- toggle autoshow
 			vim.g.blink_mode = "noshow"
-			vim.keymap.set("n", "<leader>bs", function ()
+			vim.keymap.set("n", "<leader>bs", function()
 				if vim.g.blink_mode == "show" then
 					vim.g.blink_mode = "noshow"
 				else
 					vim.g.blink_mode = "show"
 				end
-			end, {desc = "Toggle Autocompletion"})
+			end, { desc = "Toggle Autocompletion" })
 		end,
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -59,33 +59,33 @@ return {
 			-- your own keymap.
 			keymap = {
 				preset = 'default',
-					['<Tab>'] = {
+				['<Tab>'] = {
 					'select_next',
 					'snippet_forward',
 					'fallback'
 				},
-					['<S-Tab>'] = {
+				['<S-Tab>'] = {
 					'select_prev',
 					'snippet_backward',
 					'fallback'
 				},
-					['<CR>'] = { 'accept', 'fallback' },
-					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+				['<CR>'] = { 'accept', 'fallback' },
+				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 				cmdline = {
 					preset = 'enter',
-						['<Tab>'] = {
+					['<Tab>'] = {
 						'show',
 						'select_next',
 						'snippet_forward',
 						'fallback'
 					},
-						['<S-Tab>'] = {
+					['<S-Tab>'] = {
 						'select_prev',
 						'snippet_backward',
 						'fallback'
 					},
-						['<CR>'] = { 'fallback' },
-						["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+					['<CR>'] = { 'fallback' },
+					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 					cmdline = {
 
 					}
@@ -98,7 +98,7 @@ return {
 				-- 	end
 				-- },
 				menu = {
-					auto_show = function ()
+					auto_show = function()
 						if vim.g.blink_mode == "show" then
 							return true
 						end
@@ -125,22 +125,15 @@ return {
 			-- default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, via `opts_extend`
 			sources = {
-				default = { 'lsp', 'path', 'luasnip', 'buffer' },
+				default = { 'lsp', 'path', 'snippets', 'buffer' },
 				-- optionally disable cmdline completions
 				cmdline = {},
 			},
 			-- experimental signature help support
 			signature = { enabled = true },
 			snippets = {
-				expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
-				active = function(filter)
-					if filter and filter.direction then
-						return require('luasnip').jumpable(filter.direction)
-					end
-					return require('luasnip').in_snippet()
-				end,
-				jump = function(direction) require('luasnip').jump(direction) end,
-			},
+				preset = 'luasnip'
+			}
 		},
 		-- allows extending the providers array elsewhere in your config
 		-- without having to redefine it

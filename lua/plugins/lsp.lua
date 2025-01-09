@@ -4,7 +4,8 @@ return {
 		dependencies = {
 			"saghen/blink.cmp",
 			'williamboman/mason-lspconfig',
-			'williamboman/mason.nvim'
+			'williamboman/mason.nvim',
+			'nvim-java/nvim-java'
 		},
 		config = function()
 			local mason_lspconfig = require('mason-lspconfig')
@@ -13,6 +14,7 @@ return {
 			local map = vim.keymap.set
 
 			require('mason').setup()
+			require('java').setup()
 
 			-- disable virtual text
 			vim.diagnostic.config({
@@ -66,7 +68,7 @@ return {
 
 				-- use keywordprg if in markdown file
 				if vim.bo[bufnr].filetype == 'markdown' then
-					vim.keymap.del("n", "K", {buffer=bufnr})
+					vim.keymap.del("n", "K", { buffer = bufnr })
 				end
 			end
 
