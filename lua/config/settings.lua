@@ -120,7 +120,7 @@ vim.api.nvim_create_autocmd('LspNotify', {
 	callback = function(args)
 		if args.data.method == 'textDocument/didOpen' then
 			vim.opt.foldlevel=99 -- java import folding doesn't work without this...
-			vim.lsp.foldclose('imports')
+			vim.lsp.foldclose('imports', 0)
 		end
 	end,
 })

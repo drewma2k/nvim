@@ -1,4 +1,10 @@
 return {
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			-- options
+		},
+	},
 	-- keymap popup
 	{
 		'folke/which-key.nvim',
@@ -625,7 +631,7 @@ return {
 				highlight = { enable = true },
 				indent = {
 					enable = true,
-					disable = {'markdown'}
+					disable = { 'markdown' }
 				},
 			})
 		end
@@ -633,7 +639,7 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
-		version = "0.1.8",
+		-- version = "0.1.8",
 		opts = {
 			extensions = {
 				fuzzy = true, -- false will only do exact matching
