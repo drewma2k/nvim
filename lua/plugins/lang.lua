@@ -5,7 +5,7 @@ return {
 		config = true,
 		init = function(autolist)
 			vim.keymap.set("n", "<leader>cn", function() autolist.cycle_next_dr() end, { expr = true })
-			vim.keymap.set("n", "<leader>cp", function() autolist.cycle_prev_dr() end, { expr = true })
+			-- vim.keymap.set("n", "<leader>cp", function() autolist.cycle_prev_dr() end, { expr = true })
 		end,
 		keys = {
 			{ mode="i", "<tab>",   "<cmd>AutolistTab<cr>" },
