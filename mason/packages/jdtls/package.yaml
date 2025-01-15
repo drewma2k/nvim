@@ -1,0 +1,32 @@
+---
+name: jdtls
+description: Java language server.
+homepage: https://github.com/eclipse/eclipse.jdt.ls
+licenses:
+  - EPL-2.0
+languages:
+  - Java
+categories:
+  - LSP
+
+source:
+  # renovate:datasource=github-tags
+  id: pkg:generic/eclipse/eclipse.jdt.ls@v1.39.0
+  download:
+    - target: [darwin_x64, darwin_arm64]
+      files:
+        jdtls.tar.gz: https://download.eclipse.org/jdtls/milestones/1.39.0/jdt-language-server-1.39.0-202408291433.tar.gz
+        # jdtls.tar.gz: https://download.eclipse.org/jdtls/milestones/1.39.0/jdt-language-server-1.38.0-202408011337.tar.gz
+        lombok.jar: https://projectlombok.org/downloads/lombok.jar
+      config: config_mac/
+schemas:
+  lsp: vscode:https://raw.githubusercontent.com/redhat-developer/vscode-java/master/package.json
+
+bin:
+  jdtls: python:bin/jdtls
+
+share:
+  jdtls/lombok.jar: lombok.jar
+  jdtls/plugins/: plugins/
+  jdtls/plugins/org.eclipse.equinox.launcher.jar: plugins/org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar
+  jdtls/config/: "{{source.download.config}}"

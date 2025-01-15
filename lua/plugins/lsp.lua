@@ -7,14 +7,26 @@ return {
 			'williamboman/mason.nvim',
 			'nvim-java/nvim-java'
 		},
+		lazy = false,
 		config = function()
 			local mason_lspconfig = require('mason-lspconfig')
 			local lspconfig = require('lspconfig')
 			local _, trouble = pcall(require, 'trouble')
 			local map = vim.keymap.set
 
-			require('mason').setup()
-			require('java').setup()
+			require('mason').setup({
+				registries = {
+					'file:' .. vim.fn.stdpath('config') .. '/mason',
+					'github:nvim-java/mason-registry',
+					'github:mason-org/mason-registry',
+
+				}
+			})
+			require('java').setup({
+				jdtls = {
+					version = 'v1.39.0'
+				}
+			})
 
 			-- disable virtual text
 			vim.diagnostic.config({

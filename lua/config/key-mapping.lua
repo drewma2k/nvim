@@ -36,20 +36,22 @@ map("n", "<leader>n", "<cmd>set norelativenumber!<cr>", { desc = "Toggle Relativ
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
 
 -- Comment
-map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
-map(
-	"v",
-	"<leader>/",
-	"<Plug>(comment_toggle_linewise_visual)",
-	{ desc = "Toggle comment line" }
-)
+map("n", "<leader>/", "gcc", { remap = true, desc = 'Comment Line' })
+map('v', '<leader>/', 'gc', { remap = true, desc = 'Comment Lines' })
+-- map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
+-- map(
+-- 	"v",
+-- 	"<leader>/",
+-- 	"<Plug>(comment_toggle_linewise_visual)",
+-- 	{ desc = "Toggle comment line" }
+-- )
 
 -- -- GitSigns
 ok, gs = pcall(require, 'gitsigns')
 if not ok then
 	return
 end
-map("n", "<leader>gs", "<cmd>Gitsigns<cr>", {desc = "Gitsigns menu"})
+map("n", "<leader>gs", "<cmd>Gitsigns<cr>", { desc = "Gitsigns menu" })
 
 -- Telescope
 local ok, telescope = pcall(require, 'telescope.builtin')
@@ -73,7 +75,7 @@ map("n", "<leader>gc", function()
 end, { desc = "Git commits" })
 
 map("n", "<leader>ff", function()
-	local opts = {no_ignore=true, hidden=false}
+	local opts = { no_ignore = true, hidden = false }
 	telescope.find_files(opts)
 end, { desc = "Search files" })
 
@@ -82,7 +84,7 @@ map("n", "<leader>fb", function()
 end, { desc = "Search buffers" })
 
 map("n", "<leader>fh", function()
-	telescope.find_files({no_ignore=true, hidden=true})
+	telescope.find_files({ no_ignore = true, hidden = true })
 end, { desc = "Find hidden files" })
 
 map("n", "<leader>fm", function()
@@ -161,23 +163,23 @@ local action_state = require "telescope.actions.state"
 
 -- prototype custom menu
 local colors = function()
-  opts = require("telescope.themes").get_dropdown{}
-  pickers.new(opts, {
-    prompt_title = "colors",
-    finder = finders.new_table {
-      results = { "red", "green", "blue" }
-    },
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr, map)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        print(vim.inspect(selection))
-        vim.api.nvim_put({ selection[1] }, "", false, true)
-      end)
-      return true
-    end,
-  }):find()
+	opts = require("telescope.themes").get_dropdown {}
+	pickers.new(opts, {
+		prompt_title = "colors",
+		finder = finders.new_table {
+			results = { "red", "green", "blue" }
+		},
+		sorter = conf.generic_sorter(opts),
+		attach_mappings = function(prompt_bufnr, map)
+			actions.select_default:replace(function()
+				actions.close(prompt_bufnr)
+				local selection = action_state.get_selected_entry()
+				print(vim.inspect(selection))
+				vim.api.nvim_put({ selection[1] }, "", false, true)
+			end)
+			return true
+		end,
+	}):find()
 end
 map("n", "<leader><leader>", colors)
 
