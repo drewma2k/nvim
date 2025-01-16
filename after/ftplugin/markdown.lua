@@ -20,6 +20,9 @@ vim.keymap.set("n", "<C-c>", function()
 end
 )
 
+vim.keymap.set("i", "<tab>", "<Plug>(bullets-demote)")
+vim.keymap.set("i", "<s-tab>", "<Plug>(bullets-promote)")
+
 -- paste in visual mode creates link with system clipboard
 vim.keymap.set("v", "gp", "c[<C-r>\"](\"<Esc>\"*pa\")<Esc>")
 
