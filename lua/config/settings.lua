@@ -116,14 +116,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.opt.foldlevel=99
 
 -- automatically close import folds
-vim.api.nvim_create_autocmd('LspNotify', {
-	callback = function(args)
-		if args.data.method == 'textDocument/didOpen' then
-			vim.opt.foldlevel=99 -- java import folding doesn't work without this...
-			vim.lsp.foldclose('imports', 0)
-		end
-	end,
-})
+-- causes some issues in java
+-- vim.api.nvim_create_autocmd('LspNotify', {
+-- 	callback = function(args)
+-- 		if args.data.method == 'textDocument/didOpen' then
+-- 			vim.opt.foldlevel=99 -- java import folding doesn't work without this...
+-- 			vim.lsp.foldclose('imports', vim.fn.bufwinid(args.buf))
+-- 		end
+-- 	end,
+-- })
 
 vim.opt.wildmode = 'longest:full,full'
 

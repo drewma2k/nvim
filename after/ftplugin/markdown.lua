@@ -15,6 +15,8 @@ vim.o.foldenable = true
 -- enable autowriteall
 vim.o.autowriteall = true
 
+-- necessary because bullets.vim will not create the checkbox if it doesn't
+-- exist
 vim.keymap.set("n", "<C-c>", function()
 	require('toggle-checkbox').toggle()
 end

@@ -1,5 +1,13 @@
 return {
 	{
+		"ibhagwan/fzf-lua",
+		-- optional for icon support
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- or if using mini.icons/mini.nvim
+		-- dependencies = { "echasnovski/mini.icons" },
+		opts = {}
+	},
+	{
 		'stevearc/dressing.nvim',
 		opts = {},
 	},
@@ -13,18 +21,19 @@ return {
 	{
 		'folke/which-key.nvim',
 		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
 			plugins = {
 				spelling = { enabled = true },
 				presets = { operators = false },
-				-- registers = false,
 			},
 			win = {
 				border = "rounded",
 				padding = { 2, 2, 2, 2 },
 			},
+			spec = {
+				{ "<leader>c",  group = "copilot" },
+				{ "<leader>dv", group = "diffview" },
+				{ "<leader>d",  group = "debug" }
+			}
 		}
 	},
 	{
@@ -567,18 +576,24 @@ return {
 		}
 	},
 	{
-		"hedyhli/outline.nvim",
-		keys = {
-			{ "<leader>o", "<cmd>Outline<CR>", desc = "toggle Outline" }
-		},
+		'stevearc/aerial.nvim',
 		opts = {
-			symbols = {
-				filter = {
-					-- default = { 'String', exclude = true },
-					python = { 'Function' },
-				}
+			layout = {
+				max_width = nil,
+				min_width = 0.25,
+				placement = 'edge',
+				resize_to_content = true
 			}
-		}
+		},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons"
+		},
+		keys = {
+			{"<leader>o", "<cmd>AerialToggle!<cr>", desc="Toggle Outline"}
+		},
+
 	},
 	{
 		"OXY2DEV/markview.nvim",
