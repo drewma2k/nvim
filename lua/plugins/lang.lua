@@ -1,24 +1,46 @@
 return {
 	{
-		'bullets-vim/bullets.vim',
-		lazy = false,
-		init = function()
-			-- disable default mappings
-			vim.g.bullets_set_mappings = 0
+		"nvim-neorg/neorg",
+		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+		version = "*", -- Pin Neorg to the latest stable release
+		config = function ()
+			require('neorg').setup({
+				load = {
+					["core.defaults"] = {},
+					["core.concealer"] = {},
+					["core.dirman"] = {
+						default_workspace = 'notes',
+						workspaces = {
+							notes = "~/Documents/notes"
+						}
+					},
+					['core.journal'] = {
+						workspace = 'notes'
+					}
+				}
+			})
 		end,
-		keys = {
-			{ '<cr>',   '<Plug>(bullets-newline)',  mode = 'i' },
-			{ '<C-cr>', '<cr>',                     mode = 'i' }, -- remap false?
-			{ 'o',      '<Plug>(bullets-newline)',  mode = 'n' },
-			{ 'gN',     '<Plug>(bullets-renumber)', mode = 'v' },
-			{ 'gN',     '<Plug>(bullets-renumber)', mode = 'n' },
-			{ '<C-t>',  '<Plug>(bullets-demote)',   mode = 'i' },
-			{ '>>',     '<Plug>(bullets-demote)',   mode = 'n' },
-			{ '>',      '<Plug>(bullets-demote)',   mode = 'v' },
-			{ '<C-d>',  '<Plug>(bullets-promote)',  mode = 'i' },
-			{ '<<',     '<Plug>(bullets-promote)',  mode = 'n' },
-			{ '<',      '<Plug>(bullets-promote)',  mode = 'v' },
-		}
+	},
+	{
+		'bullets-vim/bullets.vim',
+		lazy = 'BufEnter *.md',
+		-- init = function()
+		-- 	-- disable default mappings
+		-- 	vim.g.bullets_set_mappings = 0
+		-- end,
+		-- keys = {
+		-- 	{ '<cr>',   '<Plug>(bullets-newline)',  mode = 'i' },
+		-- 	{ '<C-cr>', '<cr>',                     mode = 'i' }, -- remap false?
+		-- 	{ 'o',      '<Plug>(bullets-newline)',  mode = 'n' },
+		-- 	{ 'gN',     '<Plug>(bullets-renumber)', mode = 'v' },
+		-- 	{ 'gN',     '<Plug>(bullets-renumber)', mode = 'n' },
+		-- 	{ '<C-t>',  '<Plug>(bullets-demote)',   mode = 'i' },
+		-- 	{ '>>',     '<Plug>(bullets-demote)',   mode = 'n' },
+		-- 	{ '>',      '<Plug>(bullets-demote)',   mode = 'v' },
+		-- 	{ '<C-d>',  '<Plug>(bullets-promote)',  mode = 'i' },
+		-- 	{ '<<',     '<Plug>(bullets-promote)',  mode = 'n' },
+		-- 	{ '<',      '<Plug>(bullets-promote)',  mode = 'v' },
+		-- }
 	},
 	{
 		'nvim-java/nvim-java',
