@@ -54,7 +54,7 @@ return {
 					-- map("n", "gd", "<cmd>Trouble lsp_definitions<cr>", bufopts)
 					map("n", "gi", "<cmd>Trouble lsp_implementations<cr>", bufopts)
 					map("n", "[q", function()
-						trouble.previous({ skip_groups = true, jump = true })
+						trouble.prev({ skip_groups = true, jump = true })
 					end, bufopts)
 					map("n", "]q", function()
 						trouble.next({ skip_groups = true, jump = true })
