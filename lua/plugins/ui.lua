@@ -591,7 +591,7 @@ return {
 			"nvim-tree/nvim-web-devicons"
 		},
 		keys = {
-			{"<leader>o", "<cmd>AerialToggle!<cr>", desc="Toggle Outline"}
+			{ "<leader>o", "<cmd>AerialToggle!<cr>", desc = "Toggle Outline" }
 		},
 
 	},
