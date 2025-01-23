@@ -1,6 +1,9 @@
 -- General Settings
 vim.o.wrap = false
 
+vim.o.conceallevel=2
+vim.o.concealcursor="ni"
+
 --Set highlight on search
 vim.o.hlsearch = false
 
@@ -113,7 +116,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 	end,
 })
 
-vim.opt.foldlevel=99
+vim.opt.foldlevel = 99
 
 -- automatically close import folds
 -- causes some issues in java
