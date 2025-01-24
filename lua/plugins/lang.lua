@@ -3,22 +3,35 @@ return {
 		"nvim-neorg/neorg",
 		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
 		version = "*", -- Pin Neorg to the latest stable release
-		config = function ()
+		config = function()
 			require('neorg').setup({
 				load = {
 					["core.defaults"] = {},
 					["core.concealer"] = {},
 					["core.dirman"] = {
-						default_workspace = 'notes',
-						workspaces = {
-							notes = "~/Documents/notes"
+						config = {
+							default_workspace = 'notes',
+							workspaces = {
+								notes = "~/Documents/notes",
+							}
 						}
 					},
 					['core.journal'] = {
-						workspace = 'notes'
+						config = {
+							journal_folder = 'standup',
+							workspace = 'notes',
+							strategy = 'flat'
+						}
 					}
 				}
 			})
+
+			vim.api.nvim_create_user_command('Standup', function()
+				vim.cmd [[Neorg journal today]]
+				vim.cmd [[split]]
+				vim.cmd [[Neorg journal yesterday]]
+				vim.cmd [[wincmd k]]
+			end, {})
 		end,
 	},
 	{
