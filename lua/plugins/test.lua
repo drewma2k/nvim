@@ -7,6 +7,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter"
 		},
+		event = 'BufRead *.py',
 		keys = {
 			{ "n", "<leader>tr", "<cmd>Neotest run<CR>", desc = "Run tests" },
 			{ "n", "<leader>td",
