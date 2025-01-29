@@ -607,38 +607,42 @@ return {
 			"nvim-tree/nvim-web-devicons"
 		},
 		opts = {
-			initial_state = true,
-			-- hybrid_modes = { 'n' },
-			headings = {
-				-- shift_width = 0,
-				heading_1 = {
-					style = 'simple',
-				},
-				heading_2 = {
-					style = 'simple'
-				},
-				heading_3 = {
-					style = 'simple'
-				},
-				heading_4 = {
-					style = 'simple'
-				},
-				heading_5 = {
-					style = 'simple'
-				},
-				heading_6 = {
-					style = 'simple'
-				},
+			preview = {
+				enable = true
 			},
-			list_items = {
-				enable = true,
-				marker_minus = {
-					add_padding = false,
-					text = '•',
+			-- hybrid_modes = { 'n' },
+			markdown = {
+				headings = {
+					-- shift_width = 0,
+					heading_1 = {
+						style = 'simple',
+					},
+					heading_2 = {
+						style = 'simple'
+					},
+					heading_3 = {
+						style = 'simple'
+					},
+					heading_4 = {
+						style = 'simple'
+					},
+					heading_5 = {
+						style = 'simple'
+					},
+					heading_6 = {
+						style = 'simple'
+					},
 				},
-				marker_plus = { add_padding = false },
-				marker_star = { add_padding = false },
-				marker_dot = { add_padding = false },
+				list_items = {
+					enable = true,
+					marker_minus = {
+						add_padding = false,
+						text = '•',
+					},
+					marker_plus = { add_padding = false },
+					marker_star = { add_padding = false },
+					marker_dot = { add_padding = false },
+				},
 			},
 		}
 	},
