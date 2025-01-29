@@ -14,7 +14,7 @@ return {
 				},
 				jedi_hover = {
 					enabled = true
-				}
+				},
 			}
 		}
 	}

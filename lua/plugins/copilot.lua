@@ -2,9 +2,9 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		enabled = false,
-		keys = {
-			{ "<leader>cj", function() require("copilot.suggestion").toggle_auto_trigger() end, desc = "Toggle Copilot Autotrigger" }
-		},
+		-- keys = {
+		-- 	{ "<leader>cj", function() require("copilot.suggestion").toggle_auto_trigger() end, desc = "Toggle Copilot Autotrigger" }
+		-- },
 		opts = {
 			panel = {
 				enabled = true,
@@ -23,7 +23,7 @@ return {
 			},
 			suggestion = {
 				enabled = true,
-				auto_trigger = false,
+				auto_trigger = true,
 				debounce = 75,
 				keymap = {
 					accept = "<C-;>",

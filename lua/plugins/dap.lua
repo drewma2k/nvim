@@ -1,7 +1,12 @@
 return {
 	{
 		'mfussenegger/nvim-dap',
-		dependencies = { "nvim-neotest/nvim-nio", "rcarriga/nvim-dap-ui", "mfussenegger/nvim-dap-python" },
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"rcarriga/nvim-dap-ui",
+			"mfussenegger/nvim-dap-python",
+			-- "igorlfs/nvim-dap-view"
+		},
 		config = function()
 			local ok, dap = pcall(require, 'dap')
 			if not ok then
@@ -18,6 +23,7 @@ return {
 			dapui.setup()
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open()
+				vim.opt.mouse='nvi'
 			end
 			dap.listeners.before.event_terminated["dapui_config"] = function()
 				dapui.close()
@@ -74,16 +80,8 @@ return {
 	{
 		"mfussenegger/nvim-dap-python",
 		config = function()
-			require('dap-python').setup()
+			require('dap-python').setup("python3")
 			require('dap-python').test_runner = 'pytest'
-			table.insert(require('dap').configurations.python, {
-				type = 'python',
-				request = 'launch',
-				name = "Run Test",
-				program = function()
-					return require('dap-python').test_method
-				end,
-			})
 		end
 	},
 }

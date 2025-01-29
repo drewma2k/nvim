@@ -12,6 +12,9 @@ map("n", "<leader>dd",
 	end,
 	{ desc = "start debugger" })
 map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", { desc = "toggle breakpoint" })
+map("n", "<leader>dm", function ()
+	require('dap-python').test_method({config = {justMyCode = false}})
+end, {desc = "(Python) Test Method"})
 
 
 -- Standard Operations

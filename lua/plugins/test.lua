@@ -9,13 +9,13 @@ return {
 		},
 		event = 'BufRead *.py',
 		keys = {
-			{ "n", "<leader>tr", "<cmd>Neotest run<CR>", desc = "Run tests" },
-			{ "n", "<leader>td",
-				function()
-					require("neotest").run.run({ strategy = "dap" })
-				end,
-				desc = "Run test"
-			}
+			-- { "n", "<leader>tr", "<cmd>Neotest run<CR>", desc = "Run tests" },
+			-- { "n", "<leader>td",
+			-- 	function()
+			-- 		require("neotest").run.run({ strategy = "dap" })
+			-- 	end,
+			-- 	desc = "Run test"
+			-- }
 		},
 		config = function()
 			require('neotest').setup({
@@ -25,6 +25,10 @@ return {
 				output = {
 					enabled = true,
 					open_on_run = true
+				},
+				quickfix = {
+					open = false,
+					enabled = false
 				}
 			})
 		end
