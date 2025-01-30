@@ -11,6 +11,7 @@
 - make pylsp work without activating project venv shell
 - use noice to remove escape characters in lsp hover?
 - try vGit plugin
+- quickfix opens twice when using Ctrl-q telescope
 
 - [x] convert to lazyvim plugin management
 - [x] gr is slow because grr exists
