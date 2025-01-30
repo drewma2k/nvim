@@ -5,6 +5,10 @@ if not ok then
 	return
 end
 
+-- Double Leader
+-- Easiest mapping, should be the most important
+map("n", "<leader><leader>", "<cmd>Telescope commands<cr>")
+
 -- DAP
 map("n", "<leader>dd",
 	function()
@@ -201,7 +205,6 @@ local colors = function()
 		end,
 	}):find()
 end
-map("n", "<leader><leader>", colors)
 
 -- gf creates files if they don't exist
 map("n", "gf", "<cmd>e <cfile><cr>")
