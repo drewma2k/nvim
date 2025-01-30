@@ -166,11 +166,19 @@ map("n", "<leader>cp",
 )
 
 -- Tmux Navigator
-map("n", "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>")
-map("n", "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>")
-map("n", "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>")
-map("n", "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>")
+map("n", "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
+map("n", "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
+map("n", "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
+map("n", "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
 map("n", "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>")
+
+-- Neotest
+map("n", "<leader>tr", "<cmd>Neotest run<CR>", { desc = "Run tests" })
+map("n", "<leader>td",
+	function()
+		require("neotest").run.run({ strategy = "dap" })
+	end,
+	{ desc = "Run test" })
 
 -- telecope context menu
 local pickers = require "telescope.pickers"
