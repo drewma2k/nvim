@@ -483,6 +483,11 @@ return {
 				desc = "Diagnostics (Trouble)",
 			},
 			{
+				"<leader>xc",
+				"<cmd>Trouble close<cr>",
+				desc = "Close (Trouble)",
+			},
+			{
 				"<leader>xX",
 				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 				desc = "Buffer Diagnostics (Trouble)",
@@ -676,6 +681,11 @@ return {
 				case_mode = "smart_case",
 			},
 			defaults = {
+				mappings = {
+					i = {
+						["<C-q>"] = require('telescope.actions').smart_send_to_qflist
+					}
+				},
 				file_ignore_patterns = {
 					"node_modules"
 				},
