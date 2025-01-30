@@ -41,15 +41,8 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle Explorer" })
 -- Comment
 map("n", "<leader>/", "gcc", { remap = true, desc = 'Comment Line' })
 map('v', '<leader>/', 'gc', { remap = true, desc = 'Comment Lines' })
--- map("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", { desc = "Comment line" })
--- map(
--- 	"v",
--- 	"<leader>/",
--- 	"<Plug>(comment_toggle_linewise_visual)",
--- 	{ desc = "Toggle comment line" }
--- )
 
--- -- GitSigns
+-- GitSigns
 ok, gs = pcall(require, 'gitsigns')
 if not ok then
 	return
