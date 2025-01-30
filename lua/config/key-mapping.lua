@@ -12,9 +12,9 @@ map("n", "<leader>dd",
 	end,
 	{ desc = "start debugger" })
 map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", { desc = "toggle breakpoint" })
-map("n", "<leader>dm", function ()
-	require('dap-python').test_method({config = {justMyCode = false}})
-end, {desc = "(Python) Test Method"})
+map("n", "<leader>dm", function()
+	require('dap-python').test_method({ config = { justMyCode = false } })
+end, { desc = "(Python) Test Method" })
 
 
 -- Standard Operations
@@ -156,8 +156,14 @@ map("n", "<leader>dvc", "<cmd>DiffviewClose<cr>", { desc = "Close DiffView" })
 map("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { desc = "DiffView File History" })
 
 -- Copilot
-map("n", "<leader>cj", function() require("copilot.suggestion").toggle_auto_trigger() end, {desc = "Toggle Copilot Autotrigger" })
-
+map("n", "<leader>cj", function() require("copilot.suggestion").toggle_auto_trigger() end,
+	{ desc = "Toggle Copilot Autotrigger" })
+map("n", "<leader>cp",
+	function()
+		require('CopilotChat').open({ window = { width = 0.33 } })
+	end,
+	{ desc = "open chat" }
+)
 
 -- telecope context menu
 local pickers = require "telescope.pickers"

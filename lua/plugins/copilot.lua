@@ -61,15 +61,6 @@ return {
 			"zbirenbaum/copilot.lua",
 			"nvim-lua/plenary.nvim"
 		},
-		keys = {
-			{
-				"<leader>cp",
-				function()
-					require('CopilotChat').open({ window = { width = 0.33 } })
-				end,
-				desc = "open chat"
-			}
-		},
 		opts = {
 			window = {
 				width = 0.25,
