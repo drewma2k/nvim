@@ -7,7 +7,6 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter"
 		},
-		event = 'BufRead *.py',
 		config = function()
 			require('neotest').setup({
 				adapters = {
