@@ -155,6 +155,9 @@ map("n", "<leader>dvo", "<cmd>DiffviewOpen main<cr>", { desc = "Open DiffView" }
 map("n", "<leader>dvc", "<cmd>DiffviewClose<cr>", { desc = "Close DiffView" })
 map("n", "<leader>dvh", "<cmd>DiffviewFileHistory %<cr>", { desc = "DiffView File History" })
 
+-- Copilot
+map("n", "<leader>cj", function() require("copilot.suggestion").toggle_auto_trigger() end, {desc = "Toggle Copilot Autotrigger" })
+
 
 -- telecope context menu
 local pickers = require "telescope.pickers"
