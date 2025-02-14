@@ -77,6 +77,10 @@ return {
 
 				-- disable LSP highlighting, because it is worse than treesitter
 				client.server_capabilities.semanticTokensProvider = nil
+				-- TODO: handle this option in a python specific file
+				if client.name == 'ruff' then
+					client.server_capabilities.hoverProvider = false
+				end
 
 				-- use keywordprg if in markdown file
 				if vim.bo[bufnr].filetype == 'markdown' then
@@ -113,6 +117,10 @@ return {
 			mason_lspconfig.setup({ automatic_installation = true })
 			mason_lspconfig.setup_handlers {
 				function(server_name)
+					-- TODO: handle this option in a cleaner way
+					if server_name == 'basedpyright' then
+						return
+					end
 					opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
 					lspconfig[server_name].setup(opts)
 				end,

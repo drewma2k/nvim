@@ -9,6 +9,10 @@
 - make pylsp work without activating project venv shell
 - use noice to remove escape characters in lsp hover?
 - try vGit plugin
+- better python lsp configuration, a la lazyvim
+- set messagesopt? use noise to hide hit enter prompts?
+  - messageopt still flashes cmd output even with wait:0
+- do I really need a plugin for statuscol
 
 - [x] convert to lazyvim plugin management
 - [x] quickfix opens twice when using Ctrl-q telescope

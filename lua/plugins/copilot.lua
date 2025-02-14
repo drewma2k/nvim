@@ -53,23 +53,47 @@ return {
 		end
 	},
 	{
-		'CopilotC-Nvim/CopilotChat.nvim',
-		branch = 'main',
-		version = '3.2.0',
-		enabled = true,
+		"olimorris/codecompanion.nvim",
 		dependencies = {
-			"zbirenbaum/copilot.lua",
-			"nvim-lua/plenary.nvim"
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
+		init = function ()
+			vim.keymap.set({"n", "v"}, "<C-a>", "<cmd>CodeCompanionActions<cr>", {noremap=true, silent=true})
+			vim.keymap.set({"n", "v"}, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", {noremap=true, silent=true})
+			vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", {noremap=true, silent=true})
+			vim.cmd([[cab cc CodeCompanion]])
+		end,
 		opts = {
-			window = {
-				width = 0.25,
-			},
-			mappings = {
-				reset = {
-					normal = ""
+			adapters = {
+				opts = {
+					allow_insecure = true,
+					-- proxy = ""
 				}
+			},
+			display = {
+				chat = {
+					window = {
+						width = 0.25
+					}
+				},
+				diff = {
+					provider = "mini_diff"
+				}
+			},
+			strategies = {
+				chat = {
+					adapter = "copilot"
+				},
+				inline = {
+					adapter = "copilot"
+				},
+				agent = {
+					adapter = "copilot"
+				},
 			}
+
 		}
+
 	},
 }

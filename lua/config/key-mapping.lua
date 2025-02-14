@@ -47,10 +47,6 @@ map("n", "<leader>/", "gcc", { remap = true, desc = 'Comment Line' })
 map('v', '<leader>/', 'gc', { remap = true, desc = 'Comment Lines' })
 
 -- GitSigns
-ok, gs = pcall(require, 'gitsigns')
-if not ok then
-	return
-end
 map("n", "<leader>gs", "<cmd>Gitsigns<cr>", { desc = "Gitsigns menu" })
 
 -- Telescope
@@ -142,6 +138,7 @@ map("v", ">", ">gv", { desc = "indent line" })
 
 -- toggle folds with tab
 map("n", "<Tab>", "za")
+map("n", "<S-Tab>", "zA")
 map("n", "<C-i>", "<C-i>")
 
 -- center after going to next search result, and open folds

@@ -1,4 +1,5 @@
 -- General Settings
+vim.opt.grepprg='rg --vimgrep --no-heading --smart-case'
 vim.o.wrap = false
 
 vim.o.conceallevel=2
@@ -140,3 +141,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		client.server_capabilities.semanticTokensProvider = nil
 	end,
 });
+
+-- diff
+vim.opt.diffopt="internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"

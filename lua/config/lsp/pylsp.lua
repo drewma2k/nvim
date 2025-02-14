@@ -3,6 +3,15 @@ return {
 	settings = {
 		pylsp = {
 			plugins = {
+				flake8 = {
+					enabled = false
+				},
+				rope_autoimport = {
+					enabled = false
+				},
+				ruff = {
+					enabled = false
+				},
 				pycodestyle = {
 					enabled = false
 				},
