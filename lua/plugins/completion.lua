@@ -1,18 +1,5 @@
 return {
 	{
-		'hrsh7th/nvim-cmp',
-		enabled = false,
-		dependencies = {
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'hrsh7th/cmp-buffer' },
-			{ 'hrsh7th/cmp-path' },
-			{ 'hrsh7th/cmp-cmdline' },
-			{ 'hrsh7th/cmp-nvim-lua' },
-			{ 'onsails/lspkind.nvim' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-		},
-	},
-	{
 		'L3MON4D3/LuaSnip',
 		build = "make install_jsregexp",
 		config = function()
@@ -29,8 +16,11 @@ return {
 		lazy = false, -- lazy loading handled internally
 		-- event = 'InsertEnter',
 		-- optional: provides snippets for the snippet source
-		dependencies = { 'rafamadriz/friendly-snippets',
-			{ 'L3MON4D3/LuaSnip', version = 'v2.*' } },
+		dependencies = {
+			'rafamadriz/friendly-snippets',
+			'honza/vim-snippets',
+			{ 'L3MON4D3/LuaSnip', version = 'v2.*' }
+		},
 		-- use a release tag to download pre-built binaries
 		version = 'v0.*',
 		-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
@@ -71,25 +61,9 @@ return {
 				},
 				['<CR>'] = { 'accept', 'fallback' },
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-				cmdline = {
-					preset = 'enter',
-					['<Tab>'] = {
-						'show',
-						'select_next',
-						'snippet_forward',
-						'fallback'
-					},
-					['<S-Tab>'] = {
-						'select_prev',
-						'snippet_backward',
-						'fallback'
-					},
-					['<CR>'] = { 'fallback' },
-					["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-					cmdline = {
-
-					}
-				}
+			},
+			cmdline = {
+				enabled = false
 			},
 			completion = {
 				-- list = {
@@ -129,13 +103,18 @@ return {
 				per_filetype = {
 					codecompanion = { "codecompanion" },
 				},
-				-- optionally disable cmdline completions
-				cmdline = {},
 			},
 			-- experimental signature help support
 			signature = { enabled = true },
 			snippets = {
-				preset = 'luasnip'
+				preset = 'luasnip',
+				-- only jump to tabstops if we are still inside a snippet
+				jump = function (direction)
+					local ls = require('luasnip')
+					if ls.in_snippet() then
+						return ls.jump(direction)
+					end
+				end
 			}
 		},
 		-- allows extending the providers array elsewhere in your config

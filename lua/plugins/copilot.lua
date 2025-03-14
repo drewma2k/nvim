@@ -48,9 +48,6 @@ return {
 			copilot_node_command = 'node', -- Node.js version must be > 18.x
 			server_opts_overrides = {},
 		},
-		init = function()
-			vim.g.copilot_proxy = "http://entproxy.kdc.capitalone.com:8099"
-		end
 	},
 	{
 		"olimorris/codecompanion.nvim",
@@ -59,7 +56,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		init = function ()
-			vim.keymap.set({"n", "v"}, "<C-a>", "<cmd>CodeCompanionActions<cr>", {noremap=true, silent=true})
+			-- vim.keymap.set({"n", "v"}, "<C-a>", "<cmd>CodeCompanionActions<cr>", {noremap=true, silent=true})
 			vim.keymap.set({"n", "v"}, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", {noremap=true, silent=true})
 			vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", {noremap=true, silent=true})
 			vim.cmd([[cab cc CodeCompanion]])

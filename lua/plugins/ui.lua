@@ -719,6 +719,13 @@ return {
 					enable = true,
 					disable = { 'markdown' }
 				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						node_incremental = "v",
+						node_decremental = "V"
+					}
+				}
 			})
 		end
 	},
@@ -729,9 +736,9 @@ return {
 		opts = {
 			extensions = {
 				fzf = {
-					fuzzy = true, -- false will only do exact matching
-					override_generic_sorter = true,  -- override the generic sorter
-					override_file_sorter = true,     -- override the file sorter
+					fuzzy = true,    -- false will only do exact matching
+					override_generic_sorter = true, -- override the generic sorter
+					override_file_sorter = true, -- override the file sorter
 					case_mode = "smart_case",
 				}
 			},

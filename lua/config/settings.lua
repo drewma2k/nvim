@@ -76,6 +76,9 @@ vim.opt.foldenable = true
 vim.opt.foldminlines = 0
 vim.g.markdown_folding = 1
 vim.opt.foldignore = ""
+vim.opt.foldmethod='expr'
+vim.opt.foldexpr='v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext=''
 
 
 -- vim-dadbod-ui use nerdfonts
@@ -102,7 +105,7 @@ vim.g.table_mode_syntax = 0
 
 -- folding
 vim.opt.foldenable = true
-vim.opt.foldminlines = 0
+vim.opt.foldminlines = 1
 vim.g.markdown_folding = 1
 vim.opt.foldignore = ""
 -- lsp folding; requires nightly

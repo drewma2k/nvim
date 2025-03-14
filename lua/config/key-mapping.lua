@@ -48,6 +48,8 @@ map('v', '<leader>/', 'gc', { remap = true, desc = 'Comment Lines' })
 
 -- GitSigns
 map("n", "<leader>gs", "<cmd>Gitsigns<cr>", { desc = "Gitsigns menu" })
+map("n", "<leader>hs", "<cmd>Gitsigns preview_hunk_inline<cr>", { desc = "Preview Hunk" })
+
 
 -- Telescope
 local ok, telescope = pcall(require, 'telescope.builtin')
@@ -71,7 +73,7 @@ map("n", "<leader>gc", function()
 end, { desc = "Git commits" })
 
 map("n", "<leader>ff", function()
-	local opts = { no_ignore = true, hidden = false }
+	local opts = { no_ignore = false, hidden = false }
 	telescope.find_files(opts)
 end, { desc = "Search files" })
 

@@ -37,7 +37,7 @@ return {
 			local on_attach = function(client, bufnr)
 				local bufopts = { noremap = true, silent = true, buffer = bufnr }
 				map('n', 'gD', vim.lsp.buf.declaration, bufopts)
-				map('n', 'gd', vim.lsp.buf.definition, bufopts)
+				-- map('n', 'gd', vim.lsp.buf.definition, bufopts) -- just use C-]
 				map('n', 'gi', vim.lsp.buf.implementation, bufopts)
 				map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 				map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -110,6 +110,7 @@ return {
 				},
 				pylsp = require('config.lsp.pylsp'),
 				jdtls = require('config.lsp.jdtls'),
+				basedpyright = require('config.lsp.basedpyright')
 			}
 
 			-- default options for all servers
@@ -118,7 +119,7 @@ return {
 			mason_lspconfig.setup_handlers {
 				function(server_name)
 					-- TODO: handle this option in a cleaner way
-					if server_name == 'basedpyright' then
+					if server_name == 'pylsp' then
 						return
 					end
 					opts = vim.tbl_deep_extend("force", options, override_servers[server_name] or {})
