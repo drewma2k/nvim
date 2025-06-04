@@ -5,7 +5,6 @@ return {
 			"saghen/blink.cmp",
 			{ 'mason-org/mason-lspconfig.nvim', version = "^1.0.0" },
 			{ 'mason-org/mason.nvim',           version = "^1.0.0" },
-			{ 'j-hui/fidget.nvim' },
 			'nvim-java/nvim-java'
 		},
 		lazy = false,
@@ -34,13 +33,7 @@ return {
 			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
-				group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
 				callback = function(event)
-					-- NOTE: Remember that Lua is a real programming language, and as such it is possible
-					-- to define small helper and utility functions so you don't have to repeat yourself.
-					--
-					-- In this case, we create a function that lets us more easily define mappings specific
-					-- for LSP related items. It sets the mode, buffer and description for us each time.
 					local map = function(mode, keys, func, desc)
 						mode = mode or 'n'
 						desc = desc or ''
@@ -103,11 +96,9 @@ return {
 					hoverProvider = false
 				}
 			})
-
 			local capabilities = lspconfig.util.default_config.capabilities
-			capabilities = require('blink.cmp').get_lsp_capabilities()
+			capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
-			-- vim.lsp.config('*', {})
 			mason_lspconfig.setup({ automatic_installation = true })
 			mason_lspconfig.setup_handlers {
 				function(server_name)
@@ -116,11 +107,10 @@ return {
 					if server_name == 'jdtls' then
 						lspconfig[server_name].setup(require('config.lsp.jdtls'))
 					else
-						lspconfig[server_name].setup({ capabilities = capabilities })
-						-- vim.lsp.enable(server_name)
+						vim.lsp.enable(server_name)
 					end
 				end,
 			}
-		end
+		end,
 	},
 }
