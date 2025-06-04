@@ -3,15 +3,16 @@ return {
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			"saghen/blink.cmp",
+			-- version 1.* required until nvim-java supports Mason v2
 			{ 'mason-org/mason-lspconfig.nvim', version = "^1.0.0" },
 			{ 'mason-org/mason.nvim',           version = "^1.0.0" },
+			'folke/trouble.nvim',
 			'nvim-java/nvim-java'
 		},
 		lazy = false,
 		config = function()
 			local mason_lspconfig = require('mason-lspconfig')
-			local lspconfig = require('lspconfig')
-			local _, trouble = pcall(require, 'trouble')
+			local trouble = require('trouble')
 
 			require('mason').setup({
 				registries = {
@@ -25,11 +26,6 @@ return {
 				jdtls = {
 					version = 'v1.39.0'
 				}
-			})
-
-			-- disable virtual text
-			vim.diagnostic.config({
-				virtual_text = false,
 			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
@@ -78,34 +74,15 @@ return {
 				end
 			})
 
-			-- disable LSP highlighting, because it is worse than treesitter
-			vim.lsp.config('*', {
-				capabilities = {
-					semanticTokensProvider = nil,
-					textDocument = {
-						-- TODO: Still required?
-						dynamicRegistration = false,
-						lineFoldingOnly = true
-					}
-				}
-			})
-
-			-- TODO: handle this option in a python specific file
-			vim.lsp.config('ruff', {
-				capabilities = {
-					hoverProvider = false
-				}
-			})
-			local capabilities = lspconfig.util.default_config.capabilities
+			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-
 			mason_lspconfig.setup({ automatic_installation = true })
 			mason_lspconfig.setup_handlers {
 				function(server_name)
 					-- jdtls must be setup with lspconfig until it is update to
 					-- support vim.lsp.config
 					if server_name == 'jdtls' then
-						lspconfig[server_name].setup(require('config.lsp.jdtls'))
+						require('lspconfig')[server_name].setup(require('config.lsp.jdtls'))
 					else
 						vim.lsp.enable(server_name)
 					end
