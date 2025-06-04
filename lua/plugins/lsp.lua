@@ -3,8 +3,9 @@ return {
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			"saghen/blink.cmp",
-			'williamboman/mason-lspconfig',
-			'williamboman/mason.nvim',
+			{ 'mason-org/mason-lspconfig.nvim', version = "^1.0.0" },
+			{ 'mason-org/mason.nvim',           version = "^1.0.0" },
+
 			'nvim-java/nvim-java'
 		},
 		lazy = false,
