@@ -5,7 +5,6 @@ return {
 			"nvim-neotest/nvim-nio",
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
-			-- "igorlfs/nvim-dap-view"
 		},
 		config = function()
 			local ok, dap = pcall(require, 'dap')
@@ -59,10 +58,6 @@ return {
 					local path = coroutine.yield()
 					return "${workspaceFolder}/" .. path
 				end
-				-- program = function ()
-				-- 	return "${workspaceFolder}"..vim.fn.input("Enter path to main.go: ")
-				-- end;
-				-- program = "${workspaceFolder}${MAINPATH}"
 			})
 
 			--  attach remote
