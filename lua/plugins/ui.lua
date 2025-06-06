@@ -531,7 +531,9 @@ return {
 		"folke/trouble.nvim",
 		enabled = true,
 		dependencies = "nvim-tree/nvim-web-devicons",
-		config = true,
+		opts = {
+			auto_refresh = false
+		},
 		keys = {
 			{
 				"<leader>xx",

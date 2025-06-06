@@ -1,5 +1,22 @@
 return {
 	{
+		"Olical/conjure",
+		enabled = false,
+		init = function ()
+			vim.g.conjure_client_on_load = false
+		end
+	},
+	{
+		"rest-nvim/rest.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			opts = function (_, opts)
+				opts.ensure_installed = opts.ensure_installed or {}
+				table.insert(opts.ensure_installed, "http")
+			end
+		}
+	},
+	{
 		"linux-cultist/venv-selector.nvim",
 		dependencies = {
 			"neovim/nvim-lspconfig",

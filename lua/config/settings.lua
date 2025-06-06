@@ -8,6 +8,9 @@ vim.o.concealcursor="ni"
 --Set highlight on search
 vim.o.hlsearch = false
 
+--Relative Number
+vim.o.relativenumber = true
+
 --Make line numbers default
 vim.wo.number = true
 
@@ -72,15 +75,6 @@ vim.opt.cursorline = true
 vim.g.go_gopls_enabled = 0
 vim.g.go_code_completion_enabled = 0
 
-vim.opt.foldenable = true
-vim.opt.foldminlines = 0
-vim.g.markdown_folding = 1
-vim.opt.foldignore = ""
-vim.opt.foldmethod='expr'
-vim.opt.foldexpr='v:lua.vim.treesitter.foldexpr()'
-vim.opt.foldtext=''
-
-
 -- vim-dadbod-ui use nerdfonts
 vim.g.db_ui_show_database_icon = 1
 vim.g.db_ui_use_nerd_fonts = 1
@@ -106,8 +100,12 @@ vim.g.table_mode_syntax = 0
 -- folding
 vim.opt.foldenable = true
 vim.opt.foldminlines = 1
-vim.g.markdown_folding = 1
 vim.opt.foldignore = ""
+vim.g.markdown_folding = 0 -- use treesitter folding for markdown
+vim.opt.foldmethod='expr'
+vim.opt.foldexpr='v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext=''
+
 -- lsp folding; requires nightly
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)

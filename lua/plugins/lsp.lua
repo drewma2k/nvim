@@ -22,11 +22,6 @@ return {
 
 				}
 			})
-			require('java').setup({
-				jdtls = {
-					version = 'v1.39.0'
-				}
-			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(event)
@@ -74,19 +69,30 @@ return {
 				end
 			})
 
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+			-- configure every LSP with default config
+			vim.lsp.config('*', {})
+
 			mason_lspconfig.setup({ automatic_installation = true })
 			mason_lspconfig.setup_handlers {
 				function(server_name)
+					vim.lsp.enable(server_name)
+				end,
+				jdtls = function ()
 					-- jdtls must be setup with lspconfig until it is update to
 					-- support vim.lsp.config
-					if server_name == 'jdtls' then
-						require('lspconfig')[server_name].setup(require('config.lsp.jdtls'))
-					else
-						vim.lsp.enable(server_name)
-					end
-				end,
+					local capabilities = vim.lsp.protocol.make_client_capabilities()
+					capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+					require('java').setup({
+						jdk = {
+							auto_install = false
+						}
+					})
+					local opts = vim.tbl_deep_extend("force",{
+						capabilities = capabilities,
+					}, require('config.lsp.jdtls'))
+					require('lspconfig').jdtls.setup(opts)
+
+				end
 			}
 		end,
 	},
