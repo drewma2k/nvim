@@ -69,15 +69,13 @@ return {
 				end
 			})
 
-			-- configure every LSP with default config
-			vim.lsp.config('*', {})
-
 			mason_lspconfig.setup({ automatic_installation = true })
 			mason_lspconfig.setup_handlers {
 				function(server_name)
+					vim.lsp.config(server_name, {})
 					vim.lsp.enable(server_name)
 				end,
-				jdtls = function ()
+				["jdtls"] = function ()
 					-- jdtls must be setup with lspconfig until it is update to
 					-- support vim.lsp.config
 					local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -87,9 +85,10 @@ return {
 							auto_install = false
 						}
 					})
+					local options = require('config.lsp.jdtls')
 					local opts = vim.tbl_deep_extend("force",{
 						capabilities = capabilities,
-					}, require('config.lsp.jdtls'))
+					}, options)
 					require('lspconfig').jdtls.setup(opts)
 
 				end

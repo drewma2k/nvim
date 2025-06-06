@@ -1,7 +1,5 @@
-local default_cmd = require('lspconfig.configs').jdtls.cmd or {}
 return {
 	root_dir = function() return vim.fs.root(0, '.git') end,
-	cmd = default_cmd,
 	settings = {
 		java = {
 			eclipse = {
