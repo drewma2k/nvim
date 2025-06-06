@@ -48,6 +48,3 @@ plugin/packer_compiled.lua
 spell/*
 dependencies
 .luarc.json
-
-# lazyvim
-lazy-lock.json
