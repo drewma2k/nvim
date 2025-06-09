@@ -86,13 +86,6 @@ return {
 					})
 					local opts = require('config.lsp.jdtls')
 					opts.capabilities = capabilities
-					-- required to avoid blink.cmp clientCommand error;
-					-- disables filling in parameter hints
-					opts.init_options = {
-						extendedClientCapabilities = {
-							onCompletionItemSelectedCommand = ''
-						}
-					}
 					require('lspconfig').jdtls.setup(opts)
 
 				end
