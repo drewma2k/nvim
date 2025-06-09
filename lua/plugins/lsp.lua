@@ -78,17 +78,14 @@ return {
 				["jdtls"] = function ()
 					-- jdtls must be setup with lspconfig until it is update to
 					-- support vim.lsp.config
-					local capabilities = vim.lsp.protocol.make_client_capabilities()
-					capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+					local capabilities = require('blink.cmp').get_lsp_capabilities()
 					require('java').setup({
 						jdk = {
 							auto_install = false
 						}
 					})
-					local options = require('config.lsp.jdtls')
-					local opts = vim.tbl_deep_extend("force",{
-						capabilities = capabilities,
-					}, options)
+					local opts = require('config.lsp.jdtls')
+					opts.capabilities = capabilities
 					require('lspconfig').jdtls.setup(opts)
 
 				end
