@@ -16,12 +16,12 @@ return {
 
 			require('mason').setup({
 				registries = {
-					'file:' .. vim.fn.stdpath('config') .. '/mason',
 					'github:nvim-java/mason-registry',
 					'github:mason-org/mason-registry',
 
 				}
 			})
+			require('java').setup({})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(event)
@@ -79,11 +79,6 @@ return {
 					-- jdtls must be setup with lspconfig until it is update to
 					-- support vim.lsp.config
 					local capabilities = require('blink.cmp').get_lsp_capabilities()
-					require('java').setup({
-						jdk = {
-							auto_install = false
-						}
-					})
 					local opts = require('config.lsp.jdtls')
 					opts.capabilities = capabilities
 					require('lspconfig').jdtls.setup(opts)

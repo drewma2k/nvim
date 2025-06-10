@@ -80,13 +80,16 @@ return {
 			},
 			strategies = {
 				chat = {
-					adapter = "copilot"
+					adapter = {
+						name = "openai",
+						model = "gpt-4.1-mini"
+					}
 				},
 				inline = {
-					adapter = "copilot"
+					adapter = "openai"
 				},
 				agent = {
-					adapter = "copilot"
+					adapter = "openai"
 				},
 			}
 
