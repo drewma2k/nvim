@@ -71,10 +71,7 @@ return {
 			end, {})
 		end,
 	},
-	{
-		'bullets-vim/bullets.vim',
-		lazy = 'BufEnter *.md',
-	},
+	{'bullets-vim/bullets.vim'},
 	{ 'martinda/Jenkinsfile-vim-syntax' },
 	{
 		"eatgrass/maven.nvim",
