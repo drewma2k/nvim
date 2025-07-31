@@ -45,6 +45,7 @@ return {
 				type = "go",
 				name = "Debug $MAINPATH",
 				request = "launch",
+				outputMode = "remote",
 				program = function()
 					local co = coroutine.running()
 					local cb = function(input)
