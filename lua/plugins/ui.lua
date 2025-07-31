@@ -414,6 +414,8 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons"
 		},
+		lazy = false,
+		priority = 49,
 		opts = {
 			preview = {
 				enable = true
@@ -458,6 +460,10 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		-- version = "v0.9.0",
 		build = ":TSUpdate",
+		lazy = false,
+		dependencies = {
+			"OXY2DEV/markview.nvim"
+		},
 		config = function()
 			local configs = require("nvim-treesitter.configs")
 
