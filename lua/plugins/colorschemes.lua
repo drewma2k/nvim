@@ -13,6 +13,12 @@ return {
 				style = 'warmer'
 			})
 			require('onedark').load()
+
+			-- fix highlights for DAPIU
+			vim.cmd[[hi clear WinBar]]
+			vim.cmd[[hi clear WinBarNC]]
+			vim.cmd[[hi link WinBar StatusLine]]
+			vim.cmd[[hi link WinBarNC StatusLineNC]]
 		end
 	},
 	{'zenbones-theme/zenbones.nvim', dependencies = "rktjmp/lush.nvim"},
