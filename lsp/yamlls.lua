@@ -4,9 +4,7 @@ return {
 			format = {
 				enable = true
 			},
-			schemas = {
-				[""]
-			},
+			schemas = {},
 			schemaStore = {
 				enabled = true
 			}
