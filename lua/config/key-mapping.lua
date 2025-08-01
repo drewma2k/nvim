@@ -198,4 +198,5 @@ local colors = function()
 end
 
 -- gf creates files if they don't exist
-map("n", "gf", "<cmd>e <cfile><cr>")
+-- create relative to current buffer
+map("n", "gf","<cmd>e " .. "%:p:h/<cfile><cr>")
