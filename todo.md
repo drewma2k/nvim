@@ -13,9 +13,18 @@
 - set messagesopt? use noise to hide hit enter prompts?
   - messageopt still flashes cmd output even with wait:0
 - do I really need a plugin for statuscol
+- fix bullets.vim keymappings
+- consider oil.nvim
 
 - [x] convert to lazyvim plugin management
 - [x] quickfix opens twice when using Ctrl-q telescope
 - [x] fix lazy loading
 - [x] consolidate key mappings
 - [x] gr is slow because grr exists
+
+## Java
+- use Mason 2.0 if nvim-java supports it
+- Lemminx patched for maven
+  - mason package
+- vscode-maven integration
+  - Mason package

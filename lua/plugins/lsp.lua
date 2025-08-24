@@ -4,23 +4,14 @@ return {
 		dependencies = {
 			"saghen/blink.cmp",
 			-- version 1.* required until nvim-java supports Mason v2
-			{ 'mason-org/mason-lspconfig.nvim', version = "^1.0.0" },
-			{ 'mason-org/mason.nvim',           version = "^1.0.0" },
+			'mason-org/mason-lspconfig.nvim',
+			{ 'mason-org/mason.nvim', opts = {} },
 			'folke/trouble.nvim',
-			'nvim-java/nvim-java'
+			'nvim-java/nvim-java',
 		},
 		lazy = false,
 		config = function()
-			local mason_lspconfig = require('mason-lspconfig')
 			local trouble = require('trouble')
-
-			require('mason').setup({
-				registries = {
-					'github:nvim-java/mason-registry',
-					'github:mason-org/mason-registry',
-
-				}
-			})
 			require('java').setup({})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
@@ -69,22 +60,35 @@ return {
 				end
 			})
 
-			mason_lspconfig.setup({ automatic_installation = true })
-			mason_lspconfig.setup_handlers {
-				function(server_name)
-					vim.lsp.config(server_name, {})
-					vim.lsp.enable(server_name)
-				end,
-				["jdtls"] = function ()
-					-- jdtls must be setup with lspconfig until it is update to
-					-- support vim.lsp.config
-					local capabilities = require('blink.cmp').get_lsp_capabilities()
-					local opts = require('config.lsp.jdtls')
-					opts.capabilities = capabilities
-					require('lspconfig').jdtls.setup(opts)
+			require('mason-lspconfig').setup({
+				automatic_installation = true,
+				automatic_enable = true
+			})
 
-				end
-			}
+			-- Must setup jdtls with lspconfig because nvim-java
+			-- wraps jdtls.setup(). Change when nvim-java supports
+			-- vim.lsp.config
+			local opts = require('config.lsp.jdtls')
+			opts.capabilities = require('blink.cmp').get_lsp_capabilities()
+			require('lspconfig').jdtls.setup(opts)
 		end,
+	},
+	{
+		"linux-cultist/venv-selector.nvim",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python",
+			{
+				"nvim-telescope/telescope.nvim",
+				-- branch = "0.1.x",
+				dependencies = { "nvim-lua/plenary.nvim" }
+			}
+		},
+		lazy = false,
+		branch = "regexp",
+		opts = {},
+		keys = {
+			{ ",v", "<cmd>VenvSelect<cr>" }
+		}
 	},
 }
