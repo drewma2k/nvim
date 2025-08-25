@@ -52,7 +52,7 @@ end
 vim.lsp.handlers['workspace/executeCommand'] = handler
 
 vim.lsp.buf_request(
-	10, -- bufnr (0 for current buffer)
+	5, -- bufnr (0 for current buffer)
 	'workspace/executeCommand',
 	{
 		command = 'java.maven.addDependency',

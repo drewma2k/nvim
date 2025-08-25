@@ -3,9 +3,14 @@ return {
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			"saghen/blink.cmp",
-			-- version 1.* required until nvim-java supports Mason v2
 			'mason-org/mason-lspconfig.nvim',
-			{ 'mason-org/mason.nvim', opts = {} },
+			{'mason-org/mason.nvim',
+			opts = {
+				registries = {
+					"github:mason-org/mason-registry",
+					"file:" .. vim.fn.stdpath('config') .. '/mason'
+				}
+			}},
 			'folke/trouble.nvim',
 			'nvim-java/nvim-java',
 		},

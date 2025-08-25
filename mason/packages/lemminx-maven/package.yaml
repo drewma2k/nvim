@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://github.com/mason-org/registry-schema/releases/latest/download/package.schema.json
+name: lemminx-maven
+description: Utilities for pom.xml completion
+homepage: https://github.com/eclipse-lemminx/lemminx-maven
+licenses: 
+  - EPL-2.0
+languages: 
+- xml
+- java
+categories: 
+- LSP
+
+source:
+  id: pkg:github/eclipse-lemminx/lemminx-maven@0.12.0
+  build:
+      run: | 
+        ./mvnw verify -DskipTests -Pgenerate-vscode-jars
+        printf "#!/bin/bash\ncd /Users/drew/.local/share/nvim/mason/packages/lemminx-maven/lemminx-maven/target/vscode-lemminx-maven-jars && java -cp \"*\" org.eclipse.lemminx.XMLServerLauncher" >> lemminx-maven/target/vscode-lemminx-maven-jars/lemminx-maven
+        chmod +x lemminx-maven/target/vscode-lemminx-maven-jars/lemminx-maven
+      bin: lemminx-maven/target/vscode-lemminx-maven-jars/lemminx-maven
+
+bin: 
+  lemminx-maven: "{{source.build.bin}}"
+
+

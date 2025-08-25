@@ -2,7 +2,7 @@ return {
 	root_dir = function() return vim.fs.root(0, '.git') end,
 	filetypes = {"java"},
 	init_options = {
-		bundles = {"/Users/drew/.local/share/nvim/mason/packages/jdtls/plugins/com.microsoft.java.maven.plugin-0.39.0.jar"},
+		bundles = { vim.env.HOME .. "/.local/share/nvim/mason/packages/share/jdtls/plugins/com.microsoft.java.maven.jar"},
 	},
 	settings = {
 		java = {

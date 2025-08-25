@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://github.com/mason-org/registry-schema/releases/latest/download/package.schema.json
+---
+name: maven
+description: |
+  jdtls extension adding support for maven dependency management
+homepage: https://github.com/Microsoft/vscode-maven
+licenses:
+  - MIT
+languages:
+  - Java
+categories:
+  - LSP
+
+source:
+  id: pkg:openvsx/vscjava/vscode-maven@0.44.0
+  download:
+    file: vscjava.vscode-maven-{{version}}.vsix
+
+share:
+  jdtls/plugins/com.microsoft.java.maven.plugin.jar: extension/jdtls.ext/com.microsoft.java.maven.plugin/target/com.microsoft.java.maven.plugin-0.39.0.jar
+
+
