@@ -24,9 +24,9 @@ return {
 				dapui.open()
 				vim.opt.mouse='nvi'
 			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close()
-			end
+			-- dap.listeners.before.event_terminated["dapui_config"] = function()
+			-- 	dapui.close()
+			-- end
 
 			dap_go.setup()
 

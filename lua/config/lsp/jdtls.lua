@@ -3,40 +3,6 @@ return {
 	filetypes = {"java"},
 	init_options = {
 		bundles = {"/Users/drew/.local/share/nvim/mason/packages/jdtls/plugins/com.microsoft.java.maven.plugin-0.39.0.jar"},
-		-- extendedClientCapabilities = {
-		-- 	actionableRuntimeNotificationSupport = true,
-		-- 	advancedExtractRefactoringSupport = true,
-		-- 	advancedGenerateAccessorsSupport = true,
-		-- 	advancedIntroduceParameterRefactoringSupport = true,
-		-- 	advancedOrganizeImportsSupport = true,
-		-- 	advancedUpgradeGradleSupport = true,
-		-- 	classFileContentsSupport = true,
-		-- 	clientDocumentSymbolProvider = true,
-		-- 	clientHoverProvider = true,
-		-- 	executeClientCommandSupport = true,
-		-- 	extractInterfaceSupport = true,
-		-- 	generateConstructorsPromptSupport = true,
-		-- 	generateDelegateMethodsPromptSupport = true,
-		-- 	generateToStringPromptSupport = true,
-		-- 	gradleChecksumWrapperPromptSupport = true,
-		-- 	hashCodeEqualsPromptSupport = true,
-		-- 	inferSelectionSupport = {
-		-- 		'extractConstant',
-		-- 		'extractField',
-		-- 		'extractInterface',
-		-- 		'extractMethod',
-		-- 		'extractVariableAllOccurrence',
-		-- 		'extractVariable',
-		-- 	},
-		-- 	moveRefactoringSupport = true,
-		-- 	-- This option causes issues with blink.cmp, because the
-		-- 	-- implemented function does not return a value. Must override the
-		-- 	-- whole table because nvim-java does not deep-extend this config.
-		-- 	-- nvim-java issue: https://github.com/nvim-java/nvim-java/issues/396
-		-- 	-- blink.cmp issue: https://github.com/Saghen/blink.cmp/issues/1864
-		-- 	-- onCompletionItemSelectedCommand = 'editor.action.triggerParameterHints',
-		-- 	overrideMethodsPromptSupport = true,
-		-- },
 	},
 	settings = {
 		java = {
@@ -55,9 +21,10 @@ return {
 				}
 			},
 			configuration = {
-				maven = {
-					globalSettings = '/Users/yde639/.m2/settings.xml',
-					userSettings = '/Users/yde639/.m2/settings.xml'
+				runtimes = {
+					name = "sdkman",
+					path = vim.env.HOME .. '/.sdkman/candidates/java/current',
+					default = true
 				}
 			}
 		}

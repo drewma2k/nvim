@@ -9,8 +9,10 @@ vim.o.autowriteall = true
 -- exist
 vim.keymap.set("n", "<C-c>", function()
 	require('toggle-checkbox').toggle()
-end
-)
+end)
+
+vim.keymap.set("i", "<TAB>", "<Plug>(bullets-demote)")
+vim.keymap.set("i", "<S-TAB>", "<Plug>(bullets-promote)")
 
 -- paste in visual mode creates link with system clipboard
 vim.keymap.set("v", "gp", "c[<C-r>\"](\"<Esc>\"*pa\")<Esc>")

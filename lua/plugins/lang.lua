@@ -1,16 +1,44 @@
 return {
 	{
+		"mistweaverco/kulala.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons"
+		},
+		enabled = true,
+		keys = {
+			{ "<leader>Rs", desc = "Send request" },
+			{ "<leader>Ra", desc = "Send all requests" },
+			{ "<leader>Rb", desc = "Open scratchpad" }
+		},
+		ft = { "http", "rest" },
+		opts = {
+			global_keymaps = true,
+			global_keymaps_prefix = "<leader>R",
+			kulala_keymaps_prefix = "",
+			ui = {
+				icons = {
+					inlay = {
+						loading = "󰔟",
+						done = "󰄬",
+						error = ""
+					}
+				}
+			}
+		},
+	},
+	{
 		"Olical/conjure",
 		enabled = false,
-		init = function ()
+		init = function()
 			vim.g.conjure_client_on_load = false
 		end
 	},
 	{
 		"rest-nvim/rest.nvim",
+		enabled = false,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			opts = function (_, opts)
+			opts = function(_, opts)
 				opts.ensure_installed = opts.ensure_installed or {}
 				table.insert(opts.ensure_installed, "http")
 			end
@@ -51,7 +79,12 @@ return {
 			end, {})
 		end,
 	},
-	{'bullets-vim/bullets.vim'},
+	{
+		'bullets-vim/bullets.vim',
+		init = function()
+			vim.g.bullets_outline_levels = { 'ROM', 'ABC', 'num', 'abs', 'rom', 'std-' }
+		end
+	},
 	{ 'martinda/Jenkinsfile-vim-syntax' },
 	{
 		"eatgrass/maven.nvim",
@@ -61,7 +94,8 @@ return {
 			require('maven').setup({
 				executable = "mvn",
 				commands = {
-					{ cmd = { "install", "-Dmaven.test.skip" }, desc = "Install without tests" }
+					{ cmd = { "install", "-Dmaven.test.skip" }, desc = "Install without tests" },
+					{ cmd = {"clean", "install"}, desc = "Clean Install"}
 				}
 			})
 		end

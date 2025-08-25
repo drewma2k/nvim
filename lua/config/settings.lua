@@ -60,7 +60,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 
 -- mark column 80, max length of lines
-vim.o.colorcolumn = '80'
+-- vim.o.colorcolumn = '80'
 
 -- ctags files
 vim.opt.tags = './.tags'
