@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-function
 -- need two user commands to cover all functionality:
 -- resolve unknown dependency
 -- TODO: cleanup
@@ -82,3 +83,21 @@ vim.lsp.handlers['workspace/executeCommand'] = function(err, result, ctx, config
 	end
 	executeCommandHandler(err, result, ctx, config)
 end
+
+local send_request = function (cmd, args, handler)
+	vim.lsp.buf_request(0, 'workspace/executeCommand', {command = cmd, arguments=args}, handler)
+end
+
+
+local select_dependency = function (word)
+	send_request('java.maven.initializeSearcher', {
+		vim.env.MASON .. '/packages/maven/extension/resources/IndexData/'
+	},
+	function (err, choices, _, _)
+		vim.ui.select(choices, {}, function (item, i)
+
+		end)
+	end)
+end
+
+
