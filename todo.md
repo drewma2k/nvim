@@ -1,4 +1,6 @@
 # TODO
+- experiment with coc-nvim and vimspector etc. to decide if native is really
+  worth it.
 - consider [https://github.com/ray-x/go.nvim]
 - consider nvim-surround / mini.surround
 - do I really need Neorg?
