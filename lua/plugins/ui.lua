@@ -1,5 +1,9 @@
 return {
 	{
+		"shortcuts/no-neck-pain.nvim",
+		-- version = "*"
+	},
+	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
