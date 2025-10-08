@@ -1,9 +1,9 @@
 return {
-	root_dir = function() return vim.fs.root(0, '.git') end,
-	filetypes = {"java"},
-	init_options = {
-		bundles = { vim.env.HOME .. "/.local/share/nvim/mason/packages/share/jdtls/plugins/com.microsoft.java.maven.jar"},
-	},
+	-- overwrites options from nvim-java. No way to merge yet.
+	-- Either have to copy config from nvim-java or don't edit init_options
+	-- init_options = {
+	-- 	bundles = { vim.env.HOME .. "/.local/share/nvim/mason/packages/share/jdtls/plugins/com.microsoft.java.maven.jar"},
+	-- },
 	settings = {
 		java = {
 			eclipse = {
