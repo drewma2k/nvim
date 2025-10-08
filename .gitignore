@@ -48,3 +48,6 @@ plugin/packer_compiled.lua
 spell/*
 dependencies
 .luarc.json
+
+# ignore these plugin definitions, they are for testing
+experimental.lua
