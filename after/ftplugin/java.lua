@@ -6,6 +6,7 @@
 -- TODO: fix import to fully qualified name
 -- TODO: only add dependency if it isn't already in the pom
 -- TODO: integrate dependency search to implement the above
+-- NOTE: request_sync can make this much simpler. No need for async requests to the lsp
 
 
 
@@ -17,6 +18,7 @@ local select = vim.ui.select
 -- jdlts extension.
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.ui.select = function(actions, select_opts, on_user_choice)
+-- FIX: the proper way to do this is probably to use none-ls to insert custom code actions.
 	if select_opts.kind ~= "codeaction" then
 		select(actions, select_opts, on_user_choice)
 		return
@@ -99,5 +101,3 @@ local select_dependency = function (word)
 		end)
 	end)
 end
-
-
