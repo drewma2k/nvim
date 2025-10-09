@@ -11,6 +11,7 @@ return {
 	},
 	{
 		'neovim/nvim-lspconfig',
+		version = "v2.4.0", --lspconfig.jdtls.setup is required for nvim-java, but deprecated after this version
 		dependencies = {
 			"saghen/blink.cmp",
 			'mason-org/mason-lspconfig.nvim',
