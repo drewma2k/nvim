@@ -199,4 +199,5 @@ end
 
 -- gf creates files if they don't exist
 -- create relative to current buffer
-map("n", "gf","<cmd>e " .. "%:p:h/<cfile><cr>")
+-- covered by obsidian-nvim
+-- map("n", "gf","<cmd>e " .. "%:p:h/<cfile><cr>")
