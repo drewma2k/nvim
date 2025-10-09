@@ -26,6 +26,7 @@ return {
 		---@module 'obsidian'
 		---@type obsidian.config
 		opts = {
+			legacy_commands = false,
 			completion = {
 				-- Enables completion using nvim_cmp
 				nvim_cmp = false,
