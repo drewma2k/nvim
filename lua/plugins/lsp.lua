@@ -1,5 +1,15 @@
 return {
 	{
+		"antosha417/nvim-lsp-file-operations",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-tree.lua",
+		},
+		config = function ()
+			require("lsp-file-operations").setup()
+		end
+	},
+	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			"saghen/blink.cmp",
@@ -75,7 +85,12 @@ return {
 			-- vim.lsp.config
 			local opts = require('config.lsp.jdtls')
 			opts.capabilities = require('blink.cmp').get_lsp_capabilities()
+			-- add filetree capabilities
+			opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities, require('lsp-file-operations').default_capabilities())
 			require('lspconfig').jdtls.setup(opts)
+
+			-- expend default capabilities
+			vim.lsp.config('*', { capabilities = opts.capabilities })
 		end,
 	},
 	{
