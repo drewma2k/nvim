@@ -106,7 +106,7 @@ return {
 			}
 		},
 		lazy = false,
-		branch = "regexp",
+		branch = "main",
 		opts = {},
 		keys = {
 			{ ",v", "<cmd>VenvSelect<cr>" }
