@@ -1,5 +1,9 @@
 return {
 	{
+	  "yousefhadder/markdown-plus.nvim",
+	  ft = "markdown",
+	},
+	{
 		"goerz/jupytext.nvim",
 		opts = {}
 	},
