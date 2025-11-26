@@ -109,6 +109,7 @@ return {
 	},
 	{
 		'bullets-vim/bullets.vim',
+		enabled = false,
 		init = function()
 			vim.g.bullets_outline_levels = { 'ROM', 'ABC', 'num', 'abc', 'rom', 'std-' }
 		end
