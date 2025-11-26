@@ -1,4 +1,10 @@
 return {
+    {
+        "igorlfs/nvim-dap-view",
+        ---@module 'dap-view'
+        ---@type dapview.Config
+        opts = {},
+    },
 	{
 		'mfussenegger/nvim-dap',
 		dependencies = {
@@ -21,7 +27,8 @@ return {
 
 			dapui.setup()
 			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open()
+				vim.cmd("DapViewOpen")
+				-- dapui.open()
 				vim.opt.mouse='nvi'
 			end
 			-- dap.listeners.before.event_terminated["dapui_config"] = function()
