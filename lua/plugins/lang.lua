@@ -31,6 +31,12 @@ return {
 		---@type obsidian.config
 		opts = {
 			legacy_commands = false,
+			footer = {
+				enabled = false,
+			},
+			frontmatter = {
+				enabled = false
+			},
 			completion = {
 				-- Enables completion using nvim_cmp
 				nvim_cmp = false,
@@ -104,7 +110,7 @@ return {
 	{
 		'bullets-vim/bullets.vim',
 		init = function()
-			vim.g.bullets_outline_levels = { 'ROM', 'ABC', 'num', 'abs', 'rom', 'std-' }
+			vim.g.bullets_outline_levels = { 'ROM', 'ABC', 'num', 'abc', 'rom', 'std-' }
 		end
 	},
 	{ 'martinda/Jenkinsfile-vim-syntax' },
