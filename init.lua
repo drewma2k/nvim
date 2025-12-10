@@ -1,3 +1,4 @@
+require('autocmds')
 require("config.lazy")
 require('config.settings')
 require('config.key-mapping')

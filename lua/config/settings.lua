@@ -134,3 +134,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- diff
 vim.opt.diffopt="internal,filler,closeoff,indent-heuristic,linematch:60,algorithm:histogram"
+
+vim.cmd[[TSDisable indent]]
