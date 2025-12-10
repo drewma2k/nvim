@@ -5,23 +5,24 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-tree.lua",
 		},
-		config = function ()
+		config = function()
 			require("lsp-file-operations").setup()
 		end
 	},
 	{
 		'neovim/nvim-lspconfig',
-		version = "v2.4.0", --lspconfig.jdtls.setup is required for nvim-java, but deprecated after this version
 		dependencies = {
 			"saghen/blink.cmp",
 			'mason-org/mason-lspconfig.nvim',
-			{'mason-org/mason.nvim',
-			opts = {
-				registries = {
-					"github:mason-org/mason-registry",
-					"file:" .. vim.fn.stdpath('config') .. '/mason'
+			{
+				'mason-org/mason.nvim',
+				opts = {
+					registries = {
+						"github:mason-org/mason-registry",
+						"file:" .. vim.fn.stdpath('config') .. '/mason'
+					}
 				}
-			}},
+			},
 			'folke/trouble.nvim',
 			'nvim-java/nvim-java',
 		},
@@ -43,6 +44,14 @@ return {
 					map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder)
 					map('n', '<leader>wl', function() vim.inspect(vim.lsp.buf.list_workspace_folders()) end)
 					map('n', '<leader>D', vim.lsp.buf.type_definition, "LSP Type Definition")
+					map('n', '<C-]>', '<C-]>zz')
+					map('n', 'K', function()
+						vim.lsp.buf.hover({
+							border = 'single',
+							max_width = math.floor(vim.api.nvim_win_get_width(0) * 0.75),
+							max_height = math.floor(vim.api.nvim_win_get_height(0) * 0.5)
+						})
+					end)
 					map('n', '<leader>rn', vim.lsp.buf.rename)
 					map('n', 'gr', vim.lsp.buf.references)
 					map('n', '<leader>cc', vim.lsp.buf.code_action)
@@ -80,18 +89,17 @@ return {
 				automatic_installation = true,
 				automatic_enable = true
 			})
+			-- vim.lsp.log.set_level(vim.log.levels.TRACE)
 
-			-- Must setup jdtls with lspconfig because nvim-java
-			-- wraps jdtls.setup(). Change when nvim-java supports
-			-- vim.lsp.config
-			local opts = require('config.lsp.jdtls')
-			opts.capabilities = require('blink.cmp').get_lsp_capabilities()
+			local capabilities = require('blink.cmp').get_lsp_capabilities()
+			local opts = { capabilities = capabilities }
+
 			-- add filetree capabilities
-			opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities, require('lsp-file-operations').default_capabilities())
-			require('lspconfig').jdtls.setup(opts)
+			opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities,
+				require('lsp-file-operations').default_capabilities())
 
 			-- expend default capabilities
-			vim.lsp.config('*', { capabilities = opts.capabilities })
+			vim.lsp.config('*', opts)
 		end,
 	},
 	{
