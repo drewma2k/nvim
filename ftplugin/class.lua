@@ -1,0 +1,7 @@
+-- if vim.b.did_ftplugin == 1 then
+--   return
+-- end
+-- vim.b.did_ftplugin = 1
+--
+-- require('fernflower').decompile_class(vim.fn.bufnr())
+-- vim.cmd("norm gg")

@@ -1,7 +1,19 @@
 return {
 	{
-	  "yousefhadder/markdown-plus.nvim",
-	  ft = "markdown",
+		dir = vim.fn.stdpath('config') .. '/lua/plugins/local/fernflower/',
+		opts = {
+			decompiler = 'fernflower', -- cfr, procyon, fernflower
+			provider = {
+				fernflower = {
+					bin = 'fernflower'
+				}
+			}
+		}
+	},
+	{
+		"yousefhadder/markdown-plus.nvim",
+		enabled = true,
+		ft = "markdown",
 	},
 	{
 		"goerz/jupytext.nvim",
@@ -19,6 +31,7 @@ return {
 		"obsidian-nvim/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
 		ft = "markdown",
+		lazy = false,
 		-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
 		-- event = {
 		--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
@@ -59,6 +72,7 @@ return {
 	},
 	{
 		"davidmh/mdx.nvim",
+		enabled = false,
 		config = true,
 		dependencies = { "nvim-treesitter/nvim-treesitter" }
 	},
