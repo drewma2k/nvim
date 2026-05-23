@@ -7,12 +7,18 @@ return {
 	{"catppuccin/nvim", name = "catppuccin"},
 	{
 		'navarasu/onedark.nvim',
-		priority = 1000,
 		config = function ()
 			require('onedark').setup({
-				style = 'warmer'
+				style = 'dark'
 			})
-			require('onedark').load()
+		end
+	},
+	{
+		'kepano/flexoki-neovim',
+		name = 'flexoki',
+		priority = 1000,
+		config = function ()
+			vim.cmd.colorscheme('flexoki')
 
 			-- fix highlights for DAPIU
 			vim.cmd[[hi clear WinBar]]

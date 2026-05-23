@@ -9,3 +9,14 @@ snippet todo
 # underline
 snippet ul
 	<u>${1}</u>${2}
+
+# blog post
+snippet post
+	---
+	layout: ../../layouts/Layout.astro
+	title: ${1}
+	date: ${2}
+	---
+	
+	# ${3}
+	${0}

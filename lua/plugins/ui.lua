@@ -1,5 +1,23 @@
 return {
 	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		opts = {
+			render_modes = true,
+			-- document = {
+			-- 	conceal = {
+			-- 		line_patterns = {
+			-- 			'^%-%-%-\n.-\n%-%-%-\n', -- start
+			-- 			'\n%-%-%-\n.-\n%-%-%-\n', -- middle
+			-- 		},
+			-- 	},
+			-- },
+		}
+	},
+	{
+		'stevearc/oil.nvim',
+		opts = {}
+	},
+	{
 		"shortcuts/no-neck-pain.nvim",
 		-- version = "*"
 	},
@@ -416,6 +434,7 @@ return {
 	},
 	{
 		"OXY2DEV/markview.nvim",
+		enabled = false,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons"
@@ -428,26 +447,36 @@ return {
 			},
 			-- hybrid_modes = { 'n' },
 			markdown = {
+				tables = {
+					strict = false,
+				},
 				headings = {
 					-- shift_width = 0,
 					heading_1 = {
 						style = 'simple',
+						hl = 'MarkviewHeading1'
 					},
 					heading_2 = {
-						style = 'simple'
+						style = 'simple',
+						hl = 'MarkviewHeading1'
 					},
 					heading_3 = {
-						style = 'simple'
+						style = 'simple',
+						hl = 'MarkviewHeading1'
 					},
 					heading_4 = {
-						style = 'simple'
+						style = 'simple',
+						hl = 'MarkviewHeading1'
 					},
 					heading_5 = {
-						style = 'simple'
+						style = 'simple',
+						hl = 'MarkviewHeading1'
 					},
 					heading_6 = {
-						style = 'simple'
+						style = 'simple',
+						hl = 'MarkviewHeading1'
 					},
+					-- org_indent=true,
 				},
 				list_items = {
 					enable = true,
@@ -467,9 +496,9 @@ return {
 		-- version = "v0.9.0",
 		build = ":TSUpdate",
 		lazy = false,
-		dependencies = {
-			"OXY2DEV/markview.nvim"
-		},
+		-- dependencies = {
+		-- 	"OXY2DEV/markview.nvim"
+		-- },
 		config = function()
 			local configs = require("nvim-treesitter.configs")
 
