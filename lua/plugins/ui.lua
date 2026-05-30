@@ -493,30 +493,35 @@ return {
 	},
 	{
 		'nvim-treesitter/nvim-treesitter',
-		-- version = "v0.9.0",
-		build = ":TSUpdate",
+		branch = 'main',
+		build = ':TSUpdate',
 		lazy = false,
-		-- dependencies = {
-		-- 	"OXY2DEV/markview.nvim"
-		-- },
 		config = function()
-			local configs = require("nvim-treesitter.configs")
+			require('nvim-treesitter').setup()
 
-			configs.setup({
-				-- ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html", "python" },
-				sync_install = false,
-				highlight = { enable = true },
-				indent = {
-					enable = true,
-					disable = { 'markdown' }
-				},
-				incremental_selection = {
-					enable = true,
-					keymaps = {
-						node_incremental = "v",
-						node_decremental = "V"
-					}
-				}
+			local ensure_installed = {
+				'c', 'lua', 'vim', 'vimdoc', 'query',
+				'markdown', 'markdown_inline',
+				'bash', 'fish',
+				'javascript', 'typescript', 'tsx', 'html', 'css', 'json',
+				'python', 'go', 'rust', 'java',
+				'yaml', 'toml',
+			}
+			require('nvim-treesitter').install(ensure_installed)
+
+			vim.api.nvim_create_autocmd('FileType', {
+				callback = function(args)
+					local bufnr = args.buf
+					local ft = vim.bo[bufnr].filetype
+					local lang = vim.treesitter.language.get_lang(ft)
+					if not lang or not vim.treesitter.language.add(lang) then
+						return
+					end
+					pcall(vim.treesitter.start, bufnr, lang)
+					if ft ~= 'markdown' then
+						vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end
+				end,
 			})
 		end
 	},

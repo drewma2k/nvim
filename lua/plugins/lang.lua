@@ -41,6 +41,10 @@ return {
 		--   "BufReadPre path/to/my-vault/*.md",
 		--   "BufNewFile path/to/my-vault/*.md",
 		-- },
+		config = function (_, opts)
+			opts.note_id_func = require("obsidian.builtin").title_id
+			require('obsidian').setup(opts)
+		end,
 		---@module 'obsidian'
 		---@type obsidian.config
 		opts = {
@@ -50,6 +54,9 @@ return {
 			},
 			frontmatter = {
 				enabled = true
+			},
+			link = {
+				auto_update = true,
 			},
 			completion = {
 				-- Enables completion using nvim_cmp
@@ -124,7 +131,7 @@ return {
 	},
 	{
 		'bullets-vim/bullets.vim',
-		enabled = false,
+		enabled = true,
 		init = function()
 			vim.g.bullets_outline_levels = { 'ROM', 'ABC', 'num', 'abc', 'rom', 'std-' }
 		end
