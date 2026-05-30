@@ -18,6 +18,39 @@ return {
 		opts = {}
 	},
 	{
+		'gaoDean/autolist.nvim',
+		ft = { 'markdown', 'text', 'plaintex', 'norg' },
+		config = function()
+			require('autolist').setup()
+
+			vim.api.nvim_create_autocmd('FileType', {
+				pattern = { 'markdown', 'text', 'plaintex', 'norg' },
+				callback = function(args)
+					local buf = args.buf
+					vim.opt_local.comments = 'b:*,b:-,b:+,b:>'
+					vim.opt_local.formatoptions:append('ro')
+					vim.opt_local.formatoptions:remove('c')
+
+					local map = function(mode, lhs, rhs)
+						vim.keymap.set(mode, lhs, rhs, { buffer = buf })
+					end
+					map('i', '<CR>', '<CR><cmd>AutolistNewBullet<cr>')
+					map('i', '<Tab>', '<cmd>AutolistTab<cr>')
+					map('i', '<S-Tab>', '<cmd>AutolistShiftTab<cr>')
+					map('n', 'o', '<cmd>AutolistNewBullet<cr>')
+					map('n', 'O', '<cmd>AutolistNewBulletBefore<cr>')
+					map('n', '<Tab>', '>><cmd>AutolistRecalculate<cr>')
+					map('n', '<S-Tab>', '<<<cmd>AutolistRecalculate<cr>')
+					map('n', '<C-r>', '<cmd>AutolistRecalculate<cr>')
+					map('n', '<<', '<<<cmd>AutolistRecalculate<cr>')
+					map('n', '>>', '>><cmd>AutolistRecalculate<cr>')
+					map('n', 'dd', 'dd<cmd>AutolistRecalculate<cr>')
+					map('v', 'd', 'd<cmd>AutolistRecalculate<cr>')
+				end,
+			})
+		end,
+	},
+	{
 		"shortcuts/no-neck-pain.nvim",
 		-- version = "*"
 	},
