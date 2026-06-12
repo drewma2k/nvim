@@ -1,5 +1,5 @@
 -- indent does not work right
-vim.cmd("TSDisable indent")
+vim.bo.indentexpr = ""
 
 local function convert_links_to_reference(lines)
     local refs = {}
