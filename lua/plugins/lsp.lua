@@ -113,9 +113,9 @@ return {
 				dependencies = { "nvim-lua/plenary.nvim" }
 			}
 		},
-		lazy = false,
 		branch = "main",
 		opts = {},
+		cmd = "VenvSelect",
 		keys = {
 			{ ",v", "<cmd>VenvSelect<cr>" }
 		}

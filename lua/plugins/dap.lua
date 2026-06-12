@@ -1,6 +1,7 @@
 return {
     {
         "igorlfs/nvim-dap-view",
+        cmd = { "DapViewOpen", "DapViewClose", "DapViewToggle" },
         ---@module 'dap-view'
         ---@type dapview.Config
         opts = {},
@@ -11,6 +12,11 @@ return {
 			"nvim-neotest/nvim-nio",
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
+		},
+		keys = {
+			{ "<leader>dd", desc = "start debugger" },
+			{ "<leader>db", desc = "toggle breakpoint" },
+			{ "<leader>dm", desc = "(Python) Test Method" },
 		},
 		config = function()
 			local ok, dap = pcall(require, 'dap')
@@ -75,10 +81,11 @@ return {
 			})
 		end
 	},
-	{ 'rcarriga/nvim-dap-ui' },
-	{ 'leoluz/nvim-dap-go' },
+	{ 'rcarriga/nvim-dap-ui', lazy = true },
+	{ 'leoluz/nvim-dap-go', lazy = true },
 	{
 		"mfussenegger/nvim-dap-python",
+		lazy = true,
 		config = function()
 			require('dap-python').setup("python3")
 			require('dap-python').test_runner = 'pytest'

@@ -7,6 +7,11 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter"
 		},
+		cmd = "Neotest",
+		keys = {
+			{ "<leader>tr", desc = "Run tests" },
+			{ "<leader>td", desc = "Run test" },
+		},
 		config = function()
 			require('neotest').setup({
 				adapters = {

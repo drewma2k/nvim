@@ -1,9 +1,5 @@
 vim.g.mapleader = " "
 local map = vim.keymap.set
-local ok, dap = pcall(require, "dap")
-if not ok then
-	return
-end
 
 -- Double Leader
 -- Easiest mapping, should be the most important
@@ -12,7 +8,7 @@ map("n", "<leader><leader>", "<cmd>Telescope commands<cr>")
 -- DAP
 map("n", "<leader>dd",
 	function()
-		dap.continue()
+		require("dap").continue()
 	end,
 	{ desc = "start debugger" })
 map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", { desc = "toggle breakpoint" })
