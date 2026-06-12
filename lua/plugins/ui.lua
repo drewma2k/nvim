@@ -1,6 +1,7 @@
 return {
 	{
 		'MeanderingProgrammer/render-markdown.nvim',
+		ft = { "markdown" },
 		opts = {
 			render_modes = true,
 			-- document = {
@@ -86,6 +87,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- or if using mini.icons/mini.nvim
 		-- dependencies = { "echasnovski/mini.icons" },
+		cmd = "FzfLua",
 		opts = {}
 	},
 	{
@@ -94,6 +96,7 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
+		event = "LspAttach",
 		opts = {
 			-- options
 			notification = {
@@ -126,6 +129,7 @@ return {
 		dependencies = {
 			'kyazdani42/nvim-web-devicons', -- optional, for file icon
 		},
+		cmd = { "NvimTreeToggle", "NvimTreeFindFile", "NvimTreeOpen", "NvimTreeFocus" },
 		opts = {
 			view = {
 				width = {
@@ -406,6 +410,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = 'ibl',
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			scope = {
 				enabled = false
@@ -529,6 +534,7 @@ return {
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
 		-- version = "0.1.8",
+		cmd = "Telescope",
 		opts = {
 			extensions = {
 				fzf = {

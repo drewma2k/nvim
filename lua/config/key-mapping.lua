@@ -169,15 +169,13 @@ map("n", "<leader>td",
 	end,
 	{ desc = "Run test" })
 -- telecope context menu
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local conf = require("telescope.config").values
-local actions = require "telescope.actions"
-local action_state = require "telescope.actions.state"
-
-
 -- prototype custom menu
 local colors = function()
+	local pickers = require "telescope.pickers"
+	local finders = require "telescope.finders"
+	local conf = require("telescope.config").values
+	local actions = require "telescope.actions"
+	local action_state = require "telescope.actions.state"
 	opts = require("telescope.themes").get_dropdown {}
 	pickers.new(opts, {
 		prompt_title = "colors",
