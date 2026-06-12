@@ -77,9 +77,6 @@ return {
 			-- elsewhere in your config, without redefining it, via `opts_extend`
 			sources = {
 				default = { 'lsp', 'path', 'snippets', 'buffer' },
-				per_filetype = {
-					codecompanion = { "codecompanion" },
-				},
 			},
 		},
 		-- allows extending the providers array elsewhere in your config
