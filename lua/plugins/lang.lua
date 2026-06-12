@@ -57,12 +57,6 @@ return {
 			link = {
 				auto_update = true,
 			},
-			completion = {
-				-- Enables completion using nvim_cmp
-				nvim_cmp = false,
-				-- Enables completion using blink.cmp
-				blink = true,
-			},
 			workspaces = {
 				{
 					name = "notes",
