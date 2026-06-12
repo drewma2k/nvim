@@ -134,6 +134,10 @@ return {
 		enabled = true,
 		init = function()
 			vim.g.bullets_outline_levels = { 'ROM', 'ABC', 'num', 'abc', 'rom', 'std-' }
+			vim.g.bullets_custom_mappings = {
+				{ 'imap', '<Tab>',   '<Plug>(bullets-demote)' },
+				{ 'imap', '<S-Tab>', '<Plug>(bullets-promote)' },
+			}
 		end
 	},
 	{ 'martinda/Jenkinsfile-vim-syntax' },
