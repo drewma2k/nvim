@@ -31,3 +31,34 @@
 - key-mapping.lua: delete unused `colors` prototype function (180-198) or wire it to a key
 - add `.luarc.json` at repo root to silence lua-ls `undefined global 'vim'` noise
 - consider splitting `lua/plugins/ui.lua` (~595 LOC) into smaller files by concern
+
+## Modernization review (2026-06)
+
+### High priority (broken / deprecated)
+- lsp.lua:48 — drop per-call `vim.lsp.buf.hover` border wrapper; use `vim.o.winborder = 'single'` (0.11) and/or `vim.diagnostic.config({ float = { border = ... } })`
+- lsp.lua:78 — `vim.diagnostic.open_float` `source = 'always'` is silently ignored; use `source = true`
+- lsp.lua:89 — mason-lspconfig `automatic_installation` deprecated; use `ensure_installed` + `automatic_enable`
+- lsp.lua:102 — verify `vim.lsp.config('*', opts)` actually merges capabilities to servers; consider setting `vim.lsp.config['*']` before `automatic_enable`
+- conform.lua:6 — `stylelua` typo, should be `stylua` (Lua format currently no-ops)
+- settings.lua:32 — `completeopt = 'menu,menuone,noselect,noinsert'`: `noselect` + `noinsert` contradict; drop `noinsert`
+
+### Medium priority (modernization)
+- evaluate folke/snacks.nvim migration to replace alpha + dressing + fidget + statuscol + indent-blankline
+- ui.lua:93 — dressing.nvim is in maintenance; switch to snacks.input or noice
+- consolidate file explorers: oil + nvim-tree both loaded; pick one (snacks.explorer / mini.files / neo-tree are more active than nvim-tree)
+- ui.lua:147 — replace `tabline.vim` with bufferline.nvim or a custom tabline function, or drop
+- git.lua + mini.lua — gitsigns + mini.diff + codediff + diffview overlap; pick one hunk-sign source
+- completion.lua:13 — drop `vim-snippets` / snipmate loader; friendly-snippets covers it
+- statuscol.nvim — 0.11 native `statuscolumn` is capable; reconsider plugin need
+- key-mapping.lua:155 — `<leader>cp` calls `require('CopilotChat')` but no AI plugin enabled; install or remove keymap (CodeCompanion/Avante are current trends)
+- delete disabled plugin specs instead of `enabled = false`: noice, markview, rest.nvim, mdx, conjure, videre, markdown-plus, copilot.lua
+
+### Low priority (polish)
+- settings.lua:96 — drop `vim.g.polyglot_disabled` (vim-polyglot not installed)
+- consolidate the three `LspAttach` autocmds (settings.lua folding, settings.lua semantic-tokens, lsp.lua keymaps) into one
+- settings.lua:125 — `vim.opt.path = ".,,**"` slows `gf`/`:find` on large repos; probably unused with telescope/fzf-lua
+- move or delete `lua/wip/` (vscode_maven, test_jdtls, ai_diagnostics)
+- init.lua / lazy.lua / key-mapping.lua — `mapleader` set in two places; keep only the one in lazy.lua (before plugins load)
+- settings.lua:114-116 — LspAttach uses `vim.wo` (window-fragile); prefer `vim.opt_local` or `nvim_set_option_value` with explicit win
+- enable native inlay hints (`vim.lsp.inlay_hint.enable(true)`) with a toggle keymap
+- try `vim.diagnostic.config({ virtual_lines = ... })` (0.11 LSP-Lens-style virtual lines)
