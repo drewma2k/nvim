@@ -8,9 +8,19 @@ map("n", "<leader><leader>", "<cmd>Telescope commands<cr>")
 -- DAP
 map("n", "<leader>dd",
 	function()
-		require("dap").continue()
+		local dap = require("dap")
+		if dap.session() then
+			dap.terminate()
+			return
+		end
+		local ok, dv_state = pcall(require, "dap-view.state")
+		if ok and dv_state.winnr and vim.api.nvim_win_is_valid(dv_state.winnr) then
+			require("dap-view").close(true)
+			return
+		end
+		dap.continue()
 	end,
-	{ desc = "start debugger" })
+	{ desc = "toggle debugger" })
 map("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", { desc = "toggle breakpoint" })
 map("n", "<leader>dm", function()
 	require('dap-python').test_method({ config = { justMyCode = false } })

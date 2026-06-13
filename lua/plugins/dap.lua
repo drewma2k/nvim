@@ -13,11 +13,11 @@ return {
 			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap-python",
 		},
-		keys = {
-			{ "<leader>dd", desc = "start debugger" },
-			{ "<leader>db", desc = "toggle breakpoint" },
-			{ "<leader>dm", desc = "(Python) Test Method" },
-		},
+		-- No `keys = { ... }` placeholder triggers here. lazy.nvim deletes
+		-- those mappings whenever the plugin loads, which would clobber the
+		-- real <leader>dd/<leader>db/<leader>dm mappings set up in
+		-- lua/config/key-mapping.lua. dap loads lazily via `require('dap')`
+		-- inside those mappings (and via nvim-jdtls's setup_dap on java files).
 		config = function()
 			local ok, dap = pcall(require, 'dap')
 			if not ok then

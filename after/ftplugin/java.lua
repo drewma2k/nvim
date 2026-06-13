@@ -1,5 +1,7 @@
--- indent does not work right
-vim.bo.indentexpr = ""
+-- jdtls itself is configured in `after/lsp/jdtls.lua` (modern vim.lsp.config
+-- pattern) and enabled by mason-lspconfig. nvim-jdtls's extension functions
+-- (organize_imports, extract_method, test_class, ...) are wired up in the
+-- on_attach there.
 
 local function convert_links_to_reference(lines)
     local refs = {}

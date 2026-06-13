@@ -24,12 +24,10 @@ return {
 				}
 			},
 			'folke/trouble.nvim',
-			'nvim-java/nvim-java',
 		},
 		lazy = false,
 		config = function()
 			local trouble = require('trouble')
-			require('java').setup({})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(event)
@@ -87,7 +85,7 @@ return {
 
 			require('mason-lspconfig').setup({
 				automatic_installation = true,
-				automatic_enable = true
+				automatic_enable = true,
 			})
 			-- vim.lsp.log.set_level(vim.log.levels.TRACE)
 

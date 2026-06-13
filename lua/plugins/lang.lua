@@ -135,6 +135,11 @@ return {
 	},
 	{ 'martinda/Jenkinsfile-vim-syntax' },
 	{
+		'mfussenegger/nvim-jdtls',
+		ft = { 'java' },
+		dependencies = { 'mfussenegger/nvim-dap' },
+	},
+	{
 		"eatgrass/maven.nvim",
 		cmd = { "Maven", "MavenExec" },
 		dependencies = "nvim-lua/plenary.nvim",
